@@ -74,7 +74,7 @@ def GetNoiseStabilityPlot(file,Coil):
     plt.savefig(Coil+"_NoiseStabilityTest.png")
     plt.close()
 
-Files = "Data\DailyQA_Test_20230824_201946068" # Head Coil 
+Files = "Data/DailyQA_Test_20230824_201946068" # Head Coil 
 GetNoisePlot(Files,"Head Coil")
 GetNoiseStabilityPlot(Files,"Head Coil")
 

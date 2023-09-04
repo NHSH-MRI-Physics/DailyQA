@@ -8,9 +8,10 @@ import cv2 as cv
 import SmoothingMethod
 import Helper 
 import NessAiverMethod
+import os
 
 def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=None,RunSeq=None,ThreshRejectionOveride=None):
-    DICOMFiles = glob.glob(Files+"\*")
+    DICOMFiles = glob.glob( os.path.join( Files+"/*"))
     DICOMS={}
     PixelData={}
 
@@ -66,10 +67,13 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             KernalSize = 1
             PixelData[Seq] = PixelData[Seq][:, :, 15:-15] # This will be done on the scanner
             
+            '''
             if(ThreshRejectionOveride!=None):
                 RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq],Thresh=ThreshRejectionOveride[count])
             else:
                 RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq])
+            '''
+            RejectedSlices = Helper.GetRejectedSlicesEitherSide(PixelData[Seq])
 
             Thresh=500
             ROISize=20
@@ -82,11 +86,13 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             if (Seq == "Ax T2 SSFSE TE 90 BH"):
                 PixelData[Seq] = PixelData[Seq][:, :, 10:-10] # This will be done on the scanner
             
-            
+            '''
             if(ThreshRejectionOveride!=None):
                 RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq],Thresh=ThreshRejectionOveride[count])
             else:
                 RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq])
+            '''
+            RejectedSlices = Helper.GetRejectedSlicesEitherSide(PixelData[Seq])
 
             Thresh=250
             ROISize=20

@@ -56,6 +56,16 @@ def GetRejectedSlicesSplit(Data,ThreshOption=None):
             RejectedSlices.append(i)
     return RejectedSlices
 
+def GetRejectedSlicesEitherSide(Data,ThreshOption=None):
+    XShapeHalf = int(round(Data.shape[0]/2,0))
+    YShapeHalf = int(round(Data.shape[1]/2,0))
+    ROISize = 10
+    Comp = []
+    for i in range(Data.shape[2]):
+        Comp.append(np.mean(Data[XShapeHalf-ROISize:XShapeHalf+ROISize:,YShapeHalf-ROISize:YShapeHalf+ROISize,i]))
+    Idx = Comp.index(min(Comp))
+    return [Idx-1,Idx,Idx+1]
+
 def Setupplots(ImageData,seq):
     if (ImageData.shape[2])>=10:
         Cols = 10 
