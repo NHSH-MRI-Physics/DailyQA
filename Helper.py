@@ -2,6 +2,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import datetime
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import randfacts
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -84,3 +89,21 @@ def Setupplots(ImageData,seq):
         for j in range(Rows):
             axs[j,i].set_axis_off()
     return fig,axs,Cols
+
+def SendEmail(name,email,results,QAName):
+    UserName = "johnt717@gmail.com"
+    Password = "btvxckjckrlxqytf"
+
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
+    s.login(UserName, Password)
+    TEXT = "Hi " + name + "\n\n\n"
+    TEXT+="Daily QA Results run on " + str(datetime.date.today()) + "\n\n"
+    for line in results:
+        TEXT+=line +  "\n"
+    TEXT+="\n\n\n\n"
+    TEXT+= "Random Fact: " + randfacts.get_fact()    
+    
+    message = 'Subject: {}\n\n{}'.format(QAName, TEXT)
+    s.sendmail(UserName, email, message)
+    s.quit()
