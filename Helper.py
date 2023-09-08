@@ -90,9 +90,11 @@ def Setupplots(ImageData,seq):
             axs[j,i].set_axis_off()
     return fig,axs,Cols
 
-def SendEmail(name,email,results,QAName):
-    UserName = "johnt717@gmail.com"
-    Password = "btvxckjckrlxqytf"
+def SendEmail(name,email,results,QAName,QAResult):
+    UserName = "raigmoremri@gmail.com"
+    file = open('Password.txt',mode='r')
+    Password = file.read()
+    file.close()
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
@@ -104,6 +106,9 @@ def SendEmail(name,email,results,QAName):
     TEXT+="\n\n\n\n"
     TEXT+= "Random Fact: " + randfacts.get_fact()    
     
-    message = 'Subject: {}\n\n{}'.format(QAName, TEXT)
+    if False in QAResult:
+        message = 'Subject: {}\n\n{}'.format(QAName +" FAIL", TEXT)
+    else:
+        message = 'Subject: {}\n\n{}'.format(QAName +" PASS", TEXT)
     s.sendmail(UserName, email, message)
     s.quit()

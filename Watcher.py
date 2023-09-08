@@ -6,6 +6,7 @@ import smtplib
 from email.mime.text import MIMEText
 import Helper
 import shutil
+import sys 
 
 FileCount =  {}
 FileCount["DailyQA_Test_Head"] = 152
@@ -19,7 +20,6 @@ Tolerance["DailyQA_Test_Spine"] = [120,120,120]
 
 Emails = {}
 Emails["John"] = "Johnt717@gmail.com"
-Emails["Frank"] = "Johnt717@gmail.com"
 
 
 WatchFolder = "WatchFolder"
@@ -43,20 +43,25 @@ while (True):
 
                     EmailResultLines = []
                     count = 0
+
+                    OverallPass=[]
                     for result in Results:
                         SNR =  result[0]
                         QAResult="Fail"
+                        OverallPass.append([False])
                         if (SNR >= Tolerance[QAName][count]):
                             QAResult="Pass"
+                            OverallPass[-1]=True
                         EmailResultLines.append("Sequence: " + result[-1] + "       SNR: " + str(round(SNR,2)) + "       QA Result: " + QAResult)
+                        
                         count+=1
 
-                    #for name in Emails.keys():
-                    #    Helper.SendEmail(name,Emails[name],EmailResultLines,QAName)
+                    for name in Emails.keys():
+                        Helper.SendEmail(name,Emails[name],EmailResultLines,QAName,OverallPass)
                     
-
+                    
                     #Move to the archive 
-                    NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1])
+                    NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1]+"_"+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")))
                     os.rename(folder, NewFolder)
                     for result in Results:
                         shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
