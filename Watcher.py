@@ -5,7 +5,7 @@ import DailyQA
 import smtplib
 from email.mime.text import MIMEText
 import Helper
-
+import shutil
 
 FileCount =  {}
 FileCount["DailyQA_Test_Head"] = 152
@@ -51,12 +51,14 @@ while (True):
                         EmailResultLines.append("Sequence: " + result[-1] + "       SNR: " + str(round(SNR,2)) + "       QA Result: " + QAResult)
                         count+=1
 
-                    for name in Emails.keys():
-                        Helper.SendEmail(name,Emails[name],EmailResultLines,QAName)
+                    #for name in Emails.keys():
+                    #    Helper.SendEmail(name,Emails[name],EmailResultLines,QAName)
                     
 
                     #Move to the archive 
                     NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1])
                     os.rename(folder, NewFolder)
+                    for result in Results:
+                        shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
 
     time.sleep(10)
