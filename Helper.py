@@ -7,6 +7,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import randfacts
+import pandas as pd
+import os
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -112,3 +114,49 @@ def SendEmail(name,email,results,QAName,QAResult):
         message = 'Subject: {}\n\n{}'.format(QAName +" PASS", TEXT)
     s.sendmail(UserName, email, message)
     s.quit()
+
+def SaveHistoricData(result,filename):
+    date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if not os.path.exists(filename):
+        f = open(filename, 'w')
+        line = ""
+        line = "date" + ","
+        for OneSeq in result:
+            line +=OneSeq[-1]+" Smooth SNR,"
+            line +=OneSeq[-1]+" Ness-Anvier Method SNR,"
+        line = line[:-1]
+        line+="\n"
+        f.write(line)
+        f.close()
+    f = open(filename,'a')
+
+    f.write(str(date) + "," + str(result[0][0]) + "," + str(result[0][1]) + "," + str(result[1][0]) + "," + str(result[1][1]) + "\n")
+    f.close()
+
+
+def PlotCSV(file):
+    data= pd.read_csv(file)
+    
+
+    #PlotNames = [file.split(".")[0]+"_SmoothSNR.png" , file.split(".")[0]+"_NessAvierSNR.png"]
+    #labels = ["Smooth Method SNR" , "Ness-Avier Method SNR"]
+
+    
+    for i in range(4):
+        plt.title(data.columns.values[i+1],fontsize=100)
+        fig = plt.gcf()
+        fig.set_size_inches(60, 30)
+        x, y = zip(*sorted(zip(data["date"],data.iloc[:, 1+i]))) #This ensures the order of the data is in accending date
+        plt.plot(x,y,linewidth=10,marker="o",markersize=60)
+        plt.xlabel("Date",fontsize=60)
+        plt.ylabel("SNR",fontsize=60)
+        plt.xticks(rotation = 45,fontsize=50)
+        plt.yticks(fontsize=50)
+        plt.grid(linewidth = 5)
+        plt.gca().spines['bottom'].set_linewidth(10) #These make the line bounds of the plot thicker or thinner
+        plt.gca().spines['left'].set_linewidth(10)
+        plt.gca().spines['top'].set_linewidth(0)
+        plt.gca().spines['right'].set_linewidth(0)
+        plt.tight_layout()
+        plt.savefig(data.columns.values[i+1]+".png")
+        plt.close()
