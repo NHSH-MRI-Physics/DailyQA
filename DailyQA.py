@@ -54,49 +54,35 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         width = None
         RejectedSlices=[]
 
-        if (CoilUsed == "Head 24"): #Use all slices
+        if (CoilUsed == "Head 24"): 
             KernalSize = 2
             Thresh=500
             if Seq == "Ax T2 FSE head":
-                ROISize=36
                 ErorsionSteps=10
             if Seq == "Ax EPI-GRE head":
-                ROISize=10
                 ErorsionSteps=5
+
         elif (CoilUsed == "Body 48 1"):
             KernalSize = 1
-            PixelData[Seq] = PixelData[Seq][:, :, 15:-15] # This will be done on the scanner
-            
-            '''
-            if(ThreshRejectionOveride!=None):
-                RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq],Thresh=ThreshRejectionOveride[count])
-            else:
-                RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq])
-            '''
-            RejectedSlices = Helper.GetRejectedSlicesEitherSide(PixelData[Seq])
 
-            Thresh=500
-            ROISize=20
-            ErorsionSteps=5
-        elif (CoilUsed == "Spine 48 1"):
+            if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
+                Thresh=500
+                ErorsionSteps=5
+            if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
+                Thresh=900
+                ErorsionSteps=5
+
+
+
+        elif (CoilUsed == "Spine 48 1" or CoilUsed == "Spine 48 2"):
             KernalSize = 1
+            if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
+                Thresh=250
+                ErorsionSteps=5
+            if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
+                Thresh=900
+                ErorsionSteps=5
 
-            if (Seq == "Ax EPI-GRE body"):
-                PixelData[Seq] = PixelData[Seq][:, :, 15:-15] # This will be done on the scanner
-            if (Seq == "Ax T2 SSFSE TE 90 BH"):
-                PixelData[Seq] = PixelData[Seq][:, :, 10:-10] # This will be done on the scanner
-            
-            '''
-            if(ThreshRejectionOveride!=None):
-                RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq],Thresh=ThreshRejectionOveride[count])
-            else:
-                RejectedSlices = Helper.GetRejectedSlicesSplit(PixelData[Seq])
-            '''
-            RejectedSlices = Helper.GetRejectedSlicesEitherSide(PixelData[Seq])
-
-            Thresh=250
-            ROISize=20
-            ErorsionSteps=5
         else:
             raise ValueError("Unknown coil selected: " + CoilUsed)
         
@@ -109,8 +95,9 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         if NoiseAmount != None:
             PixelData[Seq] = Helper.AddNoise(PixelData[Seq],NoiseAmount)
-        SNRSmooth = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISize=ROISize,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices)
-        SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
-        Results.append( [SNRSmooth,SNRNessAiver,Seq])
+        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISize=None,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices)
+        #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
+        #Results.append( [SNRSmooth,SNRNessAiver,Seq])
+        Results.append( [SNRSmooth,ROIResults,Seq])
         count+=1
     return Results

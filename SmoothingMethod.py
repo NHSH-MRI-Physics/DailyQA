@@ -18,7 +18,7 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum):
         rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor='r', facecolor='none')
         axs[row,col].add_patch(rect)
 
-def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = []):
+def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = []):
 
     fig,axs,Cols = Helper.Setupplots(ImageData,seq)
 
@@ -26,18 +26,20 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width
         raise ValueError ("all sices rejected, reduce rejecton threshold!")
 
     SNRAvg=[]
+    SNRROIResults = []
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
         ROIs = []
         RoiSizeHalf=None
         BinaryMapSignal=None
         if i not in RejectedSlices:
-            RoiSizeHalf = int(round(ROISize/2.0,0))
+            
 
             MatrixSize = (KernalSize*2+1)**2
             kernel = np.ones((MatrixSize,MatrixSize),np.float32)/(MatrixSize*MatrixSize)
             Smoothed = cv.filter2D(Image,-1,kernel)
             Difference = Image - Smoothed
+
 
             BinaryMapSignal = np.copy(Image)
             High = np.where(BinaryMapSignal>=Thresh)
@@ -66,6 +68,11 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width
                 widthY = width[1]
 
             #print(cent_x,cent_y,widthX,widthY)
+            #print(ImageData.shape)
+
+            if ROISize==None:
+                ROISize = widthX*0.3
+            RoiSizeHalf = int(round(ROISize/2.0,0))
 
             M1 = [cent_x,cent_y]
             M2= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
@@ -73,7 +80,6 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width
             M4= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y-widthY*0.4,0)) ]
             M5= [ int(round(cent_x-widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
             ROIs = [M1,M2,M3,M4,M5]
-
             SNRList=[]
             for roi in ROIs:
                 Signal = np.mean(Image[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])
@@ -82,6 +88,8 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width
                 SNRList.append(SNR)
             SNRAvg.append(sum(SNRList)/len(SNRList))
 
+            ROIResults = Helper.ROIResults(SNRList[0],SNRList[1],SNRList[2],SNRList[3],SNRList[4])
+            SNRROIResults.append(ROIResults)
         
         CurrentRow = math.floor(i/Cols)
         CurrentCol = i%Cols
@@ -94,4 +102,4 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize= 36,Thresh=None, width
 
 
 
-    return sum(SNRAvg)/len(SNRAvg)
+    return sum(SNRAvg)/len(SNRAvg), SNRROIResults

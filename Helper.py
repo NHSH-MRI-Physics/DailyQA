@@ -9,6 +9,7 @@ from email.mime.text import MIMEText
 import randfacts
 import pandas as pd
 import os
+from dataclasses import dataclass
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -160,3 +161,23 @@ def PlotCSV(file):
         plt.tight_layout()
         plt.savefig(data.columns.values[i+1]+".png")
         plt.close()
+
+
+
+
+@dataclass
+class ROIResults:
+    M1: float #center
+    M2: float #top right
+    M3: float #bottom left
+    M4: float #bottom right
+    M5: float #top left
+
+@dataclass
+class ROIBaseline:
+    #list goes lower bounds, upper bounds and mean
+    M1: list #center
+    M2: list #top right
+    M3: list #bottom left
+    M4: list #bottom right
+    M5: list #top left

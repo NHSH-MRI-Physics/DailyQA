@@ -1,12 +1,11 @@
 import DailyQA
 
-Files = "Data/DailyQA_Test_Head_20230824_201946068" # Head Coil 
-#Files = "Data/Daily_QA_Test_Body_20230824_211440042" # Body Coil 
-#Files = "Data/SpineFiltered" # Spine Coil 
+Files = "Data/DQA_Head_20230914_214806084" # Head Coil 
+#Files = "Data/DQA_Body_20230914_214817785" # Body Coil 
+#Files = "Data/DQA_Spine_20230914_214814825" # Spine Coil 
 
 Results = DailyQA.RunDailyQA(Files)
-print (Results[0])
-print (Results[1])
-
-DailyQA.Helper.SaveHistoricData(Results,"HeadQA.txt")
-DailyQA.Helper.PlotCSV("HeadQA.txt")
+for result in Results:
+	print (result)
+#DailyQA.Helper.SaveHistoricData(Results,"HeadQA.txt")
+#DailyQA.Helper.PlotCSV("HeadQA.txt")
