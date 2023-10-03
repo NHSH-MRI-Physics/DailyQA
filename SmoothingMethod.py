@@ -26,7 +26,14 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
         raise ValueError ("all sices rejected, reduce rejecton threshold!")
 
     SNRAvg=[]
-    SNRROIResults = []
+    SNRROIResults = {}
+    SNRROIResults["M1"] = []
+    SNRROIResults["M2"] = []
+    SNRROIResults["M3"] = []
+    SNRROIResults["M4"] = []
+    SNRROIResults["M5"] = []
+
+
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
         ROIs = []
@@ -88,8 +95,13 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
                 SNRList.append(SNR)
             SNRAvg.append(sum(SNRList)/len(SNRList))
 
-            ROIResults = Helper.ROIResults(SNRList[0],SNRList[1],SNRList[2],SNRList[3],SNRList[4])
-            SNRROIResults.append(ROIResults)
+            #ROIResults = Helper.ROIResults(SNRList[0],SNRList[1],SNRList[2],SNRList[3],SNRList[4])
+            #SNRROIResults.append(ROIResults)
+            SNRROIResults["M1"].append(SNRList[0])
+            SNRROIResults["M2"].append(SNRList[1])
+            SNRROIResults["M3"].append(SNRList[2])
+            SNRROIResults["M4"].append(SNRList[3])
+            SNRROIResults["M5"].append(SNRList[4])
         
         CurrentRow = math.floor(i/Cols)
         CurrentCol = i%Cols
