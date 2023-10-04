@@ -9,14 +9,9 @@ import shutil
 import sys 
 
 FileCount =  {}
-FileCount["DailyQA_Test_Head"] = 152
-FileCount["DailyQA_Test_Body"] = 110
-FileCount["DailyQA_Test_Spine"] = 272
-
-Tolerance = {}
-Tolerance["DailyQA_Test_Head"] = [90,77]
-Tolerance["DailyQA_Test_Body"] = [120,120,120]
-Tolerance["DailyQA_Test_Spine"] = [120,120,120]
+FileCount["DQA_Head"] = 152
+FileCount["DQA_Body"] = 50
+FileCount["DQA_Spine"] = 48
 
 Emails = {}
 Emails["John"] = "Johnt717@gmail.com"
@@ -30,7 +25,6 @@ while (True):
     SubFolders = [x[0] for x in os.walk(WatchFolder)]
     
     for folder in SubFolders:
-        
         for QAName in FileCount.keys():
             if QAName in folder:
                 FileCounter = len(os.listdir(folder))
@@ -46,6 +40,12 @@ while (True):
 
                     OverallPass=[]
                     for result in Results:
+                        QAResult = Helper.DidQAPass(result)
+                        if QAResult[0] == False:
+                            EmailResultLines.append(QAResult[1])
+                        OverallPass.append(QAResult[0])
+
+                        '''
                         SNR =  result[0]
                         QAResult="Fail"
                         OverallPass.append([False])
@@ -53,7 +53,7 @@ while (True):
                             QAResult="Pass"
                             OverallPass[-1]=True
                         EmailResultLines.append("Sequence: " + result[-1] + "       SNR: " + str(round(SNR,2)) + "       QA Result: " + QAResult)
-                        
+                        '''
                         count+=1
 
                     for name in Emails.keys():

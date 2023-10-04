@@ -54,7 +54,10 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         width = None
         RejectedSlices=[]
 
+        QAType = None
+
         if (CoilUsed == "Head 24"): 
+            QAType="Head"
             KernalSize = 2
             Thresh=500
             if Seq == "Ax T2 FSE head":
@@ -63,6 +66,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
                 ErorsionSteps=5
 
         elif (CoilUsed == "Body 48 1"):
+            QAType="Body"
             KernalSize = 1
 
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
@@ -75,6 +79,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
 
         elif (CoilUsed == "Spine 48 1" or CoilUsed == "Spine 48 2"):
+            QAType="Spine"
             KernalSize = 1
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
                 Thresh=250
@@ -98,6 +103,6 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISize=None,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices)
         #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
         #Results.append( [SNRSmooth,SNRNessAiver,Seq])
-        Results.append( [SNRSmooth,ROIResults,Seq])
+        Results.append( [SNRSmooth,ROIResults,QAType,Seq])
         count+=1
     return Results

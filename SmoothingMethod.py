@@ -114,4 +114,4 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
 
 
 
-    return sum(SNRAvg)/len(SNRAvg), SNRROIResults
+    return [sum(SNRAvg)/len(SNRAvg), SNRROIResults]

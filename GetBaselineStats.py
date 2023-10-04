@@ -1,36 +1,72 @@
 import DailyQA
 import os
+import Helper
+import sys
+import numpy as np
 
-
-ROIResults = []
-def GetBaseline(path):
+def GetBaselineSmooth(path,SaveName):
+	ROI_Results = {} #ROI_Results[seq][sample][ROI][slice]
+	SNR_Results={}
 	files =  (next(os.walk(path))[1])
+
+	count=0
 	for file in files:
+		count+=1
 		Results = DailyQA.RunDailyQA(os.path.join(path,file))
-		ROIResults.append(Results[1])
+		#Results = Helper.ProduceTestData(count)
+		for seqNum in range(len(Results)):
+			if Results[seqNum][-1] not in ROI_Results:
+				ROI_Results[Results[seqNum][-1]] = []
+				SNR_Results[Results[seqNum][-1]] = []
+			SNR_Results[Results[seqNum][-1]].append(Results[seqNum][0])
+			ROI_Results[Results[seqNum][-1]].append(Results[seqNum][1])
+		
 
-	SNR_Results = []
-	ROI_Results=[]
-	for entry in ROIResults:
-		SNR_Results.append(entry[0])
-		ROI_Results.append(entry[1])
+	#Get ROI baselines
+	#Results[Seq][ROI][Slice] = [Mean,STD]
+	Results = {}
+	Sequences = list(ROI_Results.keys())
+	ROIS = list(ROI_Results[Sequences[0]][0].keys())
 
-	#ROI_Results[sample][ROI][slice]
+	for seq in Sequences:
+		NumberOfSlicesInSeq = len(ROI_Results[seq][0]["M1"])
+		Results[seq] = {}
+		for ROI in ROIS:
+			Results[seq][ROI]=[]
+			for slice in range(NumberOfSlicesInSeq):
+				Results[seq][ROI].append( [])
+				templist=[]
+				for sample in range(len(files)):
+					templist.append(ROI_Results[seq][sample][ROI][slice])
+				Results[seq][ROI][slice].append(np.mean(templist))
+				Results[seq][ROI][slice].append(np.std(templist))
 
-	#BaselineData[ROI Name][slice][sample number]
-	BaselineData = {}
-	BaselineResults = {}
-	for key in ROI_Results[0].keys():
-		BaselineData[key]=[]
-		for i in range(len(ROI_Results[0][key])):
-			BaselineData[key].append([])
-		BaselineResults[key] = []
 
-	for SampleNum in range(len(ROI_Results)):
-		for key in ROI_Results[SampleNum].keys():
-			for SliceNum in range(len(ROI_Results[SampleNum][key])):
-				BaselineData[key][SliceNum].append(ROI_Results[SampleNum][key][SliceNum])
-	print(BaselineData["M1"])
 
-path = "/Users/mri/Desktop/DailyQA/BaselineData/Head"
-GetBaseline(path)
+	#Get global SNR Results
+	GlobalResults = {}
+	for seq in Sequences:
+		GlobalResults[seq] = [np.mean(SNR_Results[seq]), np.std(SNR_Results[seq])]
+
+	if True:
+		#For Testing
+		for seq in Sequences:
+			for ROI in ROIS:
+				NumberOfSlicesInSeq = len(ROI_Results[seq][0]["M1"])
+				for slice in range(NumberOfSlicesInSeq):
+					print("Seq;" + str(seq)+ "    Slice: " +str(slice) + "    ROI: " + str(ROI)  + "	Mean:" +str(Results[seq][ROI][slice][0]) + "	STD:" + str(Results[seq][ROI][slice][1]))
+			print(GlobalResults[seq])
+
+	np.save(os.path.join(path,"ROI_"+SaveName), Results)
+	np.save(os.path.join(path,"Global_"+SaveName), GlobalResults)
+	print("Baseline saved: " + SaveName)
+	
+
+path = "BaselineData/Head"
+GetBaselineSmooth(path,"Head_Baseline.npy")
+
+path = "BaselineData/Body"
+GetBaselineSmooth(path,"Body_Baseline.npy")
+
+path = "BaselineData/Spine"
+GetBaselineSmooth(path,"Spine_Baseline.npy")
