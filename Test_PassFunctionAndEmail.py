@@ -2,6 +2,7 @@ import DailyQA
 import Helper
 Emails = {}
 Emails["John"] = "Johnt717@gmail.com"
+Emails["John T"] = "John.tracey@NHS.scot"
 EmailResultLines = []
 
 #Results = Helper.ProduceTestData(1)
