@@ -11,6 +11,7 @@ def GetBaselineSmooth(path,SaveName):
 
 	count=0
 	for file in files:
+		print ("working on " + file)
 		count+=1
 		Results = DailyQA.RunDailyQA(os.path.join(path,file))
 		#Results = Helper.ProduceTestData(count)
@@ -65,8 +66,8 @@ def GetBaselineSmooth(path,SaveName):
 path = "BaselineData/Head"
 GetBaselineSmooth(path,"Head_Baseline.npy")
 
-path = "BaselineData/Body"
-GetBaselineSmooth(path,"Body_Baseline.npy")
+#path = "BaselineData/Body"
+#GetBaselineSmooth(path,"Body_Baseline.npy")
 
 path = "BaselineData/Spine"
 GetBaselineSmooth(path,"Spine_Baseline.npy")

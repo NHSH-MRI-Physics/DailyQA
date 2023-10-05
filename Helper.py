@@ -217,7 +217,7 @@ def ProduceTestData(SampleReturn):
         return DummyResult
     
 
-def DidQAPass(Result):
+def DidQAPass(Result,thresh=None):
     QAType = Result[2]
     SNR = Result[0]
     ROIResults = Result[1]
@@ -229,18 +229,27 @@ def DidQAPass(Result):
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
         GlobalSTDModifier = 1.0
         ROISTDModifier = 1.0
+        if thresh!=None:
+            GlobalSTDModifier=thresh[0]
+            ROISTDModifier=thresh[1]
 
     if QAType=="Body":
         GlobalBaseline = np.load(os.path.join("BaselineData","Body","Global_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         GlobalSTDModifier = 1.0
         ROISTDModifier = 1.0
+        if thresh!=None:
+            GlobalSTDModifier=thresh[0]
+            ROISTDModifier=thresh[1]
 
     if QAType=="Spine":
         GlobalBaseline = np.load(os.path.join("BaselineData","Spine","Global_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
         GlobalSTDModifier = 1.0
         ROISTDModifier = 1.0
+        if thresh!=None:
+            GlobalSTDModifier=thresh[0]
+            ROISTDModifier=thresh[1]
 
     #Global
     FailMessage=""
