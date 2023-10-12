@@ -18,6 +18,7 @@ Emails["John"] = "Johnt717@gmail.com"
 
 
 WatchFolder = "/Users/mri/Documents/QA/ClinicalQA/RawDICOM"
+WatchFolder = "/Users/john/Documents/DailyQA/WatchFolder"
 while (True):
     print ("Still alive at " + str(datetime.datetime.now()))
 
@@ -32,7 +33,8 @@ while (True):
                 if (FileCounter == FileCount[QAName]):
                     #Run the QA
                     print("Found " + folder + " at " + str(datetime.datetime.now()))
-                    time.sleep(30)#Wait 30s to make sure it really is downaloded...
+                    time.sleep(1)#Wait 30s to make sure it really is downaloded...
+                    print("Running QA " + QAName)
                     Results = DailyQA.RunDailyQA(folder)
 
                     EmailResultLines = []
@@ -63,6 +65,7 @@ while (True):
                     #Move to the archive 
                     NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1]+"_"+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")))
                     os.system("echo ilovege | sudo -S chown mri "+folder)
+                    NewFolder = NewFolder.replace("Users", QAName)
                     os.rename(folder, NewFolder)
                     for result in Results:
                         shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
