@@ -51,7 +51,6 @@ def GetThresh(Coil,Thresh):
         IncreaseThresh=[False,False]
         print("New Tresh " + str(Thresh[0]) + " " + str(Thresh[1]) + "  Passes at previous thresh " +str(Passes) + " out of " + str(NumberOfBaselines) )
 
-#GetThresh("Head",[2.25,2.9])
-
-
+GetThresh("Head",[2.25,2.9])
 GetThresh("Spine",[2.1,2.75])
+GetThresh("Body",[2.95,3.0])

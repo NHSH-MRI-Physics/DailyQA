@@ -227,8 +227,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Head":
         GlobalBaseline = np.load(os.path.join("BaselineData","Head","Global_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 1.0
-        ROISTDModifier = 1.0
+        GlobalSTDModifier = 2.25
+        ROISTDModifier = 2.9
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -236,8 +236,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Body":
         GlobalBaseline = np.load(os.path.join("BaselineData","Body","Global_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 1.0
-        ROISTDModifier = 1.0
+        GlobalSTDModifier = 2.95
+        ROISTDModifier = 3.0
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -245,8 +245,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Spine":
         GlobalBaseline = np.load(os.path.join("BaselineData","Spine","Global_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 1.0
-        ROISTDModifier = 1.0
+        GlobalSTDModifier = 2.1
+        ROISTDModifier = 2.75
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]

@@ -9,7 +9,7 @@ import shutil
 import sys 
 
 FileCount =  {}
-FileCount["DQA_Head"] = 152
+FileCount["DQA_Head"] = 19
 FileCount["DQA_Body"] = 50
 FileCount["DQA_Spine"] = 48
 
@@ -17,7 +17,7 @@ Emails = {}
 Emails["John"] = "Johnt717@gmail.com"
 
 
-WatchFolder = "WatchFolder"
+WatchFolder = "/Users/mri/Documents/QA/ClinicalQA/RawDICOM"
 while (True):
     print ("Still alive at " + str(datetime.datetime.now()))
 
@@ -62,6 +62,7 @@ while (True):
                     
                     #Move to the archive 
                     NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1]+"_"+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")))
+                    os.system("echo ilovege | sudo -S chown mri "+folder)
                     os.rename(folder, NewFolder)
                     for result in Results:
                         shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))

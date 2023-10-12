@@ -7,7 +7,7 @@ EmailResultLines = []
 
 #Results = Helper.ProduceTestData(1)
 
-Files = "Data/DQA_Head_20230914_214806084"
+Files = "Data/DQA_Head_1"
 Results = DailyQA.RunDailyQA(Files)
 QAResultTracker=[]
 for result in Results:
