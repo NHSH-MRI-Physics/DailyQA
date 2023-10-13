@@ -33,7 +33,7 @@ while (True):
                 if (FileCounter == FileCount[QAName]):
                     #Run the QA
                     print("Found " + folder + " at " + str(datetime.datetime.now()))
-                    time.sleep(1)#Wait 30s to make sure it really is downaloded...
+                    time.sleep(30)#Wait 30s to make sure it really is downaloded...
                     print("Running QA " + QAName)
                     Results = DailyQA.RunDailyQA(folder)
 
