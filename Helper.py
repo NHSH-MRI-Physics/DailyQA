@@ -94,7 +94,7 @@ def Setupplots(ImageData,seq):
             axs[j,i].set_axis_off()
     return fig,axs,Cols
 
-def SendEmail(name,email,results,QAName,QAResult):
+def SendEmail(name,email,results,QAName,QAResult,Archive=None):
     UserName = "raigmoremri@gmail.com"
     file = open('Password.txt',mode='r')
     Password = file.read()
@@ -113,13 +113,39 @@ def SendEmail(name,email,results,QAName,QAResult):
     for line in results:
         TEXT+=line +  "\n"
     TEXT+="\n"
-    TEXT+= "Random Fact: " + randfacts.get_fact()    
+    TEXT+= "Random Fact: " + randfacts.get_fact()    +"\n\n"
+    TEXT+= "Archive Folder: "+Archive + "\n"
+
     
     if False in QAResult:
         message = 'Subject: {}\n\n{}'.format("Daily " + QAName +" QA: FAIL", TEXT)
     else:
         message = 'Subject: {}\n\n{}'.format("Daily " + QAName +" QA: PASS", TEXT)
-    s.sendmail(UserName, email, message)
+    s.sendmail(UserName, email, message) 
+    s.quit()
+
+
+def SendErrorEmail(name,email,error,QAName,Archive):
+
+    UserName = "raigmoremri@gmail.com"
+    file = open('Password.txt',mode='r')
+    Password = file.read()
+    file.close()
+
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
+    s.login(UserName, Password)
+    TEXT = "Hi " + name + "\n\n"
+
+    TEXT+="Daily " + QAName + " was not able to be processed, this may be due to a set up error \n\n"
+    TEXT+="Error:\n"
+    TEXT+=str(error)+"\n\n"
+
+    TEXT+= "Archive Folder: "+Archive + "\n"
+
+    message = 'Subject: {}\n\n{}'.format("Daily " + QAName +" QA: UNSUCCESSFUL", TEXT)
+
+    s.sendmail(UserName, email, message) 
     s.quit()
 
 def SaveHistoricData(result,filename):
