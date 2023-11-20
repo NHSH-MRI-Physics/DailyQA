@@ -64,10 +64,10 @@ def GetBaselineSmooth(path,SaveName):
 	
 
 path = "BaselineData/Head"
-GetBaselineSmooth(path,"Head_Baseline.npy")
+#GetBaselineSmooth(path,"Head_Baseline.npy")
 
 path = "BaselineData/Body"
-GetBaselineSmooth(path,"Body_Baseline.npy")
+#GetBaselineSmooth(path,"Body_Baseline.npy")
 
 path = "BaselineData/Spine"
-GetBaselineSmooth(path,"Spine_Baseline.npy")
+#GetBaselineSmooth(path,"Spine_Baseline.npy")

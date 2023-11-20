@@ -33,7 +33,7 @@ while (True):
             if QAName.lower() in folder.lower():
                 FileCounter = len(os.listdir(folder))
                 
-                if (FileCounter == FileCount[QAName]):
+                if (FileCounter >= FileCount[QAName]):
                     #Run the QA
                     print("Found " + folder + " at " + str(datetime.datetime.now()))
                     time.sleep(30)#Wait 30s to make sure it really is downaloded...
@@ -76,7 +76,7 @@ while (True):
                                 '''
                                 count+=1
 
-
+                         
                             for name in Emails.keys():
                                 Helper.SendEmail(name,Emails[name],EmailResultLines,QAName,OverallPass,Archive=NewFolder)
                         else:

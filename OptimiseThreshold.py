@@ -4,12 +4,12 @@ import sys
 
 
 
-
+NumberOfBaselines=20
 
 def GetThresh(Coil,Thresh):
     #Thresh=[1.0,1.0]
     Step=0.05
-    NumberOfBaselines=10
+
 
     
     ThreshFound = False
@@ -51,6 +51,20 @@ def GetThresh(Coil,Thresh):
         IncreaseThresh=[False,False]
         print("New Tresh " + str(Thresh[0]) + " " + str(Thresh[1]) + "  Passes at previous thresh " +str(Passes) + " out of " + str(NumberOfBaselines) )
 
-GetThresh("Head",[2.25,2.9])
-GetThresh("Spine",[2.1,2.75])
-GetThresh("Body",[2.95,3.0])
+
+def FinalTest(Coil):
+    for i in range (1,NumberOfBaselines+1):
+        Files = "BaselineData/"+Coil+"/DQA_"+Coil+"_" + str(i)
+        Results = DailyQA.RunDailyQA(Files)
+        for result in Results:
+            QAResult = Helper.DidQAPass(result)
+            print(QAResult[0],Files)
+
+#GetThresh("Head",[3.3,3.7])
+#GetThresh("Spine",[2.1,2.75])
+#GetThresh("Body",[2.95,3.0])
+
+
+FinalTest("Head")
+#FinalTest("Spine")
+#FinalTest("Body")

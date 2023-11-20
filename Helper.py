@@ -249,12 +249,14 @@ def DidQAPass(Result,thresh=None):
     ROIResults = Result[1]
     Sequence = Result[3]
 
+
+
     #ROIBaseline[Seq][ROI][Slice] = [Mean,STD]
     if QAType=="Head":
         GlobalBaseline = np.load(os.path.join("BaselineData","Head","Global_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 2.25
-        ROISTDModifier = 2.9
+        GlobalSTDModifier = 3.3
+        ROISTDModifier = 4.0
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -262,8 +264,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Body":
         GlobalBaseline = np.load(os.path.join("BaselineData","Body","Global_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 2.95
-        ROISTDModifier = 3.0
+        GlobalSTDModifier = 3.2
+        ROISTDModifier = 3.35
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -271,8 +273,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Spine":
         GlobalBaseline = np.load(os.path.join("BaselineData","Spine","Global_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 2.1
-        ROISTDModifier = 2.75
+        GlobalSTDModifier = 2.55
+        ROISTDModifier = 2.9
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -281,7 +283,8 @@ def DidQAPass(Result,thresh=None):
     FailMessage=""
     Lower = GlobalBaseline[0] - GlobalBaseline[1]*GlobalSTDModifier
     Upper = GlobalBaseline[0] + GlobalBaseline[1]*GlobalSTDModifier
-    if (Lower <= SNR <= Upper) == False:
+    #if (Lower <= SNR <= Upper) == False:
+    if (SNR <= Lower):
         FailMessage+="Overall SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result:" + str(round(SNR,4)) + "   Baseline Bounds:" + str(round(Lower,4)) + " to " + str(round(Upper,4)) +"\n"
 
     #ROI
@@ -291,9 +294,9 @@ def DidQAPass(Result,thresh=None):
         for Slice in range(NumberOfSlicesInSeq):
             Lower = ROIBaseline[ROI][Slice][0] - ROIBaseline[ROI][Slice][1]*ROISTDModifier
             Upper = ROIBaseline[ROI][Slice][0] + ROIBaseline[ROI][Slice][1]*ROISTDModifier
-            if (Lower <= ROIResults[ROI][Slice] <= Upper) == False:
+            #if (Lower <= ROIResults[ROI][Slice] <= Upper) == False:
+            if (ROIResults[ROI][Slice] <= Lower):
                 FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result:" + str(round(ROIResults[ROI][Slice],4)) + "   Baseline:" + str(round(Lower,4)) + " to " + str(round(Upper,4)) +"\n"
-
 
     if FailMessage=="":
         return True,FailMessage

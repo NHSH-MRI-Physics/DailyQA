@@ -16,6 +16,7 @@ for result in Results:
 	if QAResult[0] == False:
 		EmailResultLines.append(QAResult[1])
 	QAResultTracker.append(QAResult[0])
+	print (QAResult[0])
 		
-for name in Emails.keys():
-	Helper.SendEmail(name,Emails[name],EmailResultLines,Results[0][2],QAResultTracker)
+#for name in Emails.keys():
+#	Helper.SendEmail(name,Emails[name],EmailResultLines,Results[0][2],QAResultTracker)

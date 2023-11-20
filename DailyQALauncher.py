@@ -1,5 +1,6 @@
 import DailyQA
 import numpy as np
+import Helper
 #Files = "Data/DQA_Head_20230914_214806084" # Head Coil 
 #Files = "Data/DQA_Body_20230914_214817785" # Body Coil 
 #Files = "Data/DQA_Spine_20230914_214814825" # Spine Coil 
@@ -7,12 +8,18 @@ import numpy as np
 
 #Files = "BaselineData/Head/DQA_Head_10_20231004_213318720"  
 #Files = "BaselineData/Spine/DQA_Spine_10"  
-#Results = DailyQA.RunDailyQA(Files)
-#for result in Results:
-#	print (result)
+
+Files = "/Users/mri/Desktop/DailyQA/Archive/DQA_Head_2023-11-08 09-46-19"
+
+Results = DailyQA.RunDailyQA(Files)
+for result in Results:
+	print (result)
+	QAResult = Helper.DidQAPass(result)
 #DailyQA.Helper.SaveHistoricData(Results,"HeadQA.txt")
 #DailyQA.Helper.PlotCSV("HeadQA.txt")
 
+
+'''
 data = []
 for i in range (1,11):
 	Files = "BaselineData/Head/DQA_Head_" + str(i)
@@ -28,3 +35,4 @@ for i in range (1,11):
 print(data)
 print(np.mean(data))
 print(np.std(data))
+'''

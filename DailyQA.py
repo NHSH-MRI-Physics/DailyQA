@@ -11,14 +11,14 @@ import NessAiverMethod
 import os
 
 def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=None,RunSeq=None,ThreshRejectionOveride=None):
-    DICOMFiles = glob.glob( os.path.join( Files+"/*"))
+    DICOMFiles = glob.glob( os.path.join( Files+"/*.dcm"))
     DICOMS={}
     PixelData={}
 
     if len(DICOMFiles) == 0:
         raise NameError("No DICOMS found!")
 
-    SkipSeqTerms = ["Cal", "ORIG"]
+    SkipSeqTerms = ["Cal", "ORIG", "Loc"]
     for file in DICOMFiles:
         Accept=True
         LoadedDICOM = pydicom.read_file( file )
