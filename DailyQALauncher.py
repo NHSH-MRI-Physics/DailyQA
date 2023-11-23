@@ -9,8 +9,8 @@ import Helper
 #Files = "BaselineData/Head/DQA_Head_10_20231004_213318720"  
 #Files = "BaselineData/Spine/DQA_Spine_10"  
 
-Files = "/Users/mri/Desktop/DailyQA/Archive/DQA_Head_2023-11-08 09-46-19"
-
+#Files = "/Users/mri/Desktop/DailyQA/Archive/DQA_Head_2023-11-08 09-46-19"
+Files = "Data/DQA_Head_1"
 Results = DailyQA.RunDailyQA(Files)
 for result in Results:
 	print (result)

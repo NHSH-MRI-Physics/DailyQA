@@ -28,8 +28,7 @@ for result in Results:
 	shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 	print(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 	Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
-	
-                                
+
 
 for name in Emails.keys():
 	Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2],QAResultTracker,Archive=DataFolder,images=Images)

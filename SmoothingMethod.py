@@ -14,9 +14,12 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum):
     axs[row,col].axis('off')
     axs[row,col].imshow(Image,cmap='Greys_r')
     axs[row,col].set_title("Slice Num: " + str(sliceNum), fontsize=20)
+    count=1
     for roi in ROIS:
         rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor='r', facecolor='none')
         axs[row,col].add_patch(rect)
+        axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
+        count+=1
 
 def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = []):
 
