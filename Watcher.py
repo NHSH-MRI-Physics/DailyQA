@@ -53,7 +53,20 @@ while (True):
                     try:
                         NewFolder = os.path.join("Archive",folder.split(os.path.sep)[1]+"_"+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")))
                         NewFolder = NewFolder.replace("Users", QAName)
+                        #Move to the archive 
+                        images = []
+                        os.system("echo ilovege | sudo -S chown mri "+folder)
+                        os.rename(folder, NewFolder)
+                        if (QASuccess==True):
+                            for result in Results:
+                                shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
+                                images.append(os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
+                    except Exception as e:
+                        print (e)
+                        pass
 
+
+                    try:
                         if (QASuccess==True):
                             EmailResultLines = []
                             count = 0
@@ -78,19 +91,13 @@ while (True):
 
                          
                             for name in Emails.keys():
-                                Helper.SendEmail(name,Emails[name],EmailResultLines,QAName,OverallPass,Archive=NewFolder)
+                                Helper.SendEmailV2(name,Emails[name],EmailResultLines,QAName,OverallPass,Archive=NewFolder,images=images)
                         else:
                             for name in Emails.keys():
                                 Helper.SendErrorEmail(name,Emails[name],ErrorMessage,QAName,Archive=NewFolder)
                         
                         
-                        #Move to the archive 
-                        
-                        os.system("echo ilovege | sudo -S chown mri "+folder)
-                        os.rename(folder, NewFolder)
-                        if (QASuccess==True):
-                            for result in Results:
-                                shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
+
                     except Exception as e:
                         print (e)
                         pass

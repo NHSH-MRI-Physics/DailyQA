@@ -11,6 +11,7 @@ import pandas as pd
 import os
 from dataclasses import dataclass
 import random
+from email.message import EmailMessage
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -114,7 +115,8 @@ def SendEmail(name,email,results,QAName,QAResult,Archive=None):
         TEXT+=line +  "\n"
     TEXT+="\n"
     TEXT+= "Random Fact: " + randfacts.get_fact()    +"\n\n"
-    TEXT+= "Archive Folder: "+Archive + "\n"
+    if (Archive!=None):
+        TEXT+= "Archive Folder: "+Archive + "\n"
 
     
     if False in QAResult:
@@ -123,6 +125,55 @@ def SendEmail(name,email,results,QAName,QAResult,Archive=None):
         message = 'Subject: {}\n\n{}'.format("Daily " + QAName +" QA: PASS", TEXT)
     s.sendmail(UserName, email, message) 
     s.quit()
+
+def SendEmailV2(name,email,results,QAName,QAResult,Archive=None,images=None):
+
+    UserName = "raigmoremri@gmail.com"
+    file = open('Password.txt',mode='r')
+    Password = file.read()
+    file.close()
+
+    # Create the container email message.
+    msg = EmailMessage()
+    # me == the sender's email address
+    # family = the list of all recipients' email addresses
+    msg['From'] = "raigmoremri@gmail.com"
+    msg['To'] = [email]
+    #msg.preamble = 'You will not see this in a MIME-aware mail reader.\n'
+    TEXT = "Hi " + name + "\n\n"
+
+    if False in QAResult:
+        TEXT+="Daily " + QAName + " QA Results run on " + str(datetime.date.today()) + "    Result: Fail\n\n"
+    else:
+        TEXT+="Daily " + QAName + " QA Results run on " + str(datetime.date.today()) + "    Result: Pass\n\n"
+
+    for line in results:
+        TEXT+=line +  "\n"
+    TEXT+="\n"
+    TEXT+= "Random Fact: " + randfacts.get_fact()    +"\n\n"
+    if (Archive!=None):
+        TEXT+= "Archive Folder: "+Archive + "\n"
+    msg.set_content(TEXT)
+    
+    if False in QAResult:
+        message = "Daily " + QAName +" QA: FAIL"
+    else:
+        message = "Daily " + QAName +" QA: PASS"
+    msg['Subject'] = message
+
+    # Open the files in binary mode.  You can also omit the subtype
+    # if you want MIMEImage to guess it.
+    if images!=None:
+        for file in images:
+            with open(file, 'rb') as fp:
+                img_data = fp.read()
+            msg.add_attachment(img_data, maintype='image',subtype='png')
+
+    # Send the email via our own SMTP server.
+    with smtplib.SMTP('smtp.gmail.com', 587) as s:
+        s.starttls()
+        s.login(UserName, Password)
+        s.send_message(msg)
 
 
 def SendErrorEmail(name,email,error,QAName,Archive):
