@@ -1,6 +1,10 @@
+import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import numpy as np
 import Helper
+os.chdir('..')
 #Files = "Data/DQA_Head_20230914_214806084" # Head Coil 
 #Files = "Data/DQA_Body_20230914_214817785" # Body Coil 
 #Files = "Data/DQA_Spine_20230914_214814825" # Spine Coil 

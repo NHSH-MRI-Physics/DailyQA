@@ -1,7 +1,10 @@
+import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import numpy as np
 import matplotlib.pyplot as plt
-
+os.chdir('..')
 
 
 

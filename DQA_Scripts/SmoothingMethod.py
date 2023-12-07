@@ -112,7 +112,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
         
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-    plt.savefig(seq+"_SmoothMethod.png")
+    plt.savefig("Results/"+seq+"_SmoothMethod.png")
     plt.close()
 
 

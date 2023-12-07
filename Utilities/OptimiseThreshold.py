@@ -1,7 +1,10 @@
+import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import Helper
 import sys
-
+os.chdir('..')
 
 
 NumberOfBaselines=20
@@ -17,7 +20,7 @@ def GetThresh(Coil,Thresh):
         Passes = 0
         IncreaseThresh=[False,False]
         for i in range (1,NumberOfBaselines+1):
-            Files = "BaselineData/"+Coil+"/DQA_"+Coil+"_" + str(i)
+            Files = "../BaselineData/"+Coil+"/DQA_"+Coil+"_" + str(i)
             Results = DailyQA.RunDailyQA(Files)
             QAResultTracker=[]
             

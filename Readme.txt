@@ -1,1 +1,1 @@
-It will be read..
+DailyQA system for Raigmore Hospitals MRI unit.

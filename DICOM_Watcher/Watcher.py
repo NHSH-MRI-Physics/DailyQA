@@ -1,12 +1,14 @@
+import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import datetime
 import time
-import os
 import DailyQA
 import smtplib
 from email.mime.text import MIMEText
 import Helper
 import shutil
-import sys 
+os.chdir('..')
 
 FileCount =  {}
 FileCount["DQA_Head"] = 19
@@ -59,7 +61,9 @@ while (True):
                         os.rename(folder, NewFolder)
                         if (QASuccess==True):
                             for result in Results:
-                                shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
+                                print(result[-1]+"_SmoothMethod.png")
+                                print(os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
+                                shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
                                 images.append(os.path.join(NewFolder,result[-1]+"_SmoothMethod.png"))
                     except Exception as e:
                         print (e)

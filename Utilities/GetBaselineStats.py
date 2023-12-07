@@ -1,14 +1,16 @@
-import DailyQA
-import os
-import Helper
 import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
+import DailyQA
+import Helper
 import numpy as np
+os.chdir('..')
 
 def GetBaselineSmooth(path,SaveName):
 	ROI_Results = {} #ROI_Results[seq][sample][ROI][slice]
 	SNR_Results={}
-	files =  (next(os.walk(path))[1])
 
+	files =  (next(os.walk(path))[1])
 	count=0
 	for file in files:
 		print ("working on " + file)
@@ -58,16 +60,16 @@ def GetBaselineSmooth(path,SaveName):
 					print("Seq;" + str(seq)+ "    Slice: " +str(slice) + "    ROI: " + str(ROI)  + "	Mean:" +str(Results[seq][ROI][slice][0]) + "	STD:" + str(Results[seq][ROI][slice][1]))
 			print(GlobalResults[seq])
 
-	np.save(os.path.join(path,"ROI_"+SaveName), Results)
-	np.save(os.path.join(path,"Global_"+SaveName), GlobalResults)
+	#np.save(os.path.join(path,"ROI_"+SaveName), Results)
+	#np.save(os.path.join(path,"Global_"+SaveName), GlobalResults)
 	print("Baseline saved: " + SaveName)
 	
 
-path = "BaselineData/Head"
-#GetBaselineSmooth(path,"Head_Baseline.npy")
+path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Head"))
+GetBaselineSmooth(path,"Head_Baseline.npy")
 
-path = "BaselineData/Body"
+path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Body"))
 #GetBaselineSmooth(path,"Body_Baseline.npy")
 
-path = "BaselineData/Spine"
+path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Spine"))
 #GetBaselineSmooth(path,"Spine_Baseline.npy")

@@ -1,9 +1,12 @@
+import sys
+import os 
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import Helper
 import shutil
 import os
 import requests
-
+os.chdir('..')
 
 Emails = {}
 Emails["John"] = "Johnt717@gmail.com"
@@ -15,6 +18,7 @@ Images = []
 
 Files = "Data/DQA_Head_1"
 DataFolder = "/Users/mri/Desktop/DailyQA/Data/DQA_Head_1"
+DataFolder = "Data/DQA_Head_1"
 Results = DailyQA.RunDailyQA(Files)
 QAResultTracker=[]
 for result in Results:
@@ -25,7 +29,7 @@ for result in Results:
 	QAResultTracker.append(QAResult[0])
 	print (QAResult[0])
 
-	shutil.copyfile(result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
+	shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 	print(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 	Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
