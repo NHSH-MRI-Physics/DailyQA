@@ -8,7 +8,7 @@ import smtplib
 from email.mime.text import MIMEText
 import Helper
 import shutil
-os.chdir('..')
+os.chdir('..') #Probably should remove this at some stage and make sure the user runs the script from the right directory
 
 FileCount =  {}
 FileCount["DQA_Head"] = 19
