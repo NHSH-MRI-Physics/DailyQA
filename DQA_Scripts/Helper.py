@@ -86,8 +86,8 @@ def Setupplots(ImageData,seq,ScannerName):
 
     fig, axs = plt.subplots(Rows, Cols)
     Size = 0.25*ImageData.shape[2]
-    if Size < 7.5:
-        Size = 7.5
+    if Size < 8:
+        Size = 8
     fig.set_size_inches(25, Size)
     fig.suptitle(seq + "\n" + ScannerName, fontsize=35)
     for i in range(Cols):
