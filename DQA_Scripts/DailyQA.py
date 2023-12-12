@@ -19,9 +19,12 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         raise NameError("No DICOMS found!")
 
     SkipSeqTerms = ["Cal", "ORIG", "Loc"]
+    ScannerName = "Unknown"
     for file in DICOMFiles:
         Accept=True
         LoadedDICOM = pydicom.read_file( file )
+        ScannerName = LoadedDICOM[0x08,0x80].value
+
         for term in SkipSeqTerms:
             if term in LoadedDICOM.SeriesDescription:
                 Accept=False
@@ -100,7 +103,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         if NoiseAmount != None:
             PixelData[Seq] = Helper.AddNoise(PixelData[Seq],NoiseAmount)
-        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISize=None,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices)
+        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISize=None,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName)
         #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
         #Results.append( [SNRSmooth,SNRNessAiver,Seq])
         Results.append( [SNRSmooth,ROIResults,QAType,Seq])

@@ -21,9 +21,9 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum):
         axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
         count+=1
 
-def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = []):
+def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None):
 
-    fig,axs,Cols = Helper.Setupplots(ImageData,seq)
+    fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
 
     if ImageData.shape[2] == len(RejectedSlices):
         raise ValueError ("all sices rejected, reduce rejecton threshold!")

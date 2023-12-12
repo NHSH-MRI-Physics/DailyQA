@@ -76,7 +76,7 @@ def GetRejectedSlicesEitherSide(Data,ThreshOption=None):
     Idx = Comp.index(min(Comp))
     return [Idx-1,Idx,Idx+1]
 
-def Setupplots(ImageData,seq):
+def Setupplots(ImageData,seq,ScannerName):
     if (ImageData.shape[2])>=10:
         Cols = 10 
         Rows = math.ceil( ImageData.shape[2]/Cols )
@@ -89,7 +89,7 @@ def Setupplots(ImageData,seq):
     if Size < 7.5:
         Size = 7.5
     fig.set_size_inches(25, Size)
-    fig.suptitle(seq, fontsize=35)
+    fig.suptitle(seq + "\n" + ScannerName, fontsize=35)
     for i in range(Cols):
         for j in range(Rows):
             axs[j,i].set_axis_off()

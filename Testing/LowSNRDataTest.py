@@ -4,7 +4,8 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import numpy as np
 import Helper
-#os.chdir('..')
+if( os.path.basename(os.path.normpath(os.getcwd())) ) == "UnitTesting": 
+    os.chdir('..')
 
 
 Files = "Testing/LowSNR_Data/25%SNR_Head"
