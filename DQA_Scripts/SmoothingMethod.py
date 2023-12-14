@@ -21,7 +21,7 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum):
         axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
         count+=1
 
-def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None):
+def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None):
 
     fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
 
@@ -36,26 +36,26 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
     SNRROIResults["M4"] = []
     SNRROIResults["M5"] = []
 
-
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
         ROIs = []
         RoiSizeHalf=None
         BinaryMapSignal=None
         if i not in RejectedSlices:
-            
-
             MatrixSize = (KernalSize*2+1)**2
             kernel = np.ones((MatrixSize,MatrixSize),np.float32)/(MatrixSize*MatrixSize)
             Smoothed = cv.filter2D(Image,-1,kernel)
             Difference = Image - Smoothed
 
-
+            #plt.clf()
+            #plt.imshow(Image)
+            #plt.show()
             BinaryMapSignal = np.copy(Image)
             High = np.where(BinaryMapSignal>=Thresh)
             Low = np.where(BinaryMapSignal<Thresh)
             BinaryMapSignal[High]=1
             BinaryMapSignal[Low]=0
+
 
             mass_y, mass_x = np.where(BinaryMapSignal ==1)
             cent_y = int(round( np.average(mass_y),0 ))
@@ -69,6 +69,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
             idx = np.where(LineProfile==1)
             widthX = int(round((idx[0][-1] - idx[0][0])/2.0,0))
 
+
             LineProfile = BinaryMapSignal[:,cent_x]
             idx = np.where(LineProfile==1)
             widthY = int(round((idx[0][-1] - idx[0][0])/2.0,0))
@@ -77,13 +78,16 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISize=None,Thresh=None, widt
                 widthX = width[0]
                 widthY = width[1]
 
-            #print(cent_x,cent_y,widthX,widthY)
+            #print(i,widthX)
             #print(ImageData.shape)
 
-            if ROISize==None:
+            if ROISizeArg==None:
                 ROISize = widthX*0.3
+            else:
+                ROISize = ROISizeArg
             RoiSizeHalf = int(round(ROISize/2.0,0))
 
+            #Centre of each ROI
             M1 = [cent_x,cent_y]
             M2= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
             M3= [ int(round(cent_x-widthX*0.4,0)), int(round(cent_y-widthY*0.4,0)) ]

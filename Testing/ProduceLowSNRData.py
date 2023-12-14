@@ -8,6 +8,8 @@ import cv2 as cv
 import os
 import scipy.ndimage
 
+#This isnt working, its not writing the dicom file correcty will fix later...
+
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
     noiseReal = np.random.normal(0,sigma,[Image.shape[0],Image.shape[1]])
@@ -47,15 +49,16 @@ def MakeLowSNRData(DataPath,FilePath,type,signaldrop,noiseincrease):
         fig, (ax1, ax2) = plt.subplots(1, 2)
         imgmax= np.max(img)
         ax1.imshow(img,cmap="Greys_r",vmin=0, vmax=imgmax)
-
+        '''
         img = img.astype(float)
         NoiseImage = AddNoise(img,noiseincrease)
         img=img*signaldrop
         img += NoiseImage
+        img=img/signaldrop #Renoramlise the image with the noise
         img = img.astype(int)
-
-        ax2.imshow(img,cmap="Greys_r",vmin=0, vmax=imgmax)
-        plt.show()
+        '''
+        #ax2.imshow(img,cmap="Greys_r",vmin=0, vmax=imgmax)
+        #plt.show()
 
         NewSNR = np.mean(img[SignalMask])/np.std(img[NoiseMask])
         NewSNRAvg.append(NewSNR)

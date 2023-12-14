@@ -43,6 +43,7 @@ class TestSNRNormal(unittest.TestCase):
         self.assertEqual(files[1],'Results/Ax EPI-GRE body Bot_SmoothMethod.png')
         self.assertEqual(files[2],'Results/Ax EPI-GRE body Top_SmoothMethod.png')
         self.assertEqual(files[3],'Results/Ax T2 SSFSE TE 90 Bot_SmoothMethod.png')
+        self.assertEqual(4,len(files))
 
     def test_SpineSNR(self):
         Results = DailyQA.RunDailyQA("BaselineData/Spine/DQA_Spine_1")
@@ -54,5 +55,6 @@ class TestSNRNormal(unittest.TestCase):
         self.assertEqual(files[1],'Results/Ax EPI-GRE body Bot_SmoothMethod.png')
         self.assertEqual(files[2],'Results/Ax EPI-GRE body Top_SmoothMethod.png')
         self.assertEqual(files[3],'Results/Ax T2 SSFSE TE 90 Bot_SmoothMethod.png')    
+        self.assertEqual(4,len(files))
         
 unittest.main()

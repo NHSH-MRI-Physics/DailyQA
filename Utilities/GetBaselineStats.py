@@ -4,18 +4,19 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
 import DailyQA
 import Helper
 import numpy as np
-os.chdir('..')
+#os.chdir('..')
 
-def GetBaselineSmooth(path,SaveName):
+def GetBaselineSmooth(files,SaveName,path):
+
 	ROI_Results = {} #ROI_Results[seq][sample][ROI][slice]
 	SNR_Results={}
 
-	files =  (next(os.walk(path))[1])
+	#files =  (next(os.walk(path))[1])
 	count=0
 	for file in files:
 		print ("working on " + file)
 		count+=1
-		Results = DailyQA.RunDailyQA(os.path.join(path,file))
+		Results = DailyQA.RunDailyQA(file)
 		#Results = Helper.ProduceTestData(count)
 		for seqNum in range(len(Results)):
 			if Results[seqNum][-1] not in ROI_Results:
@@ -41,16 +42,34 @@ def GetBaselineSmooth(path,SaveName):
 				templist=[]
 				for sample in range(len(files)):
 					templist.append(ROI_Results[seq][sample][ROI][slice])
-				Results[seq][ROI][slice].append(np.mean(templist))
-				Results[seq][ROI][slice].append(np.std(templist))
 
+				Mean = np.mean(templist)
+				Bounds = np.std(templist)
 
-
+				Results[seq][ROI][slice].append(Mean)
+				Results[seq][ROI][slice].append(Bounds)
+				
 	#Get global SNR Results
 	GlobalResults = {}
 	for seq in Sequences:
 		GlobalResults[seq] = [np.mean(SNR_Results[seq]), np.std(SNR_Results[seq])]
 
+	#Get Average Per Slice
+	PerSliceResults = {}
+	for seq in Sequences:
+		PerSliceResults[seq] = []
+		NumberOfSlicesInSeq = len(ROI_Results[seq][0]["M1"])
+		for slice in range(NumberOfSlicesInSeq):
+			SampleValue=[]
+			for sample in range(len(files)):
+				TempData = []
+				for ROI in ROIS:
+					TempData.append(ROI_Results[seq][sample][ROI][slice])
+				SampleValue.append(np.mean(TempData))
+
+			PerSliceResults[seq].append( [np.mean(SampleValue),np.std(SampleValue)] )
+
+		print(PerSliceResults[seq])				
 	if True:
 		#For Testing
 		for seq in Sequences:
@@ -60,16 +79,30 @@ def GetBaselineSmooth(path,SaveName):
 					print("Seq;" + str(seq)+ "    Slice: " +str(slice) + "    ROI: " + str(ROI)  + "	Mean:" +str(Results[seq][ROI][slice][0]) + "	STD:" + str(Results[seq][ROI][slice][1]))
 			print(GlobalResults[seq])
 
-	#np.save(os.path.join(path,"ROI_"+SaveName), Results)
-	#np.save(os.path.join(path,"Global_"+SaveName), GlobalResults)
+	np.save(os.path.join(path,"ROI_"+SaveName), Results)
+	np.save(os.path.join(path,"Global_"+SaveName), GlobalResults)
+	np.save(os.path.join(path,"Slice_"+SaveName), PerSliceResults)
 	print("Baseline saved: " + SaveName)
 	
 
-path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Head"))
-GetBaselineSmooth(path,"Head_Baseline.npy")
 
-path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Body"))
-#GetBaselineSmooth(path,"Body_Baseline.npy")
+files = [x[0] for x in os.walk("BaselineData/Head/")][1:]
+HeadArchives = [x[0] for x in os.walk("Archive")][1:]
+for folder in HeadArchives:
+    if "Head" in folder:
+        files.append(folder)
+GetBaselineSmooth(files,"Head_Baseline.npy","BaselineData/Head/")
 
-path = os.path.abspath(os.path.join(os.path.dirname("BaselineData"),"BaselineData","Spine"))
-#GetBaselineSmooth(path,"Spine_Baseline.npy")
+files = [x[0] for x in os.walk("BaselineData/Body/")][1:]
+HeadArchives = [x[0] for x in os.walk("Archive")][1:]
+for folder in HeadArchives:
+    if "Body" in folder:
+        files.append(folder)
+#GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
+
+files = [x[0] for x in os.walk("BaselineData/Spine/")][1:]
+HeadArchives = [x[0] for x in os.walk("Archive")][1:]
+for folder in HeadArchives:
+    if "Spine" in folder:
+        files.append(folder)
+#GetBaselineSmooth(files,"Spine_Baseline.npy","BaselineData/Spine/")

@@ -12,6 +12,7 @@ import os
 from dataclasses import dataclass
 import random
 from email.message import EmailMessage
+import scipy.stats as st
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -293,21 +294,50 @@ def ProduceTestData(SampleReturn):
 
         return DummyResult
     
+def GetSTDModifiers(type):
+    if type == "Head":
+        GlobalSTDModifier = 3.3
+        ROISTDModifier = 4.0
+    elif type == "Body":
+        GlobalSTDModifier = 3.2
+        ROISTDModifier = 3.35
+    elif type == "Spine":
+        GlobalSTDModifier = 2.55
+        ROISTDModifier = 2.9
+    else:
+        raise NameError("Unknown type")
+    
+    return(GlobalSTDModifier,ROISTDModifier)
+
+def GetBaselineROI(type,Slice,ROI,Sequence):
+    ROIBaseline = np.load(os.path.join("BaselineData",type,"ROI_"+type+"_Baseline.npy"),allow_pickle=True).item()[Sequence]
+    return ROIBaseline[ROI][Slice][0],ROIBaseline[ROI][Slice][1]
+
+def GetBaselineSlice(type,Slice,Sequence):
+    Baseline = np.load(os.path.join("BaselineData",type,"Slice_"+type+"_Baseline.npy"),allow_pickle=True).item()[Sequence]
+    return Baseline[Slice][0],Baseline[Slice][1]
+
+def GetBaselineOverall(type,sequence):
+    Baseline = np.load(os.path.join("BaselineData",type,"Global_"+type+"_Baseline.npy"),allow_pickle=True).item()[sequence]
+    return Baseline[0],Baseline[1]
+
+def GetBounds(type,slice,ROI,Sequence):
+    return GetBaselineROI(type,slice,ROI,Sequence)[0]-GetSTDModifiers(type)[1]*GetBaselineROI(type,slice,ROI,Sequence)[1], GetBaselineROI(type,slice,ROI,Sequence)[0]+GetSTDModifiers(type)[1]*GetBaselineROI(type,slice,ROI,Sequence)[1]
 
 def DidQAPass(Result,thresh=None):
     QAType = Result[2]
     SNR = Result[0]
     ROIResults = Result[1]
     Sequence = Result[3]
-
+    
 
 
     #ROIBaseline[Seq][ROI][Slice] = [Mean,STD]
     if QAType=="Head":
         GlobalBaseline = np.load(os.path.join("BaselineData","Head","Global_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 3.3
-        ROISTDModifier = 4.0
+        GlobalSTDModifier = GetSTDModifiers(QAType)[0] #3.3
+        ROISTDModifier = GetSTDModifiers(QAType)[1] #4.0
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -315,8 +345,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Body":
         GlobalBaseline = np.load(os.path.join("BaselineData","Body","Global_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 3.2
-        ROISTDModifier = 3.35
+        GlobalSTDModifier = GetSTDModifiers(QAType)[0] #3.2
+        ROISTDModifier = GetSTDModifiers(QAType)[1] #3.35
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -324,8 +354,8 @@ def DidQAPass(Result,thresh=None):
     if QAType=="Spine":
         GlobalBaseline = np.load(os.path.join("BaselineData","Spine","Global_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
         ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        GlobalSTDModifier = 2.55
-        ROISTDModifier = 2.9
+        GlobalSTDModifier = GetSTDModifiers(QAType)[0] #2.55
+        ROISTDModifier = GetSTDModifiers(QAType)[1] #2.9
         if thresh!=None:
             GlobalSTDModifier=thresh[0]
             ROISTDModifier=thresh[1]
@@ -353,3 +383,6 @@ def DidQAPass(Result,thresh=None):
         return True,FailMessage
     else:
         return False,FailMessage
+    
+def GetStatsBasedThresh(data):
+    return np.mean(data), st.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(data), scale=st.sem(data))
