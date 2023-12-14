@@ -43,90 +43,134 @@ def SortData(Datas):
                         DataToPlot[seq][roi][slice].append(result[1][roi][slice])
     return [DataToPlot,OverallDataToPlot],FileTracker
 
-def AnalyseData(Data,FileTracker,type):
-    ConfLevel = 1.96 #2.576
+def AnalyseData(Data,FileTracker,type,Normalise=False):
+    
+
+    SNRThreshold = 0.85
 
     DataToPlot = Data[0]
     OverallDataToPlot = Data[1]
-
     Sequences = DataToPlot.keys()
     for sequence in Sequences:
-        Failures=[]
+        
         fig, axs = plt.subplots(7)
         fig.set_size_inches(9, 21)
         fig.suptitle(type + " DQA Stats " + sequence,y=0.99)
         ROIs = list(DataToPlot[sequence].keys())
-
+        f=open("Testing/SNRStats/"+sequence+"_Failures.txt",'w')
         #Per ROI Analysis
+        f.write("\n\n\n\nSequence : " + str(sequence)+"\n")
+        f.write("####  Per ROI Failures ####\n")
+        f.write("File     Metric     Slice     ROI\n")
+        Failures=[]
         for count, roi in enumerate(ROIs):
             NumberOfSlices = len(DataToPlot[sequence][roi])
             for slice in range(NumberOfSlices):
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
-                Lower = Base - STD*ConfLevel
-                
+                Lower = SNRThreshold
+                if Normalise==False:
+                    Lower = Base*SNRThreshold
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
-                for filecount, point in enumerate(DataToPlot[sequence][roi][slice]):
-                    if point >= Lower:
-                        axs[count].plot( [slice+1],[point],linestyle="",marker=".",color="blue")
+                for filecount, value in enumerate(DataToPlot[sequence][roi][slice]):
+                    if Normalise:
+                        value /=Base
+                    if value >= Lower:
+                        axs[count].plot( [slice+1],[value],linestyle="",marker=".",color="blue")
                     else:
-                        axs[count].plot( [slice+1],[point],linestyle="",marker=".",color="red")
+                        axs[count].plot( [slice+1],[value],linestyle="",marker=".",color="red")
+                        f.write(FileTracker[filecount]+"     " + str(value) + "     "+str(slice+1)+"     "+ roi+"\n")
                         Failures.append(FileTracker[filecount])
-                #Base=1.0
-                axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
+                
+                if Normalise==False:
+                    axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
                 axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Lower,Lower,Lower],color='red',marker='',linewidth=0.5)
                 #print("Slice: " +str(slice) + "     roi: " + str(roi) + "     sequence: " + sequence + "     Base: " + str(Base) +"     STD " +str(STD) )
 
             axs[count].set_xlabel("Slice Number")
-            axs[count].set_ylabel("SNR")
+            if (Normalise):
+                axs[count].set_ylabel("Realtive SNR")
+            else:
+                axs[count].set_ylabel("SNR")
             axs[count].set_title(roi)
             axs[count].grid()
-
-
+        f.write("\nUnique Fails\n")
+        for fail in set(Failures):
+            f.write(fail + "\n")
+        f.write(str(len(set(Failures)))+"/"+str(len(DataToPlot[sequence][roi][slice]))+"   "+ str(round( (len(set(Failures))/len(DataToPlot[sequence][roi][slice]))*100.0,1)) +"%\n\n")
+        Failures=[]
+        
 
         #Average Per Slice
+        f.write("\n####  Per Slice Failures ####\n")
+        f.write("File     Metric     Slice\n")
         NumberOfSlices = len(DataToPlot[sequence]["M1"])
         xvalues = []
         count+=1
         for slice in range(NumberOfSlices):
             Base,STD = Helper.GetBaselineSlice(type,slice,sequence)
-            Lower = Base - STD*ConfLevel
-
+            Lower = SNRThreshold
+            if Normalise==False:
+                Lower = Base*SNRThreshold
             Average = np.array([0]*len(DataToPlot[sequence]["M1"][0]))
             xvalues.append(slice+1)
             for roi in ROIs:
                 Average = Average+np.array(DataToPlot[sequence][roi][slice])
             Average = Average/len(ROIs)
-
-            for value in Average:
+            
+            for filecount,value in enumerate(Average):
+                if Normalise:
+                    value/=Base
                 if value >=Lower:
                     axs[count].plot( [slice+1],[value],linestyle="",marker=".",color="blue")
                 else:
                     axs[count].plot( [slice+1],[value],linestyle="",marker=".",color="red")
-            axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
+                    f.write(FileTracker[filecount]+"     " + str(value) + "     "+str(slice+1)+"\n")
+                    Failures.append(FileTracker[filecount])
+            if Normalise==False:
+                axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
             axs[count].plot([slice+1-0.1,slice+1,slice+1+0.1],[Lower,Lower,Lower],color='red',marker='',linewidth=0.5)
             
         axs[count].set_xlabel("Slice Number")
-        axs[count].set_ylabel("Average SNR")
+        if (Normalise):
+            axs[count].set_ylabel("Average Realtive SNR")
+        else:
+            axs[count].set_ylabel("Average SNR")
         axs[count].set_title("Average Per Slice")
         axs[count].grid()
         #print( type + " Seq: " + sequence + " False Neg Rate: " + str(round(float(len(set(Failures))/float(len(DataToPlot[sequence][roi][slice]))*100.0),1)) + "%" )
-
+        f.write("\nUnique Fails\n")
+        for fail in set(Failures):
+            f.write(fail + "\n")
+        f.write(str(len(set(Failures)))+"/"+str(len(Average))+"   "+ str(round( (len(set(Failures))/len(Average))*100.0,1)) +"%\n\n")
+        Failures=[]
 
 
         count+=1
         #Average over all slices
+        f.write("\n####  Average over all slices Failures ####\n")
+        f.write("File     Metric     Slice\n")
         Base,STD = Helper.GetBaselineOverall(type,sequence)
-        Lower = Base - STD*ConfLevel
+        Lower = SNRThreshold
+        if Normalise==False:
+            Lower = Base*SNRThreshold
 
         for value in OverallDataToPlot[sequence]:
+                if Normalise:
+                    value/=Base
                 if value >=Lower:
                     axs[count].plot( [0],[value],linestyle="",marker=".",color="blue")
                 else:
-                    axs[count].plot( [slice+1],[value],linestyle="",marker=".",color="red")
-        axs[count].plot([-0.1,0,0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
+                    axs[count].plot( [0],[value],linestyle="",marker=".",color="red")
+                    f.write(FileTracker[filecount]+"     " + str(value) + "     "+str(slice+1)+"\n")
+                    Failures.append(FileTracker[filecount])
+        if Normalise==False:
+            axs[count].plot([-0.1,0,0.1],[Base,Base,Base],color='green',marker='',linewidth=0.5)
         axs[count].plot([-0.1,0,0.1],[Lower,Lower,Lower],color='red',marker='',linewidth=0.5)
         axs[count].set_xlim(-2.5,2.5)
-        axs[count].set_ylabel("Average SNR")
+        if (Normalise):
+            axs[count].set_ylabel("Average Realtive SNR")
+        else:
+            axs[count].set_ylabel("Average SNR")
         axs[count].set_title("Average SNR over all slices")
         axs[count].grid()
         axs[count].set_xticks([])
@@ -134,6 +178,12 @@ def AnalyseData(Data,FileTracker,type):
 
         plt.tight_layout()
         plt.savefig("Testing/SNRStats/"+type + "_"+sequence+"_AnalysisResults.png")
+        f.write("\nUnique Fails\n")
+        for fail in set(Failures):
+            f.write(fail + "\n")
+        f.write(str(len(set(Failures)))+"/"+str(len(OverallDataToPlot[sequence]))+"   "+ str(round( (len(set(Failures))/len(OverallDataToPlot[sequence]))*100.0,1)) +"%")
+        Failures=[]
+    f.close()
 
 HeadSNRFilesSources=[]
 HeadSNRFilesSources = [x[0] for x in os.walk("BaselineData/Head/")][1:]
@@ -147,4 +197,4 @@ for folder in HeadArchives:
 #np.save("Testing/SNRStats/FileTracker.npy", FileTracker)
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/FileTracker.npy",allow_pickle=True)
-AnalyseData(Data,FileTracker,"Head")
+AnalyseData(Data,FileTracker,"Head",Normalise=True)

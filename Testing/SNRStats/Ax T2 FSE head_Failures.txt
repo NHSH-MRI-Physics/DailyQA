@@ -1,0 +1,44 @@
+
+
+
+
+Sequence : Ax T2 FSE head
+####  Per ROI Failures ####
+File     Metric     Slice     ROI
+Archive/DQA_Head_2023-12-01 10-28-18     0.7147520653074253     1     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.7147520653074253     1     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.7380503947171564     1     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.7380503947171564     1     M3
+BaselineData/Head/DQA_Head_12     0.8440617489787331     4     M3
+Archive/DQA_Head_2023-10-27 08-45-00     0.8440617489787331     4     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.7596045279561005     1     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.7596045279561005     1     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.8445279460823741     5     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.7631683585829423     1     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.7631683585829423     1     M5
+
+Unique Fails
+BaselineData/Head/DQA_Head_12
+Archive/DQA_Head_2023-12-01 10-28-18
+Archive/DQA_Head_2023-11-10 08-35-14
+Archive/DQA_Head_2023-12-07 17-32-21
+Archive/DQA_Head_2023-10-27 08-45-00
+5/50   10.0%
+
+
+####  Per Slice Failures ####
+File     Metric     Slice
+Archive/DQA_Head_2023-12-01 10-28-18     0.7828850988963661     1
+Archive/DQA_Head_2023-12-07 17-32-21     0.7828850988963661     1
+
+Unique Fails
+Archive/DQA_Head_2023-12-01 10-28-18
+Archive/DQA_Head_2023-12-07 17-32-21
+2/50   4.0%
+
+
+####  Average over all slices Failures ####
+File     Metric     Slice
+
+Unique Fails
+0/50   0.0%

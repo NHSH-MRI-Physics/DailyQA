@@ -1,0 +1,1107 @@
+
+
+
+
+Sequence : Ax EPI-GRE head
+####  Per ROI Failures ####
+File     Metric     Slice     ROI
+BaselineData/Head/DQA_Head_18     0.8416315454166945     1     M1
+BaselineData/Head/DQA_Head_11     0.8280389861736879     1     M1
+BaselineData/Head/DQA_Head_1     0.8280389861736879     1     M1
+BaselineData/Head/DQA_Head_15     0.7306497681418894     1     M1
+BaselineData/Head/DQA_Head_12     0.840404092804458     1     M1
+BaselineData/Head/DQA_Head_13     0.8280389861736879     1     M1
+Archive/DQA_Head_2023-10-27 08-45-00     0.840404092804458     1     M1
+Archive/DQA_Head_2023-12-01 10-28-18     0.46526572245785375     1     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.7492133555191798     1     M1
+Archive/DQA_Head_2023-12-07 17-32-21     0.46526572245785375     1     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.8352671342653054     1     M1
+Archive/DQA_Head_2023-10-30 09-13-52     0.8280389861736879     1     M1
+Archive/DQA_Head_2023-11-15 09-24-31     0.839487163226006     1     M1
+Archive/DQA_Head_2023-11-08 09-46-19     0.8416315454166945     1     M1
+Archive/DQA_Head_2023-10-26 21-14-54     0.8280389861736879     1     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.7306497681418894     1     M1
+BaselineData/Head/DQA_Head_15     0.7326403404671853     2     M1
+BaselineData/Head/DQA_Head_12     0.7994862706162208     2     M1
+Archive/DQA_Head_2023-10-27 08-45-00     0.7994862706162208     2     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.8428168589161761     2     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.759300585239334     2     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.7326403404671853     2     M1
+BaselineData/Head/DQA_Head_15     0.8125128060725427     3     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.6579986449741474     3     M1
+Archive/DQA_Head_2023-11-20 11-33-55     0.8278856316413314     3     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.795212024412724     3     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.8125128060725427     3     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.8441124298748413     3     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.5496554086843638     4     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7023028331531599     4     M1
+Archive/DQA_Head_2023-11-21 08-28-20     0.8395265973446744     4     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.747427065398165     4     M1
+BaselineData/Head/DQA_Head_15     0.8100262989020853     5     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.7853710375937852     5     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.797199674219014     5     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.519641080269648     5     M1
+Archive/DQA_Head_2023-11-20 11-33-55     0.8108723485768686     5     M1
+Archive/DQA_Head_2023-11-10 08-35-14     0.7587234427131042     5     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.6856023775104896     5     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.8100262989020853     5     M1
+BaselineData/Head/DQA_Head_7     0.8174289549881998     6     M1
+BaselineData/Head/DQA_Head_15     0.7650050835623836     6     M1
+BaselineData/Head/DQA_Head_14     0.8439384126267837     6     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.7693180406956543     6     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.8115346809438959     6     M1
+Archive/DQA_Head_2023-10-30 15-28-39     0.8439384126267837     6     M1
+Archive/DQA_Head_2023-12-12 11-06-59     0.7841857138678089     6     M1
+Archive/DQA_Head_2023-11-21 08-28-20     0.7608471527817201     6     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.7650050835623836     6     M1
+Archive/DQA_Head_2023-12-08 08-22-56     0.7841857138678089     6     M1
+BaselineData/Head/DQA_Head_15     0.6866080656146788     7     M1
+BaselineData/Head/DQA_Head_14     0.8187927266556462     7     M1
+Archive/DQA_Head_2023-10-30 15-28-39     0.8187927266556462     7     M1
+Archive/DQA_Head_2023-12-12 11-06-59     0.7594584287510638     7     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.6866080656146788     7     M1
+Archive/DQA_Head_2023-12-08 08-22-56     0.7594584287510638     7     M1
+BaselineData/Head/DQA_Head_15     0.5802180136652656     8     M1
+BaselineData/Head/DQA_Head_5     0.825943450146932     8     M1
+Archive/DQA_Head_2023-12-01 10-28-18     0.8446663437794194     8     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.7874229499274039     8     M1
+Archive/DQA_Head_2023-11-10 08-35-14     0.7364320687893492     8     M1
+Archive/DQA_Head_2023-12-07 17-32-21     0.8446663437794194     8     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7402096951115595     8     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.5802180136652656     8     M1
+BaselineData/Head/DQA_Head_20     0.6174575387221506     9     M1
+BaselineData/Head/DQA_Head_15     0.5559724818097894     9     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.5137331791201514     9     M1
+Archive/DQA_Head_2023-11-09 11-36-54     0.6174575387221506     9     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.8035243983477577     9     M1
+Archive/DQA_Head_2023-11-10 08-35-14     0.7406396613162305     9     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.8330205458651679     9     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7377817298994581     9     M1
+Archive/DQA_Head_2023-10-30 15-31-17     0.5559724818097894     9     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.5757433172779954     9     M1
+BaselineData/Head/DQA_Head_20     0.8214280048623043     10     M1
+BaselineData/Head/DQA_Head_18     0.4961660521827758     10     M1
+BaselineData/Head/DQA_Head_12     0.8428331778044524     10     M1
+Archive/DQA_Head_2023-10-27 08-45-00     0.8428331778044524     10     M1
+Archive/DQA_Head_2023-12-01 10-28-18     0.6464877525502258     10     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.8327859064148562     10     M1
+Archive/DQA_Head_2023-11-09 11-36-54     0.8214280048623043     10     M1
+Archive/DQA_Head_2023-11-22 14-26-02     0.820457629560592     10     M1
+Archive/DQA_Head_2023-12-07 17-32-21     0.6464877525502258     10     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.6494845376202492     10     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7961135082570054     10     M1
+Archive/DQA_Head_2023-11-08 09-46-19     0.4961660521827758     10     M1
+Archive/DQA_Head_2023-11-15 09-26-16     0.6812339167001547     10     M1
+Archive/DQA_Head_2023-11-21 08-28-20     0.7532774262266331     10     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.8137104349668188     10     M1
+BaselineData/Head/DQA_Head_20     0.845341089970621     11     M1
+BaselineData/Head/DQA_Head_17     0.8124562372344982     11     M1
+Archive/DQA_Head_2023-12-01 10-28-18     0.6372034656256667     11     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.792672151718667     11     M1
+Archive/DQA_Head_2023-11-09 11-36-54     0.845341089970621     11     M1
+Archive/DQA_Head_2023-11-08 09-45-35     0.8124562372344982     11     M1
+Archive/DQA_Head_2023-12-07 17-32-21     0.6372034656256667     11     M1
+Archive/DQA_Head_2023-12-12 11-06-59     0.8337909534061184     11     M1
+Archive/DQA_Head_2023-11-21 08-28-20     0.6629247595201154     11     M1
+Archive/DQA_Head_2023-12-01 08-24-42     0.7554215440013844     11     M1
+Archive/DQA_Head_2023-11-17 08-21-33     0.7048319968058581     11     M1
+Archive/DQA_Head_2023-12-08 08-22-56     0.8337909534061184     11     M1
+BaselineData/Head/DQA_Head_20     0.8432904094846779     12     M1
+BaselineData/Head/DQA_Head_19     0.7901244143718388     12     M1
+BaselineData/Head/DQA_Head_3     0.7901244143718388     12     M1
+Archive/DQA_Head_2023-11-17 08-07-56     0.8348378720439364     12     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.6688813378966358     12     M1
+Archive/DQA_Head_2023-11-09 11-36-54     0.8432904094846779     12     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.7253643084098856     12     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.8385660845777426     12     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7910107827232693     12     M1
+Archive/DQA_Head_2023-11-09 09-53-45     0.7901244143718388     12     M1
+Archive/DQA_Head_2023-12-12 11-06-59     0.7818844669342879     12     M1
+Archive/DQA_Head_2023-11-17 08-21-33     0.7853343928320766     12     M1
+Archive/DQA_Head_2023-12-08 08-22-56     0.7818844669342879     12     M1
+BaselineData/Head/DQA_Head_20     0.7324663904512606     13     M1
+BaselineData/Head/DQA_Head_18     0.6624453389267967     13     M1
+BaselineData/Head/DQA_Head_17     0.7914230205431165     13     M1
+BaselineData/Head/DQA_Head_6     0.724854583180686     13     M1
+BaselineData/Head/DQA_Head_12     0.6559753178379384     13     M1
+BaselineData/Head/DQA_Head_14     0.7216738506504008     13     M1
+Archive/DQA_Head_2023-10-27 08-45-00     0.6559753178379384     13     M1
+Archive/DQA_Head_2023-11-17 08-07-56     0.7490457045752251     13     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.6518584999508886     13     M1
+Archive/DQA_Head_2023-11-09 11-36-54     0.7324663904512606     13     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.6600499930167658     13     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.6509313080782811     13     M1
+Archive/DQA_Head_2023-11-08 09-45-35     0.7914230205431165     13     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.5275781226545097     13     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.7372971588097548     13     M1
+Archive/DQA_Head_2023-10-30 15-28-39     0.7216738506504008     13     M1
+Archive/DQA_Head_2023-11-08 09-46-19     0.6624453389267967     13     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.6855854101168479     13     M1
+BaselineData/Head/DQA_Head_18     0.3741861758904804     14     M1
+BaselineData/Head/DQA_Head_16     0.7585030385817424     14     M1
+BaselineData/Head/DQA_Head_6     0.8417234606569122     14     M1
+BaselineData/Head/DQA_Head_12     0.8345667688297533     14     M1
+BaselineData/Head/DQA_Head_14     0.8133276587621343     14     M1
+Archive/DQA_Head_2023-10-27 08-45-00     0.8345667688297533     14     M1
+Archive/DQA_Head_2023-11-17 08-07-56     0.45568527908273004     14     M1
+Archive/DQA_Head_2023-11-13 08-26-24     0.5397879780152613     14     M1
+Archive/DQA_Head_2023-11-21 08-24-42     0.42090358130876326     14     M1
+Archive/DQA_Head_2023-11-23 17-20-48     0.40567611728469566     14     M1
+Archive/DQA_Head_2023-11-10 08-35-14     0.5191658568087772     14     M1
+Archive/DQA_Head_2023-11-20 11-35-34     0.4906350306872863     14     M1
+Archive/DQA_Head_2023-12-08 08-20-18     0.6870943741663297     14     M1
+Archive/DQA_Head_2023-10-30 15-28-39     0.8133276587621343     14     M1
+Archive/DQA_Head_2023-11-15 09-24-31     0.72004288327987     14     M1
+Archive/DQA_Head_2023-11-08 09-46-19     0.3741861758904804     14     M1
+Archive/DQA_Head_2023-11-24 09-10-56     0.414398585251808     14     M1
+Archive/DQA_Head_2023-11-03 08-31-08     0.7585030385817424     14     M1
+BaselineData/Head/DQA_Head_18     0.7570107292263974     1     M2
+BaselineData/Head/DQA_Head_11     0.7121560732025193     1     M2
+BaselineData/Head/DQA_Head_16     0.812589306125373     1     M2
+BaselineData/Head/DQA_Head_17     0.8338209544127853     1     M2
+BaselineData/Head/DQA_Head_1     0.7121560732025193     1     M2
+BaselineData/Head/DQA_Head_13     0.7121560732025193     1     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.8338209544127853     1     M2
+Archive/DQA_Head_2023-12-08 08-20-18     0.8296450624904775     1     M2
+Archive/DQA_Head_2023-10-30 09-13-52     0.7121560732025193     1     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.7902426483416847     1     M2
+Archive/DQA_Head_2023-11-08 09-46-19     0.7570107292263974     1     M2
+Archive/DQA_Head_2023-10-26 21-14-54     0.7121560732025193     1     M2
+Archive/DQA_Head_2023-11-21 08-28-20     0.8157134254069646     1     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.7902426483416847     1     M2
+Archive/DQA_Head_2023-11-03 08-31-08     0.812589306125373     1     M2
+BaselineData/Head/DQA_Head_11     0.6650324015936636     2     M2
+BaselineData/Head/DQA_Head_17     0.7031522446700832     2     M2
+BaselineData/Head/DQA_Head_1     0.6650324015936636     2     M2
+BaselineData/Head/DQA_Head_13     0.6650324015936636     2     M2
+BaselineData/Head/DQA_Head_2     0.8175090846728006     2     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.4784647865090508     2     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.7031522446700832     2     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.4784647865090508     2     M2
+Archive/DQA_Head_2023-10-30 09-13-52     0.6650324015936636     2     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.7374669126990623     2     M2
+Archive/DQA_Head_2023-10-26 21-14-54     0.6650324015936636     2     M2
+Archive/DQA_Head_2023-11-21 08-28-20     0.7182734639986501     2     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.7374669126990623     2     M2
+Archive/DQA_Head_2023-10-12 23-10-25     0.8175090846728006     2     M2
+BaselineData/Head/DQA_Head_20     0.8394211030776082     3     M2
+BaselineData/Head/DQA_Head_11     0.7018423841526612     3     M2
+BaselineData/Head/DQA_Head_16     0.7338891242279256     3     M2
+BaselineData/Head/DQA_Head_17     0.7436560502366473     3     M2
+BaselineData/Head/DQA_Head_1     0.7018423841526612     3     M2
+BaselineData/Head/DQA_Head_13     0.7018423841526612     3     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.47638072127745007     3     M2
+Archive/DQA_Head_2023-11-09 11-36-54     0.8394211030776082     3     M2
+Archive/DQA_Head_2023-11-23 17-20-48     0.8404575803202754     3     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.7436560502366473     3     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.47638072127745007     3     M2
+Archive/DQA_Head_2023-10-30 09-13-52     0.7018423841526612     3     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.7946343780158088     3     M2
+Archive/DQA_Head_2023-10-26 21-14-54     0.7018423841526612     3     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.7946343780158088     3     M2
+Archive/DQA_Head_2023-11-03 08-31-08     0.7338891242279256     3     M2
+BaselineData/Head/DQA_Head_20     0.7835913041608864     4     M2
+BaselineData/Head/DQA_Head_11     0.777492039717914     4     M2
+BaselineData/Head/DQA_Head_1     0.777492039717914     4     M2
+BaselineData/Head/DQA_Head_15     0.7777921939504047     4     M2
+BaselineData/Head/DQA_Head_13     0.777492039717914     4     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.469968255204031     4     M2
+Archive/DQA_Head_2023-11-13 08-26-24     0.7213816011791665     4     M2
+Archive/DQA_Head_2023-11-09 11-36-54     0.7835913041608864     4     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.469968255204031     4     M2
+Archive/DQA_Head_2023-10-30 09-13-52     0.777492039717914     4     M2
+Archive/DQA_Head_2023-10-26 21-14-54     0.777492039717914     4     M2
+Archive/DQA_Head_2023-10-30 15-31-17     0.7777921939504047     4     M2
+BaselineData/Head/DQA_Head_20     0.6193876471324319     5     M2
+BaselineData/Head/DQA_Head_18     0.7787757200672385     5     M2
+BaselineData/Head/DQA_Head_16     0.5866544166026579     5     M2
+BaselineData/Head/DQA_Head_9     0.7249479975341927     5     M2
+BaselineData/Head/DQA_Head_7     0.7917139608973706     5     M2
+BaselineData/Head/DQA_Head_5     0.676160842328268     5     M2
+BaselineData/Head/DQA_Head_4     0.747500423526921     5     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.667468225208545     5     M2
+Archive/DQA_Head_2023-11-17 08-07-56     0.795357428698892     5     M2
+Archive/DQA_Head_2023-11-09 11-36-54     0.6193876471324319     5     M2
+Archive/DQA_Head_2023-11-23 17-20-48     0.7065398652870332     5     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.667468225208545     5     M2
+Archive/DQA_Head_2023-12-08 08-20-18     0.7687188006832074     5     M2
+Archive/DQA_Head_2023-11-15 09-24-31     0.8405634779590758     5     M2
+Archive/DQA_Head_2023-11-08 09-46-19     0.7787757200672385     5     M2
+Archive/DQA_Head_2023-11-15 09-26-16     0.7546138826822919     5     M2
+Archive/DQA_Head_2023-11-24 09-10-56     0.7226993776005077     5     M2
+Archive/DQA_Head_2023-11-03 08-31-08     0.5866544166026579     5     M2
+BaselineData/Head/DQA_Head_17     0.8255645568386469     6     M2
+BaselineData/Head/DQA_Head_14     0.7674528247682169     6     M2
+BaselineData/Head/DQA_Head_2     0.8045986247871567     6     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.8255645568386469     6     M2
+Archive/DQA_Head_2023-10-30 15-28-39     0.7674528247682169     6     M2
+Archive/DQA_Head_2023-10-12 23-10-25     0.8045986247871567     6     M2
+BaselineData/Head/DQA_Head_14     0.8319456551190886     7     M2
+BaselineData/Head/DQA_Head_4     0.8132849608398945     7     M2
+Archive/DQA_Head_2023-12-01 10-28-18     0.566146752846896     7     M2
+Archive/DQA_Head_2023-12-07 17-32-21     0.566146752846896     7     M2
+Archive/DQA_Head_2023-10-30 15-28-39     0.8319456551190886     7     M2
+BaselineData/Head/DQA_Head_7     0.8249045297395268     8     M2
+BaselineData/Head/DQA_Head_5     0.8262365430835691     8     M2
+BaselineData/Head/DQA_Head_4     0.7270727628412316     8     M2
+BaselineData/Head/DQA_Head_10     0.773509062561387     9     M2
+BaselineData/Head/DQA_Head_6     0.768289403012132     9     M2
+BaselineData/Head/DQA_Head_9     0.7654191952996329     9     M2
+BaselineData/Head/DQA_Head_7     0.6813038095712227     9     M2
+BaselineData/Head/DQA_Head_14     0.7209825261538824     9     M2
+BaselineData/Head/DQA_Head_5     0.6447458388523551     9     M2
+BaselineData/Head/DQA_Head_4     0.6644564565690146     9     M2
+Archive/DQA_Head_2023-11-13 08-26-24     0.7441179349973677     9     M2
+Archive/DQA_Head_2023-11-10 08-35-14     0.6213169767793844     9     M2
+Archive/DQA_Head_2023-10-30 15-28-39     0.7209825261538824     9     M2
+Archive/DQA_Head_2023-11-24 09-10-56     0.841396980115368     9     M2
+BaselineData/Head/DQA_Head_20     0.8235225796985189     10     M2
+BaselineData/Head/DQA_Head_18     0.8134478063201667     10     M2
+BaselineData/Head/DQA_Head_17     0.8007681046421438     10     M2
+BaselineData/Head/DQA_Head_10     0.8356946883911874     10     M2
+BaselineData/Head/DQA_Head_9     0.8401192352755024     10     M2
+BaselineData/Head/DQA_Head_14     0.7610798301784191     10     M2
+Archive/DQA_Head_2023-11-09 11-36-54     0.8235225796985189     10     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.8007681046421438     10     M2
+Archive/DQA_Head_2023-11-22 14-26-02     0.8125509726613902     10     M2
+Archive/DQA_Head_2023-11-20 11-35-34     0.8013633555487685     10     M2
+Archive/DQA_Head_2023-12-08 08-20-18     0.8282843643884887     10     M2
+Archive/DQA_Head_2023-10-30 15-28-39     0.7610798301784191     10     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.7126877179362522     10     M2
+Archive/DQA_Head_2023-11-08 09-46-19     0.8134478063201667     10     M2
+Archive/DQA_Head_2023-11-15 09-26-16     0.6974414429026593     10     M2
+Archive/DQA_Head_2023-11-21 08-28-20     0.7680201870946145     10     M2
+Archive/DQA_Head_2023-11-17 08-21-33     0.6822523286908496     10     M2
+Archive/DQA_Head_2023-11-24 09-10-56     0.7321792438816853     10     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.7126877179362522     10     M2
+BaselineData/Head/DQA_Head_10     0.5994863158589333     11     M2
+BaselineData/Head/DQA_Head_19     0.7737172631853836     11     M2
+BaselineData/Head/DQA_Head_6     0.6185417944944819     11     M2
+BaselineData/Head/DQA_Head_9     0.6039918571473752     11     M2
+BaselineData/Head/DQA_Head_7     0.8048403031552245     11     M2
+BaselineData/Head/DQA_Head_3     0.7737172631853836     11     M2
+Archive/DQA_Head_2023-11-13 08-26-24     0.6586229634757295     11     M2
+Archive/DQA_Head_2023-11-10 08-35-14     0.6556882268518432     11     M2
+Archive/DQA_Head_2023-11-09 09-53-45     0.7737172631853836     11     M2
+Archive/DQA_Head_2023-11-15 09-24-31     0.8254269138991817     11     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.839679223850123     11     M2
+Archive/DQA_Head_2023-11-15 09-26-16     0.8003984754224287     11     M2
+Archive/DQA_Head_2023-11-17 08-21-33     0.7694494410712714     11     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.839679223850123     11     M2
+BaselineData/Head/DQA_Head_10     0.5847893271490647     12     M2
+BaselineData/Head/DQA_Head_19     0.7865429125095672     12     M2
+BaselineData/Head/DQA_Head_6     0.698154312895874     12     M2
+BaselineData/Head/DQA_Head_9     0.6095519927774293     12     M2
+BaselineData/Head/DQA_Head_7     0.6470326354063953     12     M2
+BaselineData/Head/DQA_Head_5     0.6161576415915633     12     M2
+BaselineData/Head/DQA_Head_3     0.7865429125095672     12     M2
+Archive/DQA_Head_2023-11-13 08-26-24     0.7135790193191189     12     M2
+Archive/DQA_Head_2023-11-10 08-35-14     0.7077664339240137     12     M2
+Archive/DQA_Head_2023-11-09 09-53-45     0.7865429125095672     12     M2
+BaselineData/Head/DQA_Head_16     0.8062070033095798     13     M2
+BaselineData/Head/DQA_Head_17     0.7860271040318949     13     M2
+BaselineData/Head/DQA_Head_10     0.5493400736329888     13     M2
+BaselineData/Head/DQA_Head_6     0.5868448534013979     13     M2
+BaselineData/Head/DQA_Head_8     0.7442629856616083     13     M2
+BaselineData/Head/DQA_Head_9     0.5671247211140128     13     M2
+BaselineData/Head/DQA_Head_7     0.6198578256048295     13     M2
+BaselineData/Head/DQA_Head_15     0.4911102088033518     13     M2
+BaselineData/Head/DQA_Head_12     0.721761593213173     13     M2
+BaselineData/Head/DQA_Head_2     0.8489254862903869     13     M2
+BaselineData/Head/DQA_Head_5     0.42176316687975435     13     M2
+BaselineData/Head/DQA_Head_4     0.6242579970429145     13     M2
+Archive/DQA_Head_2023-10-27 08-45-00     0.721761593213173     13     M2
+Archive/DQA_Head_2023-11-13 08-26-24     0.7939864236787373     13     M2
+Archive/DQA_Head_2023-11-20 11-33-55     0.8098633483632217     13     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.7860271040318949     13     M2
+Archive/DQA_Head_2023-11-10 08-35-14     0.5821942156982753     13     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.7260568648801872     13     M2
+Archive/DQA_Head_2023-11-15 09-26-16     0.7558149666498745     13     M2
+Archive/DQA_Head_2023-11-21 08-28-20     0.7034753923607409     13     M2
+Archive/DQA_Head_2023-10-30 15-31-17     0.4911102088033518     13     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.7260568648801872     13     M2
+Archive/DQA_Head_2023-10-12 23-10-25     0.8489254862903869     13     M2
+Archive/DQA_Head_2023-11-03 08-31-08     0.8062070033095798     13     M2
+BaselineData/Head/DQA_Head_16     0.7365674644267746     14     M2
+BaselineData/Head/DQA_Head_17     0.7957149025271711     14     M2
+BaselineData/Head/DQA_Head_10     0.6983482955619315     14     M2
+BaselineData/Head/DQA_Head_6     0.6769863657227956     14     M2
+BaselineData/Head/DQA_Head_8     0.8493836750450829     14     M2
+BaselineData/Head/DQA_Head_9     0.7015230720646184     14     M2
+BaselineData/Head/DQA_Head_7     0.6644213729947678     14     M2
+BaselineData/Head/DQA_Head_15     0.6282124653868328     14     M2
+BaselineData/Head/DQA_Head_12     0.7147444772381897     14     M2
+BaselineData/Head/DQA_Head_14     0.8385783092078413     14     M2
+BaselineData/Head/DQA_Head_4     0.6732197349528012     14     M2
+Archive/DQA_Head_2023-10-27 08-45-00     0.7147444772381897     14     M2
+Archive/DQA_Head_2023-11-20 11-33-55     0.7837242379600349     14     M2
+Archive/DQA_Head_2023-11-08 09-45-35     0.7957149025271711     14     M2
+Archive/DQA_Head_2023-11-22 14-26-02     0.7016153468040791     14     M2
+Archive/DQA_Head_2023-10-30 15-28-39     0.8385783092078413     14     M2
+Archive/DQA_Head_2023-12-12 11-06-59     0.8158195484964201     14     M2
+Archive/DQA_Head_2023-11-15 09-26-16     0.8057282131235581     14     M2
+Archive/DQA_Head_2023-11-21 08-28-20     0.8049296722762211     14     M2
+Archive/DQA_Head_2023-10-30 15-31-17     0.6282124653868328     14     M2
+Archive/DQA_Head_2023-11-17 08-21-33     0.8031256072909986     14     M2
+Archive/DQA_Head_2023-12-08 08-22-56     0.8158195484964201     14     M2
+Archive/DQA_Head_2023-11-03 08-31-08     0.7365674644267746     14     M2
+BaselineData/Head/DQA_Head_2     0.8319188757702151     1     M3
+BaselineData/Head/DQA_Head_5     0.8317952619331106     1     M3
+Archive/DQA_Head_2023-10-12 23-10-25     0.8319188757702151     1     M3
+BaselineData/Head/DQA_Head_11     0.6324870376233882     2     M3
+BaselineData/Head/DQA_Head_17     0.7153979815977649     2     M3
+BaselineData/Head/DQA_Head_1     0.6324870376233882     2     M3
+BaselineData/Head/DQA_Head_13     0.6324870376233882     2     M3
+BaselineData/Head/DQA_Head_2     0.7258890697550945     2     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.6555815671608408     2     M3
+Archive/DQA_Head_2023-11-08 09-45-35     0.7153979815977649     2     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.6555815671608408     2     M3
+Archive/DQA_Head_2023-10-30 09-13-52     0.6324870376233882     2     M3
+Archive/DQA_Head_2023-11-15 09-24-31     0.8164633031464844     2     M3
+Archive/DQA_Head_2023-12-12 11-06-59     0.8259953960679904     2     M3
+Archive/DQA_Head_2023-10-26 21-14-54     0.6324870376233882     2     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.8344436494762268     2     M3
+Archive/DQA_Head_2023-11-17 08-21-33     0.7302128770459722     2     M3
+Archive/DQA_Head_2023-12-08 08-22-56     0.8259953960679904     2     M3
+Archive/DQA_Head_2023-10-12 23-10-25     0.7258890697550945     2     M3
+BaselineData/Head/DQA_Head_11     0.7269262933375745     3     M3
+BaselineData/Head/DQA_Head_19     0.8293708794875668     3     M3
+BaselineData/Head/DQA_Head_1     0.7269262933375745     3     M3
+BaselineData/Head/DQA_Head_13     0.7269262933375745     3     M3
+BaselineData/Head/DQA_Head_14     0.7682707172745032     3     M3
+BaselineData/Head/DQA_Head_3     0.8293708794875668     3     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.5718700157925214     3     M3
+Archive/DQA_Head_2023-11-23 17-20-48     0.7245197084204773     3     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.5718700157925214     3     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.7682707172745032     3     M3
+Archive/DQA_Head_2023-10-30 09-13-52     0.7269262933375745     3     M3
+Archive/DQA_Head_2023-11-09 09-53-45     0.8293708794875668     3     M3
+Archive/DQA_Head_2023-12-12 11-06-59     0.844937369883918     3     M3
+Archive/DQA_Head_2023-10-26 21-14-54     0.7269262933375745     3     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.7716462964014786     3     M3
+Archive/DQA_Head_2023-11-17 08-21-33     0.7873047697445219     3     M3
+Archive/DQA_Head_2023-12-08 08-22-56     0.844937369883918     3     M3
+BaselineData/Head/DQA_Head_11     0.7762723090687712     4     M3
+BaselineData/Head/DQA_Head_19     0.7946910953774152     4     M3
+BaselineData/Head/DQA_Head_1     0.7762723090687712     4     M3
+BaselineData/Head/DQA_Head_13     0.7762723090687712     4     M3
+BaselineData/Head/DQA_Head_14     0.8480125685911158     4     M3
+BaselineData/Head/DQA_Head_3     0.7946910953774152     4     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.43913061787160385     4     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.7773291387836654     4     M3
+Archive/DQA_Head_2023-11-23 17-20-48     0.8324600930477786     4     M3
+Archive/DQA_Head_2023-11-22 14-26-02     0.844080057121922     4     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.43913061787160385     4     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.8480125685911158     4     M3
+Archive/DQA_Head_2023-10-30 09-13-52     0.7762723090687712     4     M3
+Archive/DQA_Head_2023-11-09 09-53-45     0.7946910953774152     4     M3
+Archive/DQA_Head_2023-10-26 21-14-54     0.7762723090687712     4     M3
+BaselineData/Head/DQA_Head_20     0.8032397435925364     5     M3
+BaselineData/Head/DQA_Head_7     0.8000598771722516     5     M3
+BaselineData/Head/DQA_Head_5     0.828366295945003     5     M3
+BaselineData/Head/DQA_Head_4     0.8360193131048015     5     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.41464858396471177     5     M3
+Archive/DQA_Head_2023-11-09 11-36-54     0.8032397435925364     5     M3
+Archive/DQA_Head_2023-11-20 11-33-55     0.7300896380438584     5     M3
+Archive/DQA_Head_2023-11-22 14-26-02     0.7514547207677191     5     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.41464858396471177     5     M3
+Archive/DQA_Head_2023-11-15 09-26-16     0.6743432941281579     5     M3
+Archive/DQA_Head_2023-11-24 09-10-56     0.833607794107267     5     M3
+BaselineData/Head/DQA_Head_11     0.7808466446726334     6     M3
+BaselineData/Head/DQA_Head_17     0.8460656107647272     6     M3
+BaselineData/Head/DQA_Head_1     0.7808466446726334     6     M3
+BaselineData/Head/DQA_Head_13     0.7808466446726334     6     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.6656909213765868     6     M3
+Archive/DQA_Head_2023-11-20 11-33-55     0.6293207732362461     6     M3
+Archive/DQA_Head_2023-11-08 09-45-35     0.8460656107647272     6     M3
+Archive/DQA_Head_2023-11-22 14-26-02     0.7800185062060705     6     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.6656909213765868     6     M3
+Archive/DQA_Head_2023-10-30 09-13-52     0.7808466446726334     6     M3
+Archive/DQA_Head_2023-11-15 09-26-16     0.8439748769035236     6     M3
+Archive/DQA_Head_2023-10-26 21-14-54     0.7808466446726334     6     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.7712434060253385     6     M3
+Archive/DQA_Head_2023-11-17 08-21-33     0.8231203668120218     6     M3
+Archive/DQA_Head_2023-12-01 10-28-18     0.6575817072439034     7     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.7192733088334536     7     M3
+Archive/DQA_Head_2023-12-07 17-32-21     0.6575817072439034     7     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.8348722844686578     7     M3
+Archive/DQA_Head_2023-11-24 09-10-56     0.8264378250695007     7     M3
+BaselineData/Head/DQA_Head_18     0.6510415547090184     8     M3
+BaselineData/Head/DQA_Head_10     0.8187192360934448     8     M3
+BaselineData/Head/DQA_Head_19     0.8419124736483553     8     M3
+BaselineData/Head/DQA_Head_9     0.8189918676922507     8     M3
+BaselineData/Head/DQA_Head_15     0.6506510140080336     8     M3
+BaselineData/Head/DQA_Head_14     0.8482761221560182     8     M3
+BaselineData/Head/DQA_Head_3     0.8419124736483553     8     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.8404116794943698     8     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.4386191079015968     8     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.8482761221560182     8     M3
+Archive/DQA_Head_2023-11-09 09-53-45     0.8419124736483553     8     M3
+Archive/DQA_Head_2023-11-08 09-46-19     0.6510415547090184     8     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.6506510140080336     8     M3
+BaselineData/Head/DQA_Head_18     0.8277346946858228     9     M3
+BaselineData/Head/DQA_Head_10     0.8094338515870442     9     M3
+BaselineData/Head/DQA_Head_19     0.8041898914324636     9     M3
+BaselineData/Head/DQA_Head_6     0.8311560128799308     9     M3
+BaselineData/Head/DQA_Head_9     0.8012537608401916     9     M3
+BaselineData/Head/DQA_Head_7     0.832669704984246     9     M3
+BaselineData/Head/DQA_Head_15     0.6691217039882454     9     M3
+BaselineData/Head/DQA_Head_14     0.7254763142731275     9     M3
+BaselineData/Head/DQA_Head_3     0.8041898914324636     9     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.7140323197253131     9     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.4717026231457695     9     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.7254763142731275     9     M3
+Archive/DQA_Head_2023-11-09 09-53-45     0.8041898914324636     9     M3
+Archive/DQA_Head_2023-11-08 09-46-19     0.8277346946858228     9     M3
+Archive/DQA_Head_2023-11-15 09-26-16     0.8450498917271463     9     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.6691217039882454     9     M3
+BaselineData/Head/DQA_Head_16     0.458837065548244     10     M3
+BaselineData/Head/DQA_Head_7     0.816437735900846     10     M3
+BaselineData/Head/DQA_Head_15     0.7099727725922762     10     M3
+BaselineData/Head/DQA_Head_14     0.7055202348249369     10     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.5529477830643353     10     M3
+Archive/DQA_Head_2023-11-22 14-26-02     0.7445411885650041     10     M3
+Archive/DQA_Head_2023-11-20 11-35-34     0.7614478310785571     10     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.7055202348249369     10     M3
+Archive/DQA_Head_2023-12-12 11-06-59     0.6016022207975826     10     M3
+Archive/DQA_Head_2023-11-15 09-26-16     0.5918260337998338     10     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.7356198640405489     10     M3
+Archive/DQA_Head_2023-12-01 08-24-42     0.8391647527593054     10     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.7099727725922762     10     M3
+Archive/DQA_Head_2023-11-17 08-21-33     0.6069743216930502     10     M3
+Archive/DQA_Head_2023-12-08 08-22-56     0.6016022207975826     10     M3
+Archive/DQA_Head_2023-11-03 08-31-08     0.458837065548244     10     M3
+BaselineData/Head/DQA_Head_6     0.7918930684119689     11     M3
+BaselineData/Head/DQA_Head_7     0.66315146584231     11     M3
+BaselineData/Head/DQA_Head_15     0.8054572376949004     11     M3
+Archive/DQA_Head_2023-11-17 08-07-56     0.4342417682945398     11     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.47659626931534255     11     M3
+Archive/DQA_Head_2023-11-21 08-24-42     0.423410481670548     11     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.7747900093060641     11     M3
+Archive/DQA_Head_2023-11-15 09-26-16     0.648144973328312     11     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.7701975641624308     11     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.8054572376949004     11     M3
+BaselineData/Head/DQA_Head_10     0.7997216582551837     12     M3
+BaselineData/Head/DQA_Head_19     0.8427002841510066     12     M3
+BaselineData/Head/DQA_Head_6     0.8009013496596115     12     M3
+BaselineData/Head/DQA_Head_9     0.8136799317909704     12     M3
+BaselineData/Head/DQA_Head_7     0.7992690121071009     12     M3
+BaselineData/Head/DQA_Head_15     0.8088088085555424     12     M3
+BaselineData/Head/DQA_Head_4     0.8119611621057569     12     M3
+BaselineData/Head/DQA_Head_3     0.8427002841510066     12     M3
+Archive/DQA_Head_2023-11-17 08-07-56     0.8400476341083943     12     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.7437665710351304     12     M3
+Archive/DQA_Head_2023-11-21 08-24-42     0.6519609428587431     12     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.702886015815171     12     M3
+Archive/DQA_Head_2023-11-09 09-53-45     0.8427002841510066     12     M3
+Archive/DQA_Head_2023-11-21 08-28-20     0.8434004962585067     12     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.8088088085555424     12     M3
+BaselineData/Head/DQA_Head_16     0.8378456997911684     13     M3
+BaselineData/Head/DQA_Head_17     0.6907763653051447     13     M3
+BaselineData/Head/DQA_Head_6     0.6556651549010373     13     M3
+BaselineData/Head/DQA_Head_8     0.7784300865383913     13     M3
+BaselineData/Head/DQA_Head_9     0.8468215373651042     13     M3
+BaselineData/Head/DQA_Head_7     0.8035696529795141     13     M3
+BaselineData/Head/DQA_Head_15     0.7645625112159091     13     M3
+BaselineData/Head/DQA_Head_2     0.8238320846489744     13     M3
+BaselineData/Head/DQA_Head_4     0.7487841733347569     13     M3
+Archive/DQA_Head_2023-11-17 08-07-56     0.7334316083208087     13     M3
+Archive/DQA_Head_2023-11-13 08-26-24     0.6210224989627248     13     M3
+Archive/DQA_Head_2023-11-21 08-24-42     0.7967651293514043     13     M3
+Archive/DQA_Head_2023-11-08 09-45-35     0.6907763653051447     13     M3
+Archive/DQA_Head_2023-11-10 08-35-14     0.6566175771046526     13     M3
+Archive/DQA_Head_2023-10-30 15-31-17     0.7645625112159091     13     M3
+Archive/DQA_Head_2023-10-12 23-10-25     0.8238320846489744     13     M3
+Archive/DQA_Head_2023-11-03 08-31-08     0.8378456997911684     13     M3
+BaselineData/Head/DQA_Head_16     0.8466591097454346     14     M3
+BaselineData/Head/DQA_Head_14     0.8344687902389134     14     M3
+BaselineData/Head/DQA_Head_4     0.8495392671298305     14     M3
+Archive/DQA_Head_2023-11-22 14-26-02     0.8020864271513588     14     M3
+Archive/DQA_Head_2023-10-30 15-28-39     0.8344687902389134     14     M3
+Archive/DQA_Head_2023-11-17 08-21-33     0.8193029900145182     14     M3
+Archive/DQA_Head_2023-11-03 08-31-08     0.8466591097454346     14     M3
+BaselineData/Head/DQA_Head_18     0.8491390751901571     1     M4
+BaselineData/Head/DQA_Head_11     0.8253965498981831     1     M4
+BaselineData/Head/DQA_Head_17     0.8269137862143635     1     M4
+BaselineData/Head/DQA_Head_1     0.8253965498981831     1     M4
+BaselineData/Head/DQA_Head_13     0.8253965498981831     1     M4
+BaselineData/Head/DQA_Head_2     0.8472888545228691     1     M4
+BaselineData/Head/DQA_Head_5     0.8463203321989369     1     M4
+Archive/DQA_Head_2023-11-08 09-45-35     0.8269137862143635     1     M4
+Archive/DQA_Head_2023-10-30 09-13-52     0.8253965498981831     1     M4
+Archive/DQA_Head_2023-12-12 11-06-59     0.8388125523041376     1     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.8491390751901571     1     M4
+Archive/DQA_Head_2023-10-26 21-14-54     0.8253965498981831     1     M4
+Archive/DQA_Head_2023-12-08 08-22-56     0.8388125523041376     1     M4
+Archive/DQA_Head_2023-10-12 23-10-25     0.8472888545228691     1     M4
+BaselineData/Head/DQA_Head_11     0.5884574782296139     2     M4
+BaselineData/Head/DQA_Head_17     0.6606163918363969     2     M4
+BaselineData/Head/DQA_Head_1     0.5884574782296139     2     M4
+BaselineData/Head/DQA_Head_13     0.5884574782296139     2     M4
+BaselineData/Head/DQA_Head_2     0.7650980290438629     2     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.5218121664220586     2     M4
+Archive/DQA_Head_2023-11-21 08-24-42     0.8363119665854191     2     M4
+Archive/DQA_Head_2023-11-08 09-45-35     0.6606163918363969     2     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.5218121664220586     2     M4
+Archive/DQA_Head_2023-10-30 09-13-52     0.5884574782296139     2     M4
+Archive/DQA_Head_2023-11-15 09-24-31     0.7781004008327432     2     M4
+Archive/DQA_Head_2023-12-12 11-06-59     0.7376384125681259     2     M4
+Archive/DQA_Head_2023-10-26 21-14-54     0.5884574782296139     2     M4
+Archive/DQA_Head_2023-11-21 08-28-20     0.7558101198994128     2     M4
+Archive/DQA_Head_2023-11-17 08-21-33     0.8056365604069048     2     M4
+Archive/DQA_Head_2023-12-08 08-22-56     0.7376384125681259     2     M4
+Archive/DQA_Head_2023-10-12 23-10-25     0.7650980290438629     2     M4
+BaselineData/Head/DQA_Head_20     0.8316405497313045     3     M4
+BaselineData/Head/DQA_Head_11     0.7055083388953716     3     M4
+BaselineData/Head/DQA_Head_19     0.7670257135725306     3     M4
+BaselineData/Head/DQA_Head_1     0.7055083388953716     3     M4
+BaselineData/Head/DQA_Head_13     0.7055083388953716     3     M4
+BaselineData/Head/DQA_Head_14     0.8403598194752694     3     M4
+BaselineData/Head/DQA_Head_3     0.7670257135725306     3     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.4900361669423282     3     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.8316405497313045     3     M4
+Archive/DQA_Head_2023-11-23 17-20-48     0.7695804566880529     3     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.4900361669423282     3     M4
+Archive/DQA_Head_2023-10-30 15-28-39     0.8403598194752694     3     M4
+Archive/DQA_Head_2023-10-30 09-13-52     0.7055083388953716     3     M4
+Archive/DQA_Head_2023-11-09 09-53-45     0.7670257135725306     3     M4
+Archive/DQA_Head_2023-12-12 11-06-59     0.7086751835814863     3     M4
+Archive/DQA_Head_2023-10-26 21-14-54     0.7055083388953716     3     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.7709646996919515     3     M4
+Archive/DQA_Head_2023-12-08 08-22-56     0.7086751835814863     3     M4
+BaselineData/Head/DQA_Head_20     0.7693651974284782     4     M4
+BaselineData/Head/DQA_Head_11     0.7668971787864561     4     M4
+BaselineData/Head/DQA_Head_19     0.8292752264134317     4     M4
+BaselineData/Head/DQA_Head_1     0.7668971787864561     4     M4
+BaselineData/Head/DQA_Head_13     0.7668971787864561     4     M4
+BaselineData/Head/DQA_Head_3     0.8292752264134317     4     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.508443199272352     4     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.7821866055366763     4     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.7693651974284782     4     M4
+Archive/DQA_Head_2023-11-23 17-20-48     0.49765322658393046     4     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.508443199272352     4     M4
+Archive/DQA_Head_2023-10-30 09-13-52     0.7668971787864561     4     M4
+Archive/DQA_Head_2023-11-09 09-53-45     0.8292752264134317     4     M4
+Archive/DQA_Head_2023-10-26 21-14-54     0.7668971787864561     4     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.839205025953776     4     M4
+BaselineData/Head/DQA_Head_20     0.6149046146571832     5     M4
+BaselineData/Head/DQA_Head_18     0.7648593351839106     5     M4
+BaselineData/Head/DQA_Head_16     0.8297621736858484     5     M4
+BaselineData/Head/DQA_Head_8     0.7346149688904745     5     M4
+BaselineData/Head/DQA_Head_5     0.787523039907368     5     M4
+BaselineData/Head/DQA_Head_4     0.7257076137787951     5     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.6677676835017803     5     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.6149046146571832     5     M4
+Archive/DQA_Head_2023-11-23 17-20-48     0.6798043181688312     5     M4
+Archive/DQA_Head_2023-11-20 11-33-55     0.8106250505048345     5     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.6677676835017803     5     M4
+Archive/DQA_Head_2023-12-08 08-20-18     0.7193083408378103     5     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.7648593351839106     5     M4
+Archive/DQA_Head_2023-11-15 09-26-16     0.8268763686313523     5     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.6664783732398792     5     M4
+Archive/DQA_Head_2023-11-03 08-31-08     0.8297621736858484     5     M4
+BaselineData/Head/DQA_Head_20     0.7796903406057919     6     M4
+BaselineData/Head/DQA_Head_11     0.8118200752694053     6     M4
+BaselineData/Head/DQA_Head_1     0.8118200752694053     6     M4
+BaselineData/Head/DQA_Head_8     0.8290665158579845     6     M4
+BaselineData/Head/DQA_Head_13     0.8118200752694053     6     M4
+BaselineData/Head/DQA_Head_14     0.7204060944739794     6     M4
+BaselineData/Head/DQA_Head_2     0.8347481780287015     6     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.7796903406057919     6     M4
+Archive/DQA_Head_2023-12-08 08-20-18     0.8493697630306828     6     M4
+Archive/DQA_Head_2023-10-30 15-28-39     0.7204060944739794     6     M4
+Archive/DQA_Head_2023-10-30 09-13-52     0.8118200752694053     6     M4
+Archive/DQA_Head_2023-10-26 21-14-54     0.8118200752694053     6     M4
+Archive/DQA_Head_2023-11-21 08-28-20     0.8479752907436922     6     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.8316829528517634     6     M4
+Archive/DQA_Head_2023-10-12 23-10-25     0.8347481780287015     6     M4
+BaselineData/Head/DQA_Head_14     0.8260146997017028     7     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.6075456254476901     7     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.6075456254476901     7     M4
+Archive/DQA_Head_2023-11-20 11-35-34     0.8467140312748852     7     M4
+Archive/DQA_Head_2023-10-30 15-28-39     0.8260146997017028     7     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.6904763952208978     7     M4
+BaselineData/Head/DQA_Head_18     0.7566914692052736     8     M4
+BaselineData/Head/DQA_Head_6     0.8416589438073028     8     M4
+BaselineData/Head/DQA_Head_15     0.7359711973476781     8     M4
+Archive/DQA_Head_2023-12-01 10-28-18     0.8048903786438525     8     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.7862057070923514     8     M4
+Archive/DQA_Head_2023-12-07 17-32-21     0.8048903786438525     8     M4
+Archive/DQA_Head_2023-11-20 11-35-34     0.6746857820197396     8     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.7566914692052736     8     M4
+Archive/DQA_Head_2023-10-30 15-31-17     0.7359711973476781     8     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.8246613419411924     8     M4
+BaselineData/Head/DQA_Head_20     0.8268802140552223     9     M4
+BaselineData/Head/DQA_Head_18     0.8045512143731434     9     M4
+BaselineData/Head/DQA_Head_6     0.7670477081767965     9     M4
+BaselineData/Head/DQA_Head_14     0.7303193642539918     9     M4
+Archive/DQA_Head_2023-11-17 08-07-56     0.7731586783715123     9     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.719650608997618     9     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.8268802140552223     9     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.6235434022984515     9     M4
+Archive/DQA_Head_2023-10-30 15-28-39     0.7303193642539918     9     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.8045512143731434     9     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.68106702115016     9     M4
+BaselineData/Head/DQA_Head_18     0.8158752140976804     10     M4
+BaselineData/Head/DQA_Head_16     0.5117753384965826     10     M4
+BaselineData/Head/DQA_Head_2     0.7835954343949761     10     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.5315696539931769     10     M4
+Archive/DQA_Head_2023-11-23 17-20-48     0.7993670563402712     10     M4
+Archive/DQA_Head_2023-12-12 11-06-59     0.8465601808531915     10     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.8158752140976804     10     M4
+Archive/DQA_Head_2023-12-01 08-24-42     0.8023623100624132     10     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.5809115153864858     10     M4
+Archive/DQA_Head_2023-12-08 08-22-56     0.8465601808531915     10     M4
+Archive/DQA_Head_2023-10-12 23-10-25     0.7835954343949761     10     M4
+Archive/DQA_Head_2023-11-03 08-31-08     0.5117753384965826     10     M4
+BaselineData/Head/DQA_Head_18     0.7812453770113119     11     M4
+BaselineData/Head/DQA_Head_10     0.7566902393847499     11     M4
+BaselineData/Head/DQA_Head_19     0.7892013253149999     11     M4
+BaselineData/Head/DQA_Head_6     0.7368316220816767     11     M4
+BaselineData/Head/DQA_Head_9     0.7157964956096258     11     M4
+BaselineData/Head/DQA_Head_7     0.7872981323346955     11     M4
+BaselineData/Head/DQA_Head_15     0.813734346755215     11     M4
+BaselineData/Head/DQA_Head_12     0.8389904525408359     11     M4
+BaselineData/Head/DQA_Head_4     0.8468525537068082     11     M4
+BaselineData/Head/DQA_Head_3     0.7892013253149999     11     M4
+Archive/DQA_Head_2023-10-27 08-45-00     0.8389904525408359     11     M4
+Archive/DQA_Head_2023-11-17 08-07-56     0.513949890740948     11     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.5196487296585727     11     M4
+Archive/DQA_Head_2023-11-21 08-24-42     0.5193823839137304     11     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.742388379565121     11     M4
+Archive/DQA_Head_2023-11-09 09-53-45     0.7892013253149999     11     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.7812453770113119     11     M4
+Archive/DQA_Head_2023-11-15 09-26-16     0.7888895302539873     11     M4
+Archive/DQA_Head_2023-10-30 15-31-17     0.813734346755215     11     M4
+BaselineData/Head/DQA_Head_10     0.6383537427478816     12     M4
+BaselineData/Head/DQA_Head_19     0.842523118882159     12     M4
+BaselineData/Head/DQA_Head_6     0.7500027263804298     12     M4
+BaselineData/Head/DQA_Head_9     0.6318407545521315     12     M4
+BaselineData/Head/DQA_Head_7     0.8489833726453221     12     M4
+BaselineData/Head/DQA_Head_12     0.7490003957778348     12     M4
+BaselineData/Head/DQA_Head_4     0.8382417261884193     12     M4
+BaselineData/Head/DQA_Head_3     0.842523118882159     12     M4
+Archive/DQA_Head_2023-10-27 08-45-00     0.7490003957778348     12     M4
+Archive/DQA_Head_2023-11-21 08-24-42     0.7149985386943771     12     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.72884994793567     12     M4
+Archive/DQA_Head_2023-11-09 09-53-45     0.842523118882159     12     M4
+BaselineData/Head/DQA_Head_20     0.8295248572333793     13     M4
+BaselineData/Head/DQA_Head_16     0.8192527360954536     13     M4
+BaselineData/Head/DQA_Head_17     0.846356293759358     13     M4
+BaselineData/Head/DQA_Head_10     0.7196115092892039     13     M4
+BaselineData/Head/DQA_Head_6     0.591764086399963     13     M4
+BaselineData/Head/DQA_Head_8     0.767244475170409     13     M4
+BaselineData/Head/DQA_Head_9     0.7336226571752219     13     M4
+BaselineData/Head/DQA_Head_7     0.8237321670379866     13     M4
+BaselineData/Head/DQA_Head_15     0.6735535592171484     13     M4
+BaselineData/Head/DQA_Head_12     0.7374056673393852     13     M4
+BaselineData/Head/DQA_Head_2     0.8103635605967457     13     M4
+Archive/DQA_Head_2023-10-27 08-45-00     0.7374056673393852     13     M4
+Archive/DQA_Head_2023-11-17 08-07-56     0.6613155997488017     13     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.5693115024294872     13     M4
+Archive/DQA_Head_2023-11-09 11-36-54     0.8295248572333793     13     M4
+Archive/DQA_Head_2023-11-21 08-24-42     0.7274139056298439     13     M4
+Archive/DQA_Head_2023-11-08 09-45-35     0.846356293759358     13     M4
+Archive/DQA_Head_2023-11-10 08-35-14     0.5841899122379639     13     M4
+Archive/DQA_Head_2023-10-30 15-31-17     0.6735535592171484     13     M4
+Archive/DQA_Head_2023-10-12 23-10-25     0.8103635605967457     13     M4
+Archive/DQA_Head_2023-11-03 08-31-08     0.8192527360954536     13     M4
+BaselineData/Head/DQA_Head_18     0.8036665279394972     14     M4
+BaselineData/Head/DQA_Head_10     0.791471299514082     14     M4
+BaselineData/Head/DQA_Head_6     0.8126583448241145     14     M4
+BaselineData/Head/DQA_Head_8     0.7738932807126636     14     M4
+BaselineData/Head/DQA_Head_9     0.7939778654442234     14     M4
+BaselineData/Head/DQA_Head_7     0.7820056515304445     14     M4
+BaselineData/Head/DQA_Head_15     0.7850560859789815     14     M4
+BaselineData/Head/DQA_Head_12     0.7549684819145008     14     M4
+Archive/DQA_Head_2023-10-27 08-45-00     0.7549684819145008     14     M4
+Archive/DQA_Head_2023-11-17 08-07-56     0.7806149802495921     14     M4
+Archive/DQA_Head_2023-11-13 08-26-24     0.8170405112482291     14     M4
+Archive/DQA_Head_2023-11-08 09-46-19     0.8036665279394972     14     M4
+Archive/DQA_Head_2023-10-30 15-31-17     0.7850560859789815     14     M4
+Archive/DQA_Head_2023-11-24 09-10-56     0.8255454076833818     14     M4
+BaselineData/Head/DQA_Head_18     0.8204275863913549     1     M5
+BaselineData/Head/DQA_Head_11     0.780846090118239     1     M5
+BaselineData/Head/DQA_Head_1     0.780846090118239     1     M5
+BaselineData/Head/DQA_Head_12     0.8362250670570536     1     M5
+BaselineData/Head/DQA_Head_13     0.780846090118239     1     M5
+Archive/DQA_Head_2023-10-27 08-45-00     0.8362250670570536     1     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.7973961785889834     1     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.780846090118239     1     M5
+Archive/DQA_Head_2023-11-08 09-46-19     0.8204275863913549     1     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.780846090118239     1     M5
+BaselineData/Head/DQA_Head_11     0.6626320391224761     2     M5
+BaselineData/Head/DQA_Head_17     0.7651127178855741     2     M5
+BaselineData/Head/DQA_Head_1     0.6626320391224761     2     M5
+BaselineData/Head/DQA_Head_13     0.6626320391224761     2     M5
+BaselineData/Head/DQA_Head_2     0.7694795871491203     2     M5
+Archive/DQA_Head_2023-12-01 10-28-18     0.5715550462530345     2     M5
+Archive/DQA_Head_2023-11-08 09-45-35     0.7651127178855741     2     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.5715550462530345     2     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.6626320391224761     2     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.6626320391224761     2     M5
+Archive/DQA_Head_2023-11-21 08-28-20     0.7746367429520401     2     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.7694795871491203     2     M5
+BaselineData/Head/DQA_Head_11     0.6316000157473024     3     M5
+BaselineData/Head/DQA_Head_17     0.8212563848764468     3     M5
+BaselineData/Head/DQA_Head_1     0.6316000157473024     3     M5
+BaselineData/Head/DQA_Head_13     0.6316000157473024     3     M5
+BaselineData/Head/DQA_Head_2     0.7461287793230913     3     M5
+BaselineData/Head/DQA_Head_5     0.7977157440876479     3     M5
+Archive/DQA_Head_2023-12-01 10-28-18     0.5672709435390373     3     M5
+Archive/DQA_Head_2023-11-08 09-45-35     0.8212563848764468     3     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.5672709435390373     3     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.6316000157473024     3     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.6316000157473024     3     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.811558773394748     3     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.7461287793230913     3     M5
+BaselineData/Head/DQA_Head_11     0.589706544259905     4     M5
+BaselineData/Head/DQA_Head_1     0.589706544259905     4     M5
+BaselineData/Head/DQA_Head_15     0.7328423683540287     4     M5
+BaselineData/Head/DQA_Head_13     0.589706544259905     4     M5
+BaselineData/Head/DQA_Head_5     0.8075596148292618     4     M5
+Archive/DQA_Head_2023-12-01 10-28-18     0.5603283921425257     4     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.8252119708636161     4     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.5603283921425257     4     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.589706544259905     4     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.589706544259905     4     M5
+Archive/DQA_Head_2023-10-30 15-31-17     0.7328423683540287     4     M5
+BaselineData/Head/DQA_Head_11     0.7421991086551621     5     M5
+BaselineData/Head/DQA_Head_16     0.780756004443502     5     M5
+BaselineData/Head/DQA_Head_10     0.8249310221550334     5     M5
+BaselineData/Head/DQA_Head_6     0.640898696548245     5     M5
+BaselineData/Head/DQA_Head_1     0.7421991086551621     5     M5
+BaselineData/Head/DQA_Head_8     0.7279263783249379     5     M5
+BaselineData/Head/DQA_Head_7     0.7381379199788127     5     M5
+BaselineData/Head/DQA_Head_13     0.7421991086551621     5     M5
+BaselineData/Head/DQA_Head_5     0.6401687306246211     5     M5
+Archive/DQA_Head_2023-12-01 10-28-18     0.7929245393323279     5     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.8456232292915911     5     M5
+Archive/DQA_Head_2023-11-22 14-26-02     0.7997635252436894     5     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.7929245393323279     5     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.7421991086551621     5     M5
+Archive/DQA_Head_2023-11-15 09-26-16     0.7094394009840507     5     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.7421991086551621     5     M5
+Archive/DQA_Head_2023-11-03 08-31-08     0.780756004443502     5     M5
+BaselineData/Head/DQA_Head_11     0.5501687488383334     6     M5
+BaselineData/Head/DQA_Head_17     0.805048270629078     6     M5
+BaselineData/Head/DQA_Head_19     0.7374697585594031     6     M5
+BaselineData/Head/DQA_Head_1     0.5501687488383334     6     M5
+BaselineData/Head/DQA_Head_13     0.5501687488383334     6     M5
+BaselineData/Head/DQA_Head_2     0.7665520856356188     6     M5
+BaselineData/Head/DQA_Head_5     0.8297946375903201     6     M5
+BaselineData/Head/DQA_Head_3     0.7374697585594031     6     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.7210393974258031     6     M5
+Archive/DQA_Head_2023-11-08 09-45-35     0.805048270629078     6     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.5501687488383334     6     M5
+Archive/DQA_Head_2023-11-09 09-53-45     0.7374697585594031     6     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.5501687488383334     6     M5
+Archive/DQA_Head_2023-11-21 08-28-20     0.8408124940930135     6     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.6222211421946446     6     M5
+Archive/DQA_Head_2023-11-17 08-21-33     0.7659747010770811     6     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.7665520856356188     6     M5
+BaselineData/Head/DQA_Head_11     0.6381047128776333     7     M5
+BaselineData/Head/DQA_Head_1     0.6381047128776333     7     M5
+BaselineData/Head/DQA_Head_7     0.8191755764204368     7     M5
+BaselineData/Head/DQA_Head_13     0.6381047128776333     7     M5
+BaselineData/Head/DQA_Head_2     0.8336385043002751     7     M5
+Archive/DQA_Head_2023-12-01 10-28-18     0.6802351010160437     7     M5
+Archive/DQA_Head_2023-12-07 17-32-21     0.6802351010160437     7     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.6381047128776333     7     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.6381047128776333     7     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.7288806619799352     7     M5
+Archive/DQA_Head_2023-11-17 08-21-33     0.8394546835021724     7     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.8336385043002751     7     M5
+BaselineData/Head/DQA_Head_11     0.7558590284882919     8     M5
+BaselineData/Head/DQA_Head_10     0.8482301992926654     8     M5
+BaselineData/Head/DQA_Head_6     0.717231896574736     8     M5
+BaselineData/Head/DQA_Head_1     0.7558590284882919     8     M5
+BaselineData/Head/DQA_Head_8     0.7946250999084264     8     M5
+BaselineData/Head/DQA_Head_9     0.8327295744301356     8     M5
+BaselineData/Head/DQA_Head_7     0.8013083694340627     8     M5
+BaselineData/Head/DQA_Head_13     0.7558590284882919     8     M5
+BaselineData/Head/DQA_Head_5     0.8439337836865377     8     M5
+Archive/DQA_Head_2023-11-22 14-26-02     0.7828502156752115     8     M5
+Archive/DQA_Head_2023-10-30 09-13-52     0.7558590284882919     8     M5
+Archive/DQA_Head_2023-10-26 21-14-54     0.7558590284882919     8     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.7779535817996278     8     M5
+BaselineData/Head/DQA_Head_10     0.7385221897458207     9     M5
+BaselineData/Head/DQA_Head_6     0.5408293565255023     9     M5
+BaselineData/Head/DQA_Head_8     0.7154890637136354     9     M5
+BaselineData/Head/DQA_Head_9     0.7265030400330245     9     M5
+BaselineData/Head/DQA_Head_7     0.7031292806331929     9     M5
+BaselineData/Head/DQA_Head_5     0.7876852079573916     9     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.8342627543027896     9     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.8018800900563731     9     M5
+Archive/DQA_Head_2023-11-10 08-35-14     0.6665998204238005     9     M5
+Archive/DQA_Head_2023-11-15 09-24-31     0.6939746449268958     9     M5
+BaselineData/Head/DQA_Head_6     0.6676731298946188     10     M5
+Archive/DQA_Head_2023-11-22 14-26-02     0.6982474801334556     10     M5
+Archive/DQA_Head_2023-11-20 11-35-34     0.7642755413981597     10     M5
+Archive/DQA_Head_2023-11-15 09-24-31     0.4130997319183821     10     M5
+Archive/DQA_Head_2023-11-15 09-26-16     0.6574408097598543     10     M5
+Archive/DQA_Head_2023-11-21 08-28-20     0.7885014964930434     10     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.7268373652366222     10     M5
+Archive/DQA_Head_2023-11-17 08-21-33     0.7074121222754404     10     M5
+BaselineData/Head/DQA_Head_10     0.8037452416383412     11     M5
+BaselineData/Head/DQA_Head_19     0.7490323106094241     11     M5
+BaselineData/Head/DQA_Head_6     0.6011147539641681     11     M5
+BaselineData/Head/DQA_Head_8     0.7711757003056913     11     M5
+BaselineData/Head/DQA_Head_9     0.7814183590291727     11     M5
+BaselineData/Head/DQA_Head_7     0.777061311573817     11     M5
+BaselineData/Head/DQA_Head_3     0.7490323106094241     11     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.8092067084035168     11     M5
+Archive/DQA_Head_2023-11-10 08-35-14     0.7176083853423626     11     M5
+Archive/DQA_Head_2023-11-09 09-53-45     0.7490323106094241     11     M5
+Archive/DQA_Head_2023-11-15 09-24-31     0.35511718753034144     11     M5
+Archive/DQA_Head_2023-11-15 09-26-16     0.7544894696369316     11     M5
+BaselineData/Head/DQA_Head_10     0.6985579414026717     12     M5
+BaselineData/Head/DQA_Head_19     0.7493219440379012     12     M5
+BaselineData/Head/DQA_Head_6     0.6390435811667634     12     M5
+BaselineData/Head/DQA_Head_8     0.7364291105775831     12     M5
+BaselineData/Head/DQA_Head_9     0.7107106186697528     12     M5
+BaselineData/Head/DQA_Head_7     0.632677322276271     12     M5
+BaselineData/Head/DQA_Head_5     0.7902820514591674     12     M5
+BaselineData/Head/DQA_Head_3     0.7493219440379012     12     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.6997735989085095     12     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.7783166085193974     12     M5
+Archive/DQA_Head_2023-11-10 08-35-14     0.6901601292104399     12     M5
+Archive/DQA_Head_2023-11-09 09-53-45     0.7493219440379012     12     M5
+Archive/DQA_Head_2023-11-15 09-24-31     0.8322847291728925     12     M5
+BaselineData/Head/DQA_Head_17     0.8400324274676566     13     M5
+BaselineData/Head/DQA_Head_10     0.6102709881513134     13     M5
+BaselineData/Head/DQA_Head_6     0.5705888376099948     13     M5
+BaselineData/Head/DQA_Head_8     0.6119736680474929     13     M5
+BaselineData/Head/DQA_Head_9     0.6002624529261634     13     M5
+BaselineData/Head/DQA_Head_7     0.646584126538977     13     M5
+BaselineData/Head/DQA_Head_15     0.6948547336907674     13     M5
+BaselineData/Head/DQA_Head_12     0.7648933676177064     13     M5
+BaselineData/Head/DQA_Head_2     0.5752311840775194     13     M5
+BaselineData/Head/DQA_Head_5     0.8309952637248159     13     M5
+BaselineData/Head/DQA_Head_4     0.7405884555782415     13     M5
+Archive/DQA_Head_2023-10-27 08-45-00     0.7648933676177064     13     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.6354000976609939     13     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.7809017044587283     13     M5
+Archive/DQA_Head_2023-11-08 09-45-35     0.8400324274676566     13     M5
+Archive/DQA_Head_2023-11-10 08-35-14     0.5719299293219351     13     M5
+Archive/DQA_Head_2023-11-15 09-26-16     0.7831934403983374     13     M5
+Archive/DQA_Head_2023-11-21 08-28-20     0.8073278017964062     13     M5
+Archive/DQA_Head_2023-10-30 15-31-17     0.6948547336907674     13     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.5752311840775194     13     M5
+BaselineData/Head/DQA_Head_17     0.7822438271292204     14     M5
+BaselineData/Head/DQA_Head_10     0.6682798046009653     14     M5
+BaselineData/Head/DQA_Head_6     0.6769553155410604     14     M5
+BaselineData/Head/DQA_Head_8     0.7098964509803487     14     M5
+BaselineData/Head/DQA_Head_9     0.6624691991979302     14     M5
+BaselineData/Head/DQA_Head_7     0.6515000599336308     14     M5
+BaselineData/Head/DQA_Head_15     0.700658630978429     14     M5
+BaselineData/Head/DQA_Head_12     0.7384533497389819     14     M5
+BaselineData/Head/DQA_Head_14     0.73825127696557     14     M5
+BaselineData/Head/DQA_Head_2     0.7932818772852729     14     M5
+BaselineData/Head/DQA_Head_4     0.7442769209843315     14     M5
+Archive/DQA_Head_2023-10-27 08-45-00     0.7384533497389819     14     M5
+Archive/DQA_Head_2023-11-13 08-26-24     0.7443270088472838     14     M5
+Archive/DQA_Head_2023-11-20 11-33-55     0.7445160085719704     14     M5
+Archive/DQA_Head_2023-11-08 09-45-35     0.7822438271292204     14     M5
+Archive/DQA_Head_2023-11-22 14-26-02     0.7076173360529215     14     M5
+Archive/DQA_Head_2023-10-30 15-28-39     0.73825127696557     14     M5
+Archive/DQA_Head_2023-11-15 09-26-16     0.8315273868657721     14     M5
+Archive/DQA_Head_2023-12-01 08-24-42     0.8122204826489146     14     M5
+Archive/DQA_Head_2023-10-30 15-31-17     0.700658630978429     14     M5
+Archive/DQA_Head_2023-11-17 08-21-33     0.8254289064527643     14     M5
+Archive/DQA_Head_2023-10-12 23-10-25     0.7932818772852729     14     M5
+
+Unique Fails
+Archive/DQA_Head_2023-10-30 15-31-17
+Archive/DQA_Head_2023-11-24 09-10-56
+Archive/DQA_Head_2023-11-08 09-45-35
+BaselineData/Head/DQA_Head_2
+Archive/DQA_Head_2023-11-17 08-21-33
+BaselineData/Head/DQA_Head_11
+BaselineData/Head/DQA_Head_16
+Archive/DQA_Head_2023-12-01 10-28-18
+BaselineData/Head/DQA_Head_10
+BaselineData/Head/DQA_Head_18
+Archive/DQA_Head_2023-11-10 08-35-14
+Archive/DQA_Head_2023-11-23 17-20-48
+Archive/DQA_Head_2023-12-07 17-32-21
+BaselineData/Head/DQA_Head_8
+Archive/DQA_Head_2023-11-21 08-24-42
+Archive/DQA_Head_2023-11-03 08-31-08
+BaselineData/Head/DQA_Head_13
+Archive/DQA_Head_2023-10-27 08-45-00
+BaselineData/Head/DQA_Head_3
+BaselineData/Head/DQA_Head_9
+BaselineData/Head/DQA_Head_15
+Archive/DQA_Head_2023-11-22 14-26-02
+Archive/DQA_Head_2023-11-20 11-33-55
+BaselineData/Head/DQA_Head_12
+Archive/DQA_Head_2023-11-09 09-53-45
+BaselineData/Head/DQA_Head_19
+BaselineData/Head/DQA_Head_20
+BaselineData/Head/DQA_Head_17
+Archive/DQA_Head_2023-11-20 11-35-34
+BaselineData/Head/DQA_Head_1
+BaselineData/Head/DQA_Head_7
+Archive/DQA_Head_2023-11-13 08-26-24
+Archive/DQA_Head_2023-11-09 11-36-54
+Archive/DQA_Head_2023-12-01 08-24-42
+BaselineData/Head/DQA_Head_5
+Archive/DQA_Head_2023-11-15 09-24-31
+BaselineData/Head/DQA_Head_14
+Archive/DQA_Head_2023-11-15 09-26-16
+BaselineData/Head/DQA_Head_4
+Archive/DQA_Head_2023-10-30 15-28-39
+Archive/DQA_Head_2023-10-30 09-13-52
+Archive/DQA_Head_2023-12-12 11-06-59
+Archive/DQA_Head_2023-12-08 08-22-56
+Archive/DQA_Head_2023-12-08 08-20-18
+Archive/DQA_Head_2023-11-08 09-46-19
+Archive/DQA_Head_2023-11-21 08-28-20
+Archive/DQA_Head_2023-10-12 23-10-25
+Archive/DQA_Head_2023-11-17 08-07-56
+Archive/DQA_Head_2023-10-26 21-14-54
+BaselineData/Head/DQA_Head_6
+50/50   100.0%
+
+
+####  Per Slice Failures ####
+File     Metric     Slice
+BaselineData/Head/DQA_Head_18     0.8376963080573706     1
+BaselineData/Head/DQA_Head_11     0.8205274512683022     1
+BaselineData/Head/DQA_Head_1     0.8205274512683022     1
+BaselineData/Head/DQA_Head_15     0.8287341922458564     1
+BaselineData/Head/DQA_Head_13     0.8205274512683022     1
+Archive/DQA_Head_2023-12-01 10-28-18     0.755690717800105     1
+Archive/DQA_Head_2023-11-21 08-24-42     0.821816823556255     1
+Archive/DQA_Head_2023-12-07 17-32-21     0.755690717800105     1
+Archive/DQA_Head_2023-10-30 09-13-52     0.8205274512683022     1
+Archive/DQA_Head_2023-11-08 09-46-19     0.8376963080573706     1
+Archive/DQA_Head_2023-10-26 21-14-54     0.8205274512683022     1
+Archive/DQA_Head_2023-10-30 15-31-17     0.8287341922458564     1
+Archive/DQA_Head_2023-11-20 11-35-34     0.8056826655667622     2
+Archive/DQA_Head_2023-12-01 10-28-18     0.7998649436893943     3
+Archive/DQA_Head_2023-11-23 17-20-48     0.7185116375768565     3
+Archive/DQA_Head_2023-12-07 17-32-21     0.7998649436893943     3
+Archive/DQA_Head_2023-12-01 10-28-18     0.8078572968941158     4
+Archive/DQA_Head_2023-11-23 17-20-48     0.6636135953859275     4
+Archive/DQA_Head_2023-12-07 17-32-21     0.8078572968941158     4
+Archive/DQA_Head_2023-11-24 09-10-56     0.839392635542208     4
+Archive/DQA_Head_2023-11-23 17-20-48     0.6443685563174277     5
+Archive/DQA_Head_2023-11-20 11-33-55     0.8250938849077418     5
+Archive/DQA_Head_2023-11-20 11-35-34     0.819741760436279     5
+Archive/DQA_Head_2023-11-24 09-10-56     0.8369796786570071     5
+Archive/DQA_Head_2023-11-21 08-28-20     0.8063515031425577     6
+BaselineData/Head/DQA_Head_15     0.7845962567442547     8
+Archive/DQA_Head_2023-11-10 08-35-14     0.7571448888846501     8
+Archive/DQA_Head_2023-10-30 15-31-17     0.7845962567442547     8
+BaselineData/Head/DQA_Head_20     0.8248793995702763     9
+BaselineData/Head/DQA_Head_15     0.744652896948112     9
+Archive/DQA_Head_2023-11-13 08-26-24     0.6333232588165035     9
+Archive/DQA_Head_2023-11-09 11-36-54     0.8248793995702763     9
+Archive/DQA_Head_2023-11-10 08-35-14     0.6738309291280421     9
+Archive/DQA_Head_2023-10-30 15-31-17     0.744652896948112     9
+Archive/DQA_Head_2023-11-24 09-10-56     0.7516838226720143     9
+BaselineData/Head/DQA_Head_18     0.6620324895826001     10
+Archive/DQA_Head_2023-11-13 08-26-24     0.8460996762553736     10
+Archive/DQA_Head_2023-11-22 14-26-02     0.8129300903252079     10
+Archive/DQA_Head_2023-11-20 11-35-34     0.7197053216997766     10
+Archive/DQA_Head_2023-12-08 08-20-18     0.8430737676932574     10
+Archive/DQA_Head_2023-11-08 09-46-19     0.6620324895826001     10
+Archive/DQA_Head_2023-11-15 09-26-16     0.6966131549307476     10
+Archive/DQA_Head_2023-11-21 08-28-20     0.7855468208123597     10
+Archive/DQA_Head_2023-11-24 09-10-56     0.7983893939937453     10
+BaselineData/Head/DQA_Head_10     0.8145167905073105     11
+BaselineData/Head/DQA_Head_6     0.7853981430240539     11
+Archive/DQA_Head_2023-12-01 10-28-18     0.838028267505768     11
+Archive/DQA_Head_2023-11-13 08-26-24     0.7223333777588066     11
+Archive/DQA_Head_2023-11-10 08-35-14     0.8450374233793551     11
+Archive/DQA_Head_2023-12-07 17-32-21     0.838028267505768     11
+Archive/DQA_Head_2023-11-15 09-24-31     0.8173273905013658     11
+Archive/DQA_Head_2023-11-21 08-28-20     0.768426355106335     11
+Archive/DQA_Head_2023-11-17 08-21-33     0.7720365905410163     11
+BaselineData/Head/DQA_Head_19     0.7941925863779089     12
+BaselineData/Head/DQA_Head_3     0.7941925863779089     12
+Archive/DQA_Head_2023-11-13 08-26-24     0.7014686846684819     12
+Archive/DQA_Head_2023-11-21 08-24-42     0.779405075256534     12
+Archive/DQA_Head_2023-11-09 09-53-45     0.7941925863779089     12
+BaselineData/Head/DQA_Head_20     0.8436118550185691     13
+BaselineData/Head/DQA_Head_17     0.7934937961063457     13
+BaselineData/Head/DQA_Head_6     0.6788741074647994     13
+BaselineData/Head/DQA_Head_12     0.7014221078532856     13
+Archive/DQA_Head_2023-10-27 08-45-00     0.7014221078532856     13
+Archive/DQA_Head_2023-11-17 08-07-56     0.7747301774320285     13
+Archive/DQA_Head_2023-11-13 08-26-24     0.6580628296153375     13
+Archive/DQA_Head_2023-11-09 11-36-54     0.8436118550185691     13
+Archive/DQA_Head_2023-11-21 08-24-42     0.7746344365028904     13
+Archive/DQA_Head_2023-11-08 09-45-35     0.7934937961063457     13
+Archive/DQA_Head_2023-11-10 08-35-14     0.7903653116817456     13
+Archive/DQA_Head_2023-11-20 11-35-34     0.7163606795936672     13
+Archive/DQA_Head_2023-12-08 08-20-18     0.8362358499639833     13
+BaselineData/Head/DQA_Head_18     0.5884009422306234     14
+BaselineData/Head/DQA_Head_16     0.7797033657452246     14
+BaselineData/Head/DQA_Head_6     0.8164005704341507     14
+BaselineData/Head/DQA_Head_12     0.8222731368747187     14
+BaselineData/Head/DQA_Head_14     0.8172045070025075     14
+Archive/DQA_Head_2023-10-27 08-45-00     0.8222731368747187     14
+Archive/DQA_Head_2023-11-17 08-07-56     0.5937030593674623     14
+Archive/DQA_Head_2023-11-13 08-26-24     0.6368986599529666     14
+Archive/DQA_Head_2023-11-21 08-24-42     0.6193046416220537     14
+Archive/DQA_Head_2023-11-23 17-20-48     0.6089528285688969     14
+Archive/DQA_Head_2023-11-20 11-35-34     0.6709322625508621     14
+Archive/DQA_Head_2023-12-08 08-20-18     0.8006903658811646     14
+Archive/DQA_Head_2023-10-30 15-28-39     0.8172045070025075     14
+Archive/DQA_Head_2023-11-15 09-24-31     0.8396024065956121     14
+Archive/DQA_Head_2023-11-08 09-46-19     0.5884009422306234     14
+Archive/DQA_Head_2023-11-24 09-10-56     0.6220397094131945     14
+Archive/DQA_Head_2023-11-03 08-31-08     0.7797033657452246     14
+
+Unique Fails
+Archive/DQA_Head_2023-10-30 15-31-17
+Archive/DQA_Head_2023-11-24 09-10-56
+Archive/DQA_Head_2023-11-08 09-45-35
+Archive/DQA_Head_2023-11-17 08-21-33
+BaselineData/Head/DQA_Head_11
+BaselineData/Head/DQA_Head_16
+Archive/DQA_Head_2023-12-01 10-28-18
+BaselineData/Head/DQA_Head_10
+BaselineData/Head/DQA_Head_18
+Archive/DQA_Head_2023-11-10 08-35-14
+Archive/DQA_Head_2023-11-23 17-20-48
+Archive/DQA_Head_2023-12-07 17-32-21
+Archive/DQA_Head_2023-11-21 08-24-42
+Archive/DQA_Head_2023-11-03 08-31-08
+BaselineData/Head/DQA_Head_13
+Archive/DQA_Head_2023-10-27 08-45-00
+BaselineData/Head/DQA_Head_3
+BaselineData/Head/DQA_Head_15
+Archive/DQA_Head_2023-11-22 14-26-02
+Archive/DQA_Head_2023-11-20 11-33-55
+BaselineData/Head/DQA_Head_12
+Archive/DQA_Head_2023-11-09 09-53-45
+BaselineData/Head/DQA_Head_19
+BaselineData/Head/DQA_Head_20
+BaselineData/Head/DQA_Head_17
+Archive/DQA_Head_2023-11-20 11-35-34
+BaselineData/Head/DQA_Head_1
+Archive/DQA_Head_2023-11-13 08-26-24
+Archive/DQA_Head_2023-11-09 11-36-54
+Archive/DQA_Head_2023-11-15 09-24-31
+BaselineData/Head/DQA_Head_14
+Archive/DQA_Head_2023-11-15 09-26-16
+Archive/DQA_Head_2023-10-30 15-28-39
+Archive/DQA_Head_2023-10-30 09-13-52
+Archive/DQA_Head_2023-12-08 08-20-18
+Archive/DQA_Head_2023-11-08 09-46-19
+Archive/DQA_Head_2023-11-21 08-28-20
+Archive/DQA_Head_2023-11-17 08-07-56
+Archive/DQA_Head_2023-10-26 21-14-54
+BaselineData/Head/DQA_Head_6
+40/50   80.0%
+
+
+####  Average over all slices Failures ####
+File     Metric     Slice
+
+Unique Fails
+0/50   0.0%
