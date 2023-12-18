@@ -45,14 +45,14 @@ def SortData(Datas):
 
 def AnalyseData(Data,FileTracker,type,Normalise=False):
     
-
-    SNRThreshold = 0.85
+    SNRThreshold={}
+    SNRThreshold["Ax EPI-GRE head"] = 0.3
+    SNRThreshold["Ax T2 FSE head"] = 0.85
 
     DataToPlot = Data[0]
     OverallDataToPlot = Data[1]
     Sequences = DataToPlot.keys()
-    for sequence in Sequences:
-        
+    for sequence in Sequences:        
         fig, axs = plt.subplots(7)
         fig.set_size_inches(9, 21)
         fig.suptitle(type + " DQA Stats " + sequence,y=0.99)
@@ -67,9 +67,9 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
             NumberOfSlices = len(DataToPlot[sequence][roi])
             for slice in range(NumberOfSlices):
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
-                Lower = SNRThreshold
+                Lower = SNRThreshold[sequence]
                 if Normalise==False:
-                    Lower = Base*SNRThreshold
+                    Lower = Base*SNRThreshold[sequence]
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
                 for filecount, value in enumerate(DataToPlot[sequence][roi][slice]):
                     if Normalise:
@@ -108,9 +108,9 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
         count+=1
         for slice in range(NumberOfSlices):
             Base,STD = Helper.GetBaselineSlice(type,slice,sequence)
-            Lower = SNRThreshold
+            Lower = SNRThreshold[sequence]
             if Normalise==False:
-                Lower = Base*SNRThreshold
+                Lower = Base*SNRThreshold[sequence]
             Average = np.array([0]*len(DataToPlot[sequence]["M1"][0]))
             xvalues.append(slice+1)
             for roi in ROIs:
@@ -150,9 +150,9 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
         f.write("\n####  Average over all slices Failures ####\n")
         f.write("File     Metric     Slice\n")
         Base,STD = Helper.GetBaselineOverall(type,sequence)
-        Lower = SNRThreshold
+        Lower = SNRThreshold[sequence]
         if Normalise==False:
-            Lower = Base*SNRThreshold
+            Lower = Base*SNRThreshold[sequence]
 
         for value in OverallDataToPlot[sequence]:
                 if Normalise:

@@ -18,11 +18,11 @@ Archive/DQA_Head_2023-12-01 10-28-18     0.7631683585829423     1     M5
 Archive/DQA_Head_2023-12-07 17-32-21     0.7631683585829423     1     M5
 
 Unique Fails
-BaselineData/Head/DQA_Head_12
-Archive/DQA_Head_2023-12-01 10-28-18
-Archive/DQA_Head_2023-11-10 08-35-14
 Archive/DQA_Head_2023-12-07 17-32-21
+BaselineData/Head/DQA_Head_12
 Archive/DQA_Head_2023-10-27 08-45-00
+Archive/DQA_Head_2023-11-10 08-35-14
+Archive/DQA_Head_2023-12-01 10-28-18
 5/50   10.0%
 
 
@@ -32,8 +32,8 @@ Archive/DQA_Head_2023-12-01 10-28-18     0.7828850988963661     1
 Archive/DQA_Head_2023-12-07 17-32-21     0.7828850988963661     1
 
 Unique Fails
-Archive/DQA_Head_2023-12-01 10-28-18
 Archive/DQA_Head_2023-12-07 17-32-21
+Archive/DQA_Head_2023-12-01 10-28-18
 2/50   4.0%
 
 
