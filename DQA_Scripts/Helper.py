@@ -13,6 +13,7 @@ from dataclasses import dataclass
 import random
 from email.message import EmailMessage
 import scipy.stats as st
+import sys
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -384,5 +385,45 @@ def DidQAPass(Result,thresh=None):
     else:
         return False,FailMessage
     
+def GetThresholds(type):
+    type = type.lower()
+    f = open("DQA_Scripts/Thresholds.txt")
+    Threshes={}
+    for line in f:
+        if (line.split(",")[0]==type):
+            Threshes[line.split(",")[1]]= float(line.split(",")[2])
+    f.close()
+    return Threshes
+
+def DidQAPassV2(Result,thresh=None):
+    QAType = Result[2]
+    SNR = Result[0]
+    ROIResults = Result[1]
+    Sequence = Result[3]
+
+    Threshold = GetThresholds(QAType)
+    if QAType=="Head":
+        ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
+
+    if QAType=="Body":
+        return DidQAPass(Result,thresh)
+
+    if QAType=="Spine":
+        return DidQAPass(Result,thresh)
+    
+    FailMessage=""
+    NumberOfSlicesInSeq = len(ROIResults["M1"])
+    ROIS = list(ROIBaseline.keys())
+    for ROI in ROIS:
+        for Slice in range(NumberOfSlicesInSeq):
+            RelSNR = ROIResults[ROI][Slice]/ROIBaseline[ROI][Slice][0]
+            if (RelSNR <= Threshold[Sequence]):
+                FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result (%):" + str(round(RelSNR,4)) + "   Threshold:" + str(round(Threshold[Sequence],4)) +"\n"
+    if FailMessage=="":
+        return True,FailMessage
+    else:
+        return False,FailMessage
+
+
 def GetStatsBasedThresh(data):
     return np.mean(data), st.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(data), scale=st.sem(data))

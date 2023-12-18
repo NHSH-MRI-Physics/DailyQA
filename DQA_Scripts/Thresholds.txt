@@ -1,0 +1,2 @@
+head,Ax EPI-GRE head,0.4
+head,Ax T2 FSE head,0.8

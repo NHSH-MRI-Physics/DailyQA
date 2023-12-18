@@ -45,9 +45,7 @@ def SortData(Datas):
 
 def AnalyseData(Data,FileTracker,type,Normalise=False):
     
-    SNRThreshold={}
-    SNRThreshold["Ax EPI-GRE head"] = 0.3
-    SNRThreshold["Ax T2 FSE head"] = 0.85
+    SNRThreshold = Helper.GetThresholds(type)
 
     DataToPlot = Data[0]
     OverallDataToPlot = Data[1]
@@ -197,4 +195,4 @@ for folder in HeadArchives:
 #np.save("Testing/SNRStats/FileTracker.npy", FileTracker)
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/FileTracker.npy",allow_pickle=True)
-AnalyseData(Data,FileTracker,"Head",Normalise=True)
+AnalyseData(Data,FileTracker,"head",Normalise=True)

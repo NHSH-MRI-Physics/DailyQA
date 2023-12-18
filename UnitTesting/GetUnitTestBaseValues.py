@@ -12,6 +12,18 @@ def GetBase(Files,savefile):
     Results = DailyQA.RunDailyQA(Files)
     np.save(savefile, Results) 
 
-GetBase("BaselineData/Head/DQA_Head_1","UnitTesting/HeadBaseline.npy")
-GetBase("BaselineData/Body/DQA_Body_1","UnitTesting/BodyBaseline.npy")
-GetBase("BaselineData/Spine/DQA_Spine_1","UnitTesting/SpineBaseline.npy")
+def GetFailResult(Files,savefile):
+    Results = DailyQA.RunDailyQA(Files)
+
+    baseline = []
+    for result in Results:
+        baseline.append(Helper.DidQAPassV2(result))
+    np.save(savefile, baseline) 
+
+#Passes
+GetBase("UnitTesting/UnitTestData/PassData/DQA_Head_1","UnitTesting/UnitTestBaselines/HeadBaseline.npy")
+GetBase("UnitTesting/UnitTestData/PassData/DQA_Body_1","UnitTesting/UnitTestBaselines/BodyBaseline.npy")
+GetBase("UnitTesting/UnitTestData/PassData/DQA_Spine_1","UnitTesting/UnitTestBaselines/SpineBaseline.npy")
+
+#Fails
+GetFailResult("UnitTesting/UnitTestData/FailData/DQA_Head_Fail","UnitTesting/UnitTestBaselines/HeadFailBaseline.npy")

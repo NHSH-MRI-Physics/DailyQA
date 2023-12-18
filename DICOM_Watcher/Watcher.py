@@ -80,7 +80,7 @@ while (True):
 
                             OverallPass=[]
                             for result in Results:
-                                QAResult = Helper.DidQAPass(result)
+                                QAResult = Helper.DidQAPassV2(result)
                                 if QAResult[0] == False:
                                     EmailResultLines.append(QAResult[1])
                                 OverallPass.append(QAResult[0])
