@@ -15,8 +15,8 @@ def SortData(Datas):
     FileTracker=[]
     for data in Datas:
         FileTracker.append(data)
-        #print(data)
-        Results = DailyQA.RunDailyQA(data)          
+        print(data)
+        Results = DailyQA.RunDailyQA(data) #Just dont reject slices here this is done below
 
         '''
         if (Results[0][-1] == "Ax T2 FSE head"):
@@ -43,13 +43,23 @@ def SortData(Datas):
                         DataToPlot[seq][roi][slice].append(result[1][roi][slice])
     return [DataToPlot,OverallDataToPlot],FileTracker
 
-def AnalyseData(Data,FileTracker,type,Normalise=False):
-    
-    SNRThreshold = Helper.GetThresholds(type)
+def AnalyseData(Data,FileTracker,type,Normalise=False,ExcludeSlicesOption=True):
+
+    files = glob.glob("Testing/SNRStats/*.png")
+    for file in files:
+        os.remove(file)
+
+    files = glob.glob("Testing/SNRStats/*.txt")
+    for file in files:
+        os.remove(file)
 
     DataToPlot = Data[0]
     OverallDataToPlot = Data[1]
     Sequences = DataToPlot.keys()
+
+    SNRThreshold = Helper.GetThresholds(type)
+    ExcludedSlices = Helper.GetExcludedSlices(type)
+
     for sequence in Sequences:        
         fig, axs = plt.subplots(7)
         fig.set_size_inches(9, 21)
@@ -64,6 +74,10 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
         for count, roi in enumerate(ROIs):
             NumberOfSlices = len(DataToPlot[sequence][roi])
             for slice in range(NumberOfSlices):
+                if ExcludeSlicesOption:
+                    if slice in ExcludedSlices[sequence]:
+                        continue
+
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
                 Lower = SNRThreshold[sequence]
                 if Normalise==False:
@@ -105,6 +119,10 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
         xvalues = []
         count+=1
         for slice in range(NumberOfSlices):
+            if ExcludeSlicesOption:
+                if slice in ExcludedSlices[sequence]:
+                    continue
+
             Base,STD = Helper.GetBaselineSlice(type,slice,sequence)
             Lower = SNRThreshold[sequence]
             if Normalise==False:
@@ -169,7 +187,7 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
             axs[count].set_ylabel("Average Realtive SNR")
         else:
             axs[count].set_ylabel("Average SNR")
-        axs[count].set_title("Average SNR over all slices")
+        axs[count].set_title("Average SNR over all slices (no exclusions)")
         axs[count].grid()
         axs[count].set_xticks([])
         
@@ -183,6 +201,7 @@ def AnalyseData(Data,FileTracker,type,Normalise=False):
         Failures=[]
     f.close()
 
+
 HeadSNRFilesSources=[]
 HeadSNRFilesSources = [x[0] for x in os.walk("BaselineData/Head/")][1:]
 HeadArchives = [x[0] for x in os.walk("Archive")][1:]
@@ -190,9 +209,25 @@ for folder in HeadArchives:
     if "Head" in folder:
         HeadSNRFilesSources.append(folder)
 
-#Data,FileTracker = SortData(HeadSNRFilesSources)
-#np.save("Testing/SNRStats/HeadDataFile.npy", Data)
-#np.save("Testing/SNRStats/FileTracker.npy", FileTracker)
+
+Data,FileTracker = SortData(HeadSNRFilesSources)
+np.save("Testing/SNRStats/HeadDataFile.npy", Data)
+np.save("Testing/SNRStats/HeadFileTracker.npy", FileTracker)
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
-FileTracker = np.load("Testing/SNRStats/FileTracker.npy",allow_pickle=True)
-AnalyseData(Data,FileTracker,"head",Normalise=True)
+FileTracker = np.load("Testing/SNRStats/HeadFileTracker.npy",allow_pickle=True)
+AnalyseData(Data,FileTracker,"head",Normalise=True,ExcludeSlicesOption=False)
+
+'''
+BodySNRFilesSources=[]
+BodySNRFilesSources = [x[0] for x in os.walk("BaselineData/Body/")][1:]
+BodyArchives = [x[0] for x in os.walk("Archive")][1:]
+for folder in BodyArchives:
+    if "Body" in folder:
+        BodySNRFilesSources.append(folder)
+Data,FileTracker = SortData(BodySNRFilesSources)
+np.save("Testing/SNRStats/BodyDataFile.npy", Data)
+np.save("Testing/SNRStats/BodyFileTracker.npy", FileTracker)
+Data = np.load("Testing/SNRStats/BodyDataFile.npy",allow_pickle=True)
+FileTracker = np.load("Testing/SNRStats/BodyFileTracker.npy",allow_pickle=True)
+AnalyseData(Data,FileTracker,"body",Normalise=True,ExcludeSlicesOption=True)
+'''

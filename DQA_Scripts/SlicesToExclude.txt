@@ -1,0 +1,4 @@
+body,Ax T2 SSFSE TE 90 Bot,1,2,12
+body,Ax EPI-GRE body Bot,1,2,12,13
+body,Ax T2 SSFSE TE 90 Top,1,2,12
+body,Ax EPI-GRE body Top,1,2,12,13

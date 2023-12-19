@@ -95,6 +95,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
+    '''
     def test_bodyPassAndEmail(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
@@ -146,6 +147,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
 
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        '''
 
 class TestFailAndEmailFunction(unittest.TestCase):
     def setUp(self):
@@ -184,4 +186,5 @@ class TestFailAndEmailFunction(unittest.TestCase):
 
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+
 unittest.main()

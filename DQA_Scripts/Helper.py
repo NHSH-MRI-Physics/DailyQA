@@ -406,6 +406,7 @@ def DidQAPassV2(Result,thresh=None):
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Body":
+        #ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
         return DidQAPass(Result,thresh)
 
     if QAType=="Spine":
@@ -427,3 +428,16 @@ def DidQAPassV2(Result,thresh=None):
 
 def GetStatsBasedThresh(data):
     return np.mean(data), st.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(data), scale=st.sem(data))
+
+def GetExcludedSlices(type):
+    type = type.lower()
+    f = open("DQA_Scripts/SlicesToExclude.txt")
+    Slices={}
+    for line in f:
+        if (line.split(",")[0]==type):
+            ExcludedSlices = []
+            Slices[line.split(",")[1]]= ExcludedSlices
+            for slice in line.split(",")[2:]:
+                Slices[line.split(",")[1]].append(int(slice)-1)
+    f.close()
+    return Slices

@@ -91,14 +91,14 @@ HeadArchives = [x[0] for x in os.walk("Archive")][1:]
 for folder in HeadArchives:
     if "Head" in folder:
         files.append(folder)
-GetBaselineSmooth(files,"Head_Baseline.npy","BaselineData/Head/")
+#GetBaselineSmooth(files,"Head_Baseline.npy","BaselineData/Head/")
 
 files = [x[0] for x in os.walk("BaselineData/Body/")][1:]
 HeadArchives = [x[0] for x in os.walk("Archive")][1:]
 for folder in HeadArchives:
     if "Body" in folder:
         files.append(folder)
-#GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
+GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
 
 files = [x[0] for x in os.walk("BaselineData/Spine/")][1:]
 HeadArchives = [x[0] for x in os.walk("Archive")][1:]

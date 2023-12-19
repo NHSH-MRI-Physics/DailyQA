@@ -9,19 +9,21 @@ import matplotlib.patches as patches
 import math
 import Helper
 
-def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum):
+def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices):
     axs[row,col].set_axis_on()
     axs[row,col].axis('off')
     axs[row,col].imshow(Image,cmap='Greys_r')
     axs[row,col].set_title("Slice Num: " + str(sliceNum), fontsize=20)
-    count=1
-    for roi in ROIS:
-        rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor='r', facecolor='none')
-        axs[row,col].add_patch(rect)
-        axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
-        count+=1
 
-def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None):
+    if sliceNum-1 not in RejectedSlices:
+        count=1
+        for roi in ROIS:
+            rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor='r', facecolor='none')
+            axs[row,col].add_patch(rect)
+            axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
+            count+=1
+
+def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None,type=None):
 
     fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
 
@@ -50,9 +52,12 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
             #plt.clf()
             #plt.imshow(Image)
             #plt.show()
+            
+            ThreshRel = np.max(Image)*Thresh
+
             BinaryMapSignal = np.copy(Image)
-            High = np.where(BinaryMapSignal>=Thresh)
-            Low = np.where(BinaryMapSignal<Thresh)
+            High = np.where(BinaryMapSignal>=ThreshRel)
+            Low = np.where(BinaryMapSignal<ThreshRel)
             BinaryMapSignal[High]=1
             BinaryMapSignal[Low]=0
 
@@ -112,7 +117,12 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
         
         CurrentRow = math.floor(i/Cols)
         CurrentCol = i%Cols
-        PlotROIS(ROIs,ROISize,RoiSizeHalf,BinaryMapSignal,Image,CurrentCol,CurrentRow,axs,i+1)
+
+
+        SlicesToBeRejected=[]
+        if seq in Helper.GetExcludedSlices(type).keys():
+            SlicesToBeRejected=Helper.GetExcludedSlices(type)[seq]
+        PlotROIS(ROIs,ROISize,RoiSizeHalf,BinaryMapSignal,Image,CurrentCol,CurrentRow,axs,i+1,SlicesToBeRejected)
         
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])

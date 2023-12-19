@@ -1,2 +1,7 @@
 head,Ax EPI-GRE head,0.4
 head,Ax T2 FSE head,0.8
+
+body,Ax T2 SSFSE TE 90 Bot,0.8
+body,Ax EPI-GRE body Bot,0.4
+body,Ax T2 SSFSE TE 90 Top,0.8
+body,Ax EPI-GRE body Top,0.4

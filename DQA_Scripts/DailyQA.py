@@ -63,7 +63,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         if (CoilUsed == "Head 24"): 
             QAType="Head"
             KernalSize = 2
-            Thresh= 500
+            Thresh= 0.2
             
             if Seq == "Ax T2 FSE head":
                 ErorsionSteps=10
@@ -77,10 +77,10 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             KernalSize = 1
 
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
-                Thresh=500
+                Thresh=0.2
                 ErorsionSteps=5
             if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
-                Thresh=900
+                Thresh=0.2
                 ErorsionSteps=5
 
 
@@ -89,10 +89,10 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             QAType="Spine"
             KernalSize = 1
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
-                Thresh=250
+                Thresh=0.1
                 ErorsionSteps=5
             if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
-                Thresh=900
+                Thresh=0.1
                 ErorsionSteps=5
 
         else:
@@ -107,7 +107,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         if NoiseAmount != None:
             PixelData[Seq] = Helper.AddNoise(PixelData[Seq],NoiseAmount)
-        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName)
+        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName,type=QAType)
         #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
         #Results.append( [SNRSmooth,SNRNessAiver,Seq])
         Results.append( [SNRSmooth,ROIResults,QAType,Seq])

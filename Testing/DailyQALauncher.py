@@ -7,9 +7,9 @@ import Helper
 #os.chdir('..')
 
 
-#Files = "/Users/john/Documents/DailyQA/Data/DQA_Head_1"
-Files = "Archive/DQA_Head_2023-12-01 10-28-18" #High SNR One
-#Files = "BaselineData/Head/DQA_Head_20" #Another one
+Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
+#Files = "Archive/DQA_Head_2023-12-01 10-28-18" #High SNR One
+#Files = "Archive/DQA_Body_2023-12-18 08-28-14" #Another one
 Results = DailyQA.RunDailyQA(Files)
 for result in Results:
 	print (result)
