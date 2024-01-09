@@ -201,7 +201,7 @@ def AnalyseData(Data,FileTracker,type,Normalise=False,ExcludeSlicesOption=True):
         Failures=[]
     f.close()
 
-
+'''
 HeadSNRFilesSources=[]
 HeadSNRFilesSources = [x[0] for x in os.walk("BaselineData/Head/")][1:]
 HeadArchives = [x[0] for x in os.walk("Archive")][1:]
@@ -216,6 +216,7 @@ np.save("Testing/SNRStats/HeadFileTracker.npy", FileTracker)
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/HeadFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"head",Normalise=True,ExcludeSlicesOption=False)
+'''
 
 '''
 BodySNRFilesSources=[]
@@ -227,7 +228,7 @@ for folder in BodyArchives:
 Data,FileTracker = SortData(BodySNRFilesSources)
 np.save("Testing/SNRStats/BodyDataFile.npy", Data)
 np.save("Testing/SNRStats/BodyFileTracker.npy", FileTracker)
+'''
 Data = np.load("Testing/SNRStats/BodyDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/BodyFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"body",Normalise=True,ExcludeSlicesOption=True)
-'''

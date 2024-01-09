@@ -7,11 +7,11 @@ import Helper
 #os.chdir('..')
 
 
-Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
-#Files = "Archive/DQA_Head_2023-12-01 10-28-18" #High SNR One
-#Files = "Archive/DQA_Body_2023-12-18 08-28-14" #Another one
+#Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
+Files = "BaselineData/Spine/DQA_Spine_1"
 Results = DailyQA.RunDailyQA(Files)
 for result in Results:
-	print (result)
-	QAResult = Helper.DidQAPass(result)
+	#print (result)
+	QAResult = Helper.DidQAPassV2(result)
+	print(QAResult)
 	

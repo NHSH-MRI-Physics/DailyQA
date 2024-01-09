@@ -85,7 +85,6 @@ def Setupplots(ImageData,seq,ScannerName):
     else:
         Cols= ImageData.shape[2]
         Rows = 2
-
     fig, axs = plt.subplots(Rows, Cols)
     Size = 0.25*ImageData.shape[2]
     if Size < 8:
@@ -303,8 +302,8 @@ def GetSTDModifiers(type):
         GlobalSTDModifier = 3.2
         ROISTDModifier = 3.35
     elif type == "Spine":
-        GlobalSTDModifier = 2.55
-        ROISTDModifier = 2.9
+        GlobalSTDModifier = 1.8
+        ROISTDModifier = 4.45
     else:
         raise NameError("Unknown type")
     
@@ -402,12 +401,16 @@ def DidQAPassV2(Result,thresh=None):
     Sequence = Result[3]
 
     Threshold = GetThresholds(QAType)
+
+    SlicesToBeRejected=[]
+    if Sequence in GetExcludedSlices(QAType).keys():
+        SlicesToBeRejected=GetExcludedSlices(QAType)[Sequence]
+
     if QAType=="Head":
         ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Body":
-        #ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
-        return DidQAPass(Result,thresh)
+        ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Spine":
         return DidQAPass(Result,thresh)
@@ -417,9 +420,10 @@ def DidQAPassV2(Result,thresh=None):
     ROIS = list(ROIBaseline.keys())
     for ROI in ROIS:
         for Slice in range(NumberOfSlicesInSeq):
-            RelSNR = ROIResults[ROI][Slice]/ROIBaseline[ROI][Slice][0]
-            if (RelSNR <= Threshold[Sequence]):
-                FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result (%):" + str(round(RelSNR,4)) + "   Threshold:" + str(round(Threshold[Sequence],4)) +"\n"
+            if Slice not in SlicesToBeRejected:
+                RelSNR = ROIResults[ROI][Slice]/ROIBaseline[ROI][Slice][0]
+                if (RelSNR <= Threshold[Sequence]):
+                    FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result (%):" + str(round(RelSNR,4)) + "   Threshold:" + str(round(Threshold[Sequence],4)) +"\n"
     if FailMessage=="":
         return True,FailMessage
     else:

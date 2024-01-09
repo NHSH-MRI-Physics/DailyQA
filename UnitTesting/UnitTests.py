@@ -95,7 +95,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
-    '''
+    
     def test_bodyPassAndEmail(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
@@ -121,7 +121,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
 
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
-
+    
     def test_spinePassAndEmail(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
@@ -147,7 +147,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
 
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
-        '''
+        
 
 class TestFailAndEmailFunction(unittest.TestCase):
     def setUp(self):
@@ -183,6 +183,29 @@ class TestFailAndEmailFunction(unittest.TestCase):
 
         BaselineFail = np.load('UnitTesting/UnitTestBaselines/HeadFailBaseline.npy',allow_pickle=True) 
         np.testing.assert_array_equal(AllResults,BaselineFail)
+
+        for name in Emails.keys():
+            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+
+    def test_bodyFailAndEmail(self):
+        Emails = {}
+        Emails["John"] = "Johnt717@gmail.com"
+        EmailResultLines = []
+        Images = []
+
+        Files = "UnitTesting/UnitTestData/FailData/DQA_Body_Fail"
+        DataFolder = "UnitTesting/UnitTestData/FailData/DQA_Body_Fail"
+        Results = DailyQA.RunDailyQA(Files)
+        QAResultTracker=[]
+        for result in Results:
+            QAResult = Helper.DidQAPassV2(result)
+
+            if QAResult[0] == False:
+                EmailResultLines.append(QAResult[1])
+            QAResultTracker.append(QAResult[0])
+
+            shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
+            Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
         for name in Emails.keys():
             Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)

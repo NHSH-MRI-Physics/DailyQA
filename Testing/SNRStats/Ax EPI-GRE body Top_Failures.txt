@@ -1,0 +1,30 @@
+
+
+
+
+Sequence : Ax EPI-GRE body Top
+####  Per ROI Failures ####
+File     Metric     Slice     ROI
+BaselineData/Body/DQA_Body_5     0.32117485402298207     3     M1
+BaselineData/Body/DQA_Body_5     0.28576487066516815     3     M3
+BaselineData/Body/DQA_Body_5     0.2827150358617384     3     M4
+
+Unique Fails
+BaselineData/Body/DQA_Body_5
+1/33   3.0%
+
+
+####  Per Slice Failures ####
+File     Metric     Slice
+BaselineData/Body/DQA_Body_5     0.3838334237591406     3
+
+Unique Fails
+BaselineData/Body/DQA_Body_5
+1/33   3.0%
+
+
+####  Average over all slices Failures ####
+File     Metric     Slice
+
+Unique Fails
+0/33   0.0%
