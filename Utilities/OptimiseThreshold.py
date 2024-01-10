@@ -62,7 +62,7 @@ def FinalTest(Coil):
             print(QAResult[0],Files)
 
 #GetThresh("Head",[3.3,3.7])
-#GetThresh("Spine",[1.8,4.45])
+#GetThresh("Spine",[2.3,4.45])
 #GetThresh("Body",[2.95,3.0])
 
 

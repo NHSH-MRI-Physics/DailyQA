@@ -302,7 +302,7 @@ def GetSTDModifiers(type):
         GlobalSTDModifier = 3.2
         ROISTDModifier = 3.35
     elif type == "Spine":
-        GlobalSTDModifier = 1.8
+        GlobalSTDModifier = 2.3
         ROISTDModifier = 4.45
     else:
         raise NameError("Unknown type")

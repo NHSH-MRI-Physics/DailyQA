@@ -208,11 +208,10 @@ HeadArchives = [x[0] for x in os.walk("Archive")][1:]
 for folder in HeadArchives:
     if "Head" in folder:
         HeadSNRFilesSources.append(folder)
-
-
 Data,FileTracker = SortData(HeadSNRFilesSources)
 np.save("Testing/SNRStats/HeadDataFile.npy", Data)
 np.save("Testing/SNRStats/HeadFileTracker.npy", FileTracker)
+
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/HeadFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"head",Normalise=True,ExcludeSlicesOption=False)
@@ -228,7 +227,8 @@ for folder in BodyArchives:
 Data,FileTracker = SortData(BodySNRFilesSources)
 np.save("Testing/SNRStats/BodyDataFile.npy", Data)
 np.save("Testing/SNRStats/BodyFileTracker.npy", FileTracker)
-'''
+
 Data = np.load("Testing/SNRStats/BodyDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/BodyFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"body",Normalise=True,ExcludeSlicesOption=True)
+'''

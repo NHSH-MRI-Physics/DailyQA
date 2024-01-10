@@ -98,11 +98,11 @@ Archives = [x[0] for x in os.walk("Archive")][1:]
 for folder in Archives:
     if "Body" in folder:
         files.append(folder)
-GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
+#GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
 
 files = [x[0] for x in os.walk("BaselineData/Spine/")][1:]
 Archives = [x[0] for x in os.walk("Archive")][1:]
 for folder in Archives:
     if "Spine" in folder:
         files.append(folder)
-#GetBaselineSmooth(files,"Spine_Baseline.npy","BaselineData/Spine/")
+GetBaselineSmooth(files,"Spine_Baseline.npy","BaselineData/Spine/")
