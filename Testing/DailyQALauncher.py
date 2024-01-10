@@ -8,7 +8,7 @@ import Helper
 
 
 #Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
-Files = "/Users/john/Downloads/DQA_Head_2023-12-20 08-21-21"
+Files = "/Users/john/Downloads/DQA_Head_2023-12-21 08-30-17-HeadTilt"
 Results = DailyQA.RunDailyQA(Files)
 for result in Results:
 	#print (result)

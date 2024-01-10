@@ -413,7 +413,7 @@ def DidQAPassV2(Result,thresh=None):
         ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Spine":
-        return DidQAPass(Result,thresh)
+        ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
     
     FailMessage=""
     NumberOfSlicesInSeq = len(ROIResults["M1"])
