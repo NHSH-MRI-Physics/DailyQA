@@ -14,12 +14,14 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
     DICOMFiles = glob.glob( os.path.join( Files+"/*.dcm"))
     DICOMS={}
     PixelData={}
+    ImageIds={}
 
     if len(DICOMFiles) == 0:
         raise NameError("No DICOMS found!")
 
     SkipSeqTerms = ["Cal", "ORIG", "Loc"]
     ScannerName = "Unknown"
+
     for file in DICOMFiles:
         Accept=True
         LoadedDICOM = pydicom.read_file( file )
@@ -31,9 +33,19 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         if Accept==False:
             continue
 
+
         if LoadedDICOM.SeriesDescription not in DICOMS:
             DICOMS[LoadedDICOM.SeriesDescription] = []
             PixelData[LoadedDICOM.SeriesDescription] = []
+            ImageIds[LoadedDICOM.SeriesDescription] = []
+
+        #Sometimes the images are pushed more than once, this only adds each image once...
+        ID = LoadedDICOM[0x20,0x13].value
+        if ID in ImageIds[LoadedDICOM.SeriesDescription]:
+            continue
+        else:
+            ImageIds[LoadedDICOM.SeriesDescription].append(ID)
+
         DICOMS[LoadedDICOM.SeriesDescription].append(LoadedDICOM) 
 
     for Seq in DICOMS.keys():
