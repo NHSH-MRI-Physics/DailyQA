@@ -7,18 +7,18 @@ Sequence : Ax EPI-GRE body Bot
 File     Metric     Slice     ROI
 
 Unique Fails
-0/33   0.0%
+0/14   0.0%
 
 
 ####  Per Slice Failures ####
 File     Metric     Slice
 
 Unique Fails
-0/33   0.0%
+0/14   0.0%
 
 
 ####  Average over all slices Failures ####
 File     Metric     Slice
 
 Unique Fails
-0/33   0.0%
+0/14   0.0%

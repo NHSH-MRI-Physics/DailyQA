@@ -227,7 +227,23 @@ for folder in BodyArchives:
 Data,FileTracker = SortData(BodySNRFilesSources)
 np.save("Testing/SNRStats/BodyDataFile.npy", Data)
 np.save("Testing/SNRStats/BodyFileTracker.npy", FileTracker)
-'''
+
 Data = np.load("Testing/SNRStats/BodyDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/BodyFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"body",Normalise=True,ExcludeSlicesOption=True)
+'''
+
+
+SpineSNRFilesSources=[]
+SpineSNRFilesSources = [x[0] for x in os.walk("BaselineData/Spine/")][1:]
+SpineArchives = [x[0] for x in os.walk("Archive")][1:]
+for folder in SpineArchives:
+    if "Spine" in folder:
+        SpineSNRFilesSources.append(folder)
+Data,FileTracker = SortData(SpineSNRFilesSources)
+np.save("Testing/SNRStats/SpineDataFile.npy", Data)
+np.save("Testing/SNRStats/SpineFileTracker.npy", FileTracker)
+
+Data = np.load("Testing/SNRStats/SpineDataFile.npy",allow_pickle=True)
+FileTracker = np.load("Testing/SNRStats/SpineFileTracker.npy",allow_pickle=True)
+AnalyseData(Data,FileTracker,"spine",Normalise=True,ExcludeSlicesOption=False)
