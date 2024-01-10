@@ -5,56 +5,27 @@
 Sequence : Ax T2 SSFSE TE 90 Top
 ####  Per ROI Failures ####
 File     Metric     Slice     ROI
-BaselineData/Body/DQA_Body_5     0.7529129372249274     3     M1
-Archive/DQA_Body_2023-12-18 08-27-34     0.7819447458148909     11     M1
-Archive/DQA_Body_2023-12-19 08-31-53     0.7957047462203807     7     M2
-Archive/DQA_Body_2023-12-19 08-31-53     0.7427747939593894     9     M2
-Archive/DQA_Body_2023-11-30 10-25-12     0.7168510596391954     9     M2
-Archive/DQA_Body_2023-12-18 08-27-34     0.7535349049411492     9     M2
 Archive/DQA_Body_2023-11-30 10-25-12     0.6867236568503848     10     M2
-Archive/DQA_Body_2023-12-18 08-27-34     0.725459994866363     10     M2
 Archive/DQA_Body_2023-12-19 08-31-53     0.6904506048807889     11     M2
 Archive/DQA_Body_2023-11-30 10-25-12     0.692541368596978     11     M2
 Archive/DQA_Body_2023-12-18 08-27-34     0.6060808604302556     11     M2
-Archive/DQA_Body_2023-11-23 17-17-13     0.7961057672049324     10     M3
-Archive/DQA_Body_2023-11-23 17-17-13     0.712440762497772     11     M3
-Archive/DQA_Body_2023-12-19 08-31-53     0.7796391762329841     11     M3
-Archive/DQA_Body_2023-11-23 17-17-13     0.7404754874970958     11     M4
-Archive/DQA_Body_2023-12-19 08-31-53     0.7867795840674172     4     M5
-Archive/DQA_Body_2023-12-19 08-31-53     0.7213375323622765     7     M5
 Archive/DQA_Body_2023-12-19 08-31-53     0.6921625626133548     8     M5
-Archive/DQA_Body_2023-12-19 09-06-36     0.7386702349102504     9     M5
 Archive/DQA_Body_2023-12-19 08-31-53     0.6350803565248413     9     M5
-Archive/DQA_Body_2023-12-19 08-31-53     0.7075666369346292     10     M5
-Archive/DQA_Body_2023-11-30 10-25-12     0.708821886739839     10     M5
-Archive/DQA_Body_2023-11-14 09-05-30     0.7497434604037635     10     M5
-Archive/DQA_Body_2023-12-19 09-06-36     0.7888378909277491     11     M5
 Archive/DQA_Body_2023-12-19 08-31-53     0.6249442047080876     11     M5
-Archive/DQA_Body_2023-11-30 10-25-12     0.7541977797027745     11     M5
-Archive/DQA_Body_2023-11-14 09-05-30     0.7778513430810564     11     M5
 Archive/DQA_Body_2023-12-18 08-27-34     0.6416993929421194     11     M5
 
 Unique Fails
-Archive/DQA_Body_2023-12-19 08-31-53
-Archive/DQA_Body_2023-11-14 09-05-30
 Archive/DQA_Body_2023-12-18 08-27-34
-Archive/DQA_Body_2023-11-23 17-17-13
 Archive/DQA_Body_2023-11-30 10-25-12
-Archive/DQA_Body_2023-12-19 09-06-36
-BaselineData/Body/DQA_Body_5
-7/33   21.2%
+Archive/DQA_Body_2023-12-19 08-31-53
+3/33   9.1%
 
 
 ####  Per Slice Failures ####
 File     Metric     Slice
-Archive/DQA_Body_2023-12-19 08-31-53     0.7921061337640288     9
-Archive/DQA_Body_2023-12-19 08-31-53     0.7749692212333777     11
-Archive/DQA_Body_2023-12-18 08-27-34     0.7568338542189158     11
 
 Unique Fails
-Archive/DQA_Body_2023-12-19 08-31-53
-Archive/DQA_Body_2023-12-18 08-27-34
-2/33   6.1%
+0/33   0.0%
 
 
 ####  Average over all slices Failures ####

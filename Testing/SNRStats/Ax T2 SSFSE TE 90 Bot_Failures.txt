@@ -5,30 +5,16 @@
 Sequence : Ax T2 SSFSE TE 90 Bot
 ####  Per ROI Failures ####
 File     Metric     Slice     ROI
-BaselineData/Body/DQA_Body_5     0.7020637094170029     3     M1
-BaselineData/Body/DQA_Body_5     0.7868730323309493     4     M1
-Archive/DQA_Body_2023-12-18 08-28-14     0.7899148309027552     10     M1
-BaselineData/Body/DQA_Body_5     0.7516458807460222     3     M2
-BaselineData/Body/DQA_Body_4     0.7838414202833911     3     M2
-BaselineData/Body/DQA_Body_5     0.7738166998029826     3     M4
-Archive/DQA_Body_2023-12-18 08-27-34     0.7754314303164267     7     M4
-BaselineData/Body/DQA_Body_5     0.7899830708739963     3     M5
 
 Unique Fails
-BaselineData/Body/DQA_Body_4
-BaselineData/Body/DQA_Body_5
-Archive/DQA_Body_2023-12-18 08-28-14
-Archive/DQA_Body_2023-12-18 08-27-34
-4/33   12.1%
+0/33   0.0%
 
 
 ####  Per Slice Failures ####
 File     Metric     Slice
-BaselineData/Body/DQA_Body_5     0.7714966133517225     3
 
 Unique Fails
-BaselineData/Body/DQA_Body_5
-1/33   3.0%
+0/33   0.0%
 
 
 ####  Average over all slices Failures ####

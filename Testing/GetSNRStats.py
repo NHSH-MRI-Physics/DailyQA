@@ -227,8 +227,7 @@ for folder in BodyArchives:
 Data,FileTracker = SortData(BodySNRFilesSources)
 np.save("Testing/SNRStats/BodyDataFile.npy", Data)
 np.save("Testing/SNRStats/BodyFileTracker.npy", FileTracker)
-
+'''
 Data = np.load("Testing/SNRStats/BodyDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/BodyFileTracker.npy",allow_pickle=True)
 AnalyseData(Data,FileTracker,"body",Normalise=True,ExcludeSlicesOption=True)
-'''

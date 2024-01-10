@@ -105,4 +105,4 @@ Archives = [x[0] for x in os.walk("Archive")][1:]
 for folder in Archives:
     if "Spine" in folder:
         files.append(folder)
-GetBaselineSmooth(files,"Spine_Baseline.npy","BaselineData/Spine/")
+#GetBaselineSmooth(files,"Spine_Baseline.npy","BaselineData/Spine/")
