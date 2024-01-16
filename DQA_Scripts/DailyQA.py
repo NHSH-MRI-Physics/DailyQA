@@ -48,7 +48,6 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         DICOMS[LoadedDICOM.SeriesDescription].append(LoadedDICOM) 
 
-    ''' #This was moved down so the sequences are checked first before we fill the array (captures wrong sequence name)
     for Seq in DICOMS.keys():
         DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) # sort them by slice 
         img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
@@ -57,7 +56,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         for i, s in enumerate(DICOMS[Seq]):
             img2d = s.pixel_array
             PixelData[Seq][:, :, i] = img2d
-    '''
+    
     Results = []
     #ReceiveCoilName
     count=0
@@ -116,15 +115,6 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         else:
             raise ValueError("Unknown coil selected: " + CoilUsed)
         
-        
-        for Seq in DICOMS.keys():
-            DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) # sort them by slice 
-            img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
-            img_shape.append(len(DICOMS[Seq]))
-            PixelData[Seq] = np.zeros(img_shape)
-            for i, s in enumerate(DICOMS[Seq]):
-                img2d = s.pixel_array
-                PixelData[Seq][:, :, i] = img2d
         
         
         if OverrideThreshBinaryMap!=None:
