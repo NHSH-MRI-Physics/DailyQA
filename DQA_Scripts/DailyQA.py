@@ -20,6 +20,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         raise NameError("No DICOMS found!")
 
     SkipSeqTerms = ["Cal", "ORIG", "Loc"]
+    #AcceptedProts = ["RH - DailyQA Head","RH - DailyQA Body","RH - DailyQA Spine"]
     ScannerName = "Unknown"
 
     for file in DICOMFiles:
@@ -27,12 +28,15 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         LoadedDICOM = pydicom.read_file( file )
         ScannerName = LoadedDICOM[0x08,0x80].value
 
+        #TODOD add this back in when im sure what the prots are called on the scanner
+        #if (LoadedDICOM[0x18,0x1030].value not in AcceptedProts):
+        #    raise ValueError("Unknown protocol selected: " + LoadedDICOM[0x18,0x1030].value)
+
         for term in SkipSeqTerms:
             if term in LoadedDICOM.SeriesDescription:
                 Accept=False
         if Accept==False:
             continue
-
 
         if LoadedDICOM.SeriesDescription not in DICOMS:
             DICOMS[LoadedDICOM.SeriesDescription] = []
@@ -48,15 +52,6 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         DICOMS[LoadedDICOM.SeriesDescription].append(LoadedDICOM) 
 
-    for Seq in DICOMS.keys():
-        DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) # sort them by slice 
-        img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
-        img_shape.append(len(DICOMS[Seq]))
-        PixelData[Seq] = np.zeros(img_shape)
-        for i, s in enumerate(DICOMS[Seq]):
-            img2d = s.pixel_array
-            PixelData[Seq][:, :, i] = img2d
-    
     Results = []
     #ReceiveCoilName
     count=0
@@ -115,7 +110,15 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         else:
             raise ValueError("Unknown coil selected: " + CoilUsed)
         
-        
+        #moved this to here so the sequences are checked prior to getting loaded (if any issues this may need to be moved back)
+        DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) 
+        img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
+        img_shape.append(len(DICOMS[Seq]))
+        PixelData[Seq] = np.zeros(img_shape)
+        for i, s in enumerate(DICOMS[Seq]):
+            img2d = s.pixel_array
+            PixelData[Seq][:, :, i] = img2d
+    
         
         if OverrideThreshBinaryMap!=None:
             Thresh=OverrideThreshBinaryMap
