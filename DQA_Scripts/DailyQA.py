@@ -48,6 +48,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         DICOMS[LoadedDICOM.SeriesDescription].append(LoadedDICOM) 
 
+    ''' #This was moved down so the sequences are checked first before we fill the array (captures wrong sequence name)
     for Seq in DICOMS.keys():
         DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) # sort them by slice 
         img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
@@ -56,7 +57,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         for i, s in enumerate(DICOMS[Seq]):
             img2d = s.pixel_array
             PixelData[Seq][:, :, i] = img2d
-
+    '''
     Results = []
     #ReceiveCoilName
     count=0
@@ -80,9 +81,11 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             if Seq == "Ax T2 FSE head":
                 ErorsionSteps=10
                 #ROIarg=35
-            if Seq == "Ax EPI-GRE head":
+            elif Seq == "Ax EPI-GRE head":
                 ErorsionSteps=5
                 #ROIarg=10
+            else:
+                raise ValueError("Unknown sequence selected: " + Seq)
 
         elif (CoilUsed == "Body 48 1"):
             QAType="Body"
@@ -91,10 +94,11 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
                 Thresh=0.2
                 ErorsionSteps=5
-            if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
+            elif Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
                 Thresh=0.2
                 ErorsionSteps=5
-
+            else:
+                raise ValueError("Unknown sequence selected: " + Seq)
 
 
         elif (CoilUsed == "Spine 48 1" or CoilUsed == "Spine 48 2"):
@@ -103,12 +107,25 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
                 Thresh=0.1
                 ErorsionSteps=5
-            if Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
+            elif Seq == "Ax EPI-GRE body Bot" or Seq == "Ax EPI-GRE body Top":
                 Thresh=0.1
                 ErorsionSteps=5
+            else:
+                raise ValueError("Unknown sequence selected: " + Seq)
 
         else:
             raise ValueError("Unknown coil selected: " + CoilUsed)
+        
+        
+        for Seq in DICOMS.keys():
+            DICOMS[Seq].sort(key=lambda x: x.SliceLocation, reverse=False) # sort them by slice 
+            img_shape = list(DICOMS[Seq][0].pixel_array.shape) 
+            img_shape.append(len(DICOMS[Seq]))
+            PixelData[Seq] = np.zeros(img_shape)
+            for i, s in enumerate(DICOMS[Seq]):
+                img2d = s.pixel_array
+                PixelData[Seq][:, :, i] = img2d
+        
         
         if OverrideThreshBinaryMap!=None:
             Thresh=OverrideThreshBinaryMap
