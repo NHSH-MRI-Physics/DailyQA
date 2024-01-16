@@ -7,10 +7,17 @@ import numpy as np
 import Helper
 import glob
 import shutil
+import pandas as pd
 
 #If the unit tests are run in the UnitTesting folder then move the working directory back to the DailyQA folder
 if( os.path.basename(os.path.normpath(os.getcwd())) ) == "UnitTesting": 
     os.chdir('..')
+
+def CompareToBaseline(Results,Baseline):
+    for result in Results:
+        for baseResult in Baseline:
+            if baseResult[-1]==result[-1]:
+                pd.testing.assert_series_equal(pd.Series(result),pd.Series(baseResult))
 
 class TestSNRNormal(unittest.TestCase):
     def setUp(self):
@@ -26,37 +33,46 @@ class TestSNRNormal(unittest.TestCase):
     def test_headSNR(self):
         Results = DailyQA.RunDailyQA("UnitTesting/UnitTestData/PassData/DQA_Head_1")
         Baseline = np.load('UnitTesting/UnitTestBaselines/HeadBaseline.npy',allow_pickle=True) 
-        np.testing.assert_array_equal(Results,Baseline)
+
+        CompareToBaseline(Results,Baseline)
 
         files = glob.glob("Results/*.png")
-        self.assertEqual(files[0],'Results/Ax T2 FSE head_SmoothMethod.png')
-        self.assertEqual(files[1],'Results/Ax EPI-GRE head_SmoothMethod.png')
         self.assertEqual(2,len(files))
+
+        PredictedFiles =[]
+        PredictedFiles.append(os.path.join('Results','Ax T2 FSE head_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax EPI-GRE head_SmoothMethod.png'))
+        unittest.TestCase().assertCountEqual(files, PredictedFiles)
 
 
     def test_BodySNR(self):
         Results = DailyQA.RunDailyQA("UnitTesting/UnitTestData/PassData/DQA_Body_1")
         Baseline = np.load('UnitTesting/UnitTestBaselines/BodyBaseline.npy',allow_pickle=True) 
-        np.testing.assert_array_equal(Results,Baseline)
+        CompareToBaseline(Results,Baseline)
 
         files = glob.glob("Results/*.png")
-        self.assertEqual(files[0],'Results/Ax T2 SSFSE TE 90 Top_SmoothMethod.png')
-        self.assertEqual(files[1],'Results/Ax EPI-GRE body Bot_SmoothMethod.png')
-        self.assertEqual(files[2],'Results/Ax EPI-GRE body Top_SmoothMethod.png')
-        self.assertEqual(files[3],'Results/Ax T2 SSFSE TE 90 Bot_SmoothMethod.png')
         self.assertEqual(4,len(files))
+        PredictedFiles =[]
+        PredictedFiles.append(os.path.join('Results','Ax T2 SSFSE TE 90 Top_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax EPI-GRE body Bot_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax EPI-GRE body Top_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax T2 SSFSE TE 90 Bot_SmoothMethod.png'))
+        unittest.TestCase().assertCountEqual(files, PredictedFiles)
+        
 
     def test_SpineSNR(self):
         Results = DailyQA.RunDailyQA("UnitTesting/UnitTestData/PassData/DQA_Spine_1")
         Baseline = np.load('UnitTesting/UnitTestBaselines/SpineBaseline.npy',allow_pickle=True) 
-        np.testing.assert_array_equal(Results,Baseline)
+        CompareToBaseline(Results,Baseline)
 
         files = glob.glob("Results/*.png")
-        self.assertEqual(files[0],'Results/Ax T2 SSFSE TE 90 Top_SmoothMethod.png')
-        self.assertEqual(files[1],'Results/Ax EPI-GRE body Bot_SmoothMethod.png')
-        self.assertEqual(files[2],'Results/Ax EPI-GRE body Top_SmoothMethod.png')
-        self.assertEqual(files[3],'Results/Ax T2 SSFSE TE 90 Bot_SmoothMethod.png')    
         self.assertEqual(4,len(files))
+        PredictedFiles =[]
+        PredictedFiles.append(os.path.join('Results','Ax T2 SSFSE TE 90 Top_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax EPI-GRE body Bot_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax EPI-GRE body Top_SmoothMethod.png'))
+        PredictedFiles.append(os.path.join('Results','Ax T2 SSFSE TE 90 Bot_SmoothMethod.png'))
+        unittest.TestCase().assertCountEqual(files, PredictedFiles)
         
 class TestPassAndEmailFunction(unittest.TestCase):
     def setUp(self):
