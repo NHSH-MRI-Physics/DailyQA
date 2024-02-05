@@ -67,7 +67,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         QAType = None
 
-        if (CoilUsed == "Head 24"): 
+        if (CoilUsed == "Head 24" or CoilUsed == "19HN"): 
             QAType="Head"
             KernalSize = 2
             Thresh= 0.2
@@ -81,7 +81,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             else:
                 raise ValueError("Unknown sequence selected: " + Seq)
 
-        elif (CoilUsed == "Body 48 1"):
+        elif (CoilUsed == "Body 48 1"  or CoilUsed == "16AA+40PA"):
             QAType="Body"
             KernalSize = 1
 
@@ -95,7 +95,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
                 raise ValueError("Unknown sequence selected: " + Seq)
 
 
-        elif (CoilUsed == "Spine 48 1" or CoilUsed == "Spine 48 2"):
+        elif (CoilUsed == "Spine 48 1" or CoilUsed == "Spine 48 2" or CoilUsed == "40PA"):
             QAType="Spine"
             KernalSize = 1
             if Seq == "Ax T2 SSFSE TE 90 Bot" or Seq == "Ax T2 SSFSE TE 90 Top":
