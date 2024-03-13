@@ -8,10 +8,14 @@ import Helper
 
 
 #Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
-Files = "C:\\Users\\Johnt\\Desktop\\OneDrive_2024-01-16\\DQA_Body_2024-01-16 08-30-58"
+Files = "BaselineData\Body\DQA_Body_1"
 Results = DailyQA.RunDailyQA(Files)
+print(DailyQA.GetManHoursSaved())
+sys.exit()
+
+
 for result in Results:
-	#print (result)
+	print (result)
 	QAResult = Helper.DidQAPassV2(result)
 	print(QAResult)
 	

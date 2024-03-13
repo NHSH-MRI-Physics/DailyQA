@@ -14,6 +14,7 @@ import random
 from email.message import EmailMessage
 import scipy.stats as st
 import sys
+import DailyQA
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)
@@ -129,6 +130,9 @@ def SendEmail(name,email,results,QAName,QAResult,Archive=None):
 
 def SendEmailV2(name,email,results,QAName,QAResult,Archive=None,images=None):
 
+    print()
+
+
     UserName = "raigmoremri@gmail.com"
     file = open('Password.txt',mode='r')
     Password = file.read()
@@ -151,6 +155,7 @@ def SendEmailV2(name,email,results,QAName,QAResult,Archive=None,images=None):
     for line in results:
         TEXT+=line +  "\n"
     TEXT+="\n"
+    TEXT+="Estimated Total Man Hours Saved: " + str( round(DailyQA.GetManHoursSaved(),2)) + " hours\n\n"
     TEXT+= "Random Fact: " + randfacts.get_fact()    +"\n\n"
     if (Archive!=None):
         TEXT+= "Archive Folder: "+Archive + "\n"

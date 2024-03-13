@@ -16,10 +16,10 @@ EmailResultLines = []
 #Results = Helper.ProduceTestData(1)
 Images = []
 
-Files = "Data/DQA_Head_1"
-Files = "UnitTesting/UnitTestData/FailData/DQA_Head_Fail"
-DataFolder = "/Users/mri/Desktop/DailyQA/Data/DQA_Head_1"
-DataFolder = "UnitTesting/UnitTestData/FailData/DQA_Head_Fail"
+Files = "baselineData/Head/DQA_Head_1"
+#Files = "UnitTesting/UnitTestData/FailData/DQA_Head_Fail"
+DataFolder = "Data/DQA_Head_1"
+#DataFolder = "UnitTesting/UnitTestData/FailData/DQA_Head_Fail"
 Results = DailyQA.RunDailyQA(Files)
 QAResultTracker=[]
 for result in Results:

@@ -55,6 +55,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
     Results = []
     #ReceiveCoilName
     count=0
+    NumberOfFilesToProcess=0
     SeqToRun = DICOMS.keys()
     if RunSeq != None:
         SeqToRun = [RunSeq]
@@ -119,7 +120,6 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
             img2d = s.pixel_array
             PixelData[Seq][:, :, i] = img2d
     
-        
         if OverrideThreshBinaryMap!=None:
             Thresh=OverrideThreshBinaryMap
         
@@ -134,4 +134,26 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         #Results.append( [SNRSmooth,SNRNessAiver,Seq])
         Results.append( [SNRSmooth,ROIResults,QAType,Seq])
         count+=1
+
+        SlicesToBeRejected=[]
+        if Seq in Helper.GetExcludedSlices(QAType).keys():
+            SlicesToBeRejected=Helper.GetExcludedSlices(QAType)[Seq]
+
+        NumberOfFilesToProcess+=((PixelData[Seq].shape[2]) - len(SlicesToBeRejected))
+    np.save("temp.npy", NumberOfFilesToProcess)
     return Results
+
+def GetManHoursSaved():
+    TimePerImage = 0.028
+    NumberOfFilesLastRun = int(np.load("temp.npy"))
+    os.remove("temp.npy")
+
+    if os.path.isfile("TotalTime.npy") == False:
+        TimeSaved = 0.0
+        np.save("TotalTime.npy",TimeSaved)
+
+    TotalTimeSaved = float(np.load("TotalTime.npy"))
+    TotalTimeSaved+=(NumberOfFilesLastRun*TimePerImage)
+    np.save("TotalTime.npy",TotalTimeSaved)
+    return TotalTimeSaved
+    
