@@ -3,3 +3,5 @@ Password.txt
 Archive/*
 *.pyc
 *.png
+TotalTime.npy
+temp.npy

@@ -175,6 +175,7 @@ def SendEmailV2(name,email,results,QAName,QAResult,Archive=None,images=None):
                 img_data = fp.read()
             msg.add_attachment(img_data, maintype='image',subtype='png')
 
+
     # Send the email via our own SMTP server.
     with smtplib.SMTP('smtp.gmail.com', 587) as s:
         s.starttls()

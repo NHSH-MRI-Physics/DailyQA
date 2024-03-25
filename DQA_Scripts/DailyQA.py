@@ -141,12 +141,13 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         NumberOfFilesToProcess+=((PixelData[Seq].shape[2]) - len(SlicesToBeRejected))
     np.save("temp.npy", NumberOfFilesToProcess)
+
     return Results
 
 def GetManHoursSaved():
     TimePerImage = 0.028
     NumberOfFilesLastRun = int(np.load("temp.npy"))
-    os.remove("temp.npy")
+    #os.remove("temp.npy") TODO: Fix this bit it seems to be funny on Mac...
 
     if os.path.isfile("TotalTime.npy") == False:
         TimeSaved = 0.0
