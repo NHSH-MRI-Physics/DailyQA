@@ -441,7 +441,8 @@ def GetStatsBasedThresh(data):
 
 def GetExcludedSlices(type):
     type = type.lower()
-    f = open("DQA_Scripts/SlicesToExclude.txt")
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    f = open(os.path.join(dir_path,"SlicesToExclude.txt"))
     Slices={}
     for line in f:
         if (line.split(",")[0]==type):
