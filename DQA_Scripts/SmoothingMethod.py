@@ -2,6 +2,8 @@ import pydicom
 import glob
 import sys
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 import cv2 as cv
@@ -126,7 +128,13 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
         
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-    plt.savefig("Results/"+seq+"_SmoothMethod.png")
+
+    import os 
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path,"..","Results",seq+"_SmoothMethod.png")
+
+    #plt.savefig("Results/"+seq+"_SmoothMethod.png")
+    plt.savefig(path)
     plt.close()
 
 
