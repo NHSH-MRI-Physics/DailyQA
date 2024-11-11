@@ -392,7 +392,11 @@ def DidQAPass(Result,thresh=None):
     
 def GetThresholds(type):
     type = type.lower()
-    f = open("DQA_Scripts/Thresholds.txt")
+
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path,"..","DQA_Scripts","Thresholds.txt")
+    f = open(path)
+
     Threshes={}
     for line in f:
         if (line.split(",")[0]==type):
@@ -412,14 +416,16 @@ def DidQAPassV2(Result,thresh=None):
     if Sequence in GetExcludedSlices(QAType).keys():
         SlicesToBeRejected=GetExcludedSlices(QAType)[Sequence]
 
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
     if QAType=="Head":
-        ROIBaseline = np.load(os.path.join("BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
+        ROIBaseline = np.load(os.path.join(dir_path,"..","BaselineData","Head","ROI_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Body":
-        ROIBaseline = np.load(os.path.join("BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
+        ROIBaseline = np.load(os.path.join(dir_path,"..","BaselineData","Body","ROI_Body_Baseline.npy"),allow_pickle=True).item()[Sequence]
 
     if QAType=="Spine":
-        ROIBaseline = np.load(os.path.join("BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
+        ROIBaseline = np.load(os.path.join(dir_path,"..","BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
     
     FailMessage=""
     NumberOfSlicesInSeq = len(ROIResults["M1"])
