@@ -92,6 +92,8 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
                 ROISize = widthX*0.3
             else:
                 ROISize = ROISizeArg
+            if ROISize<1:
+                ROISize = 15
             RoiSizeHalf = int(round(ROISize/2.0,0))
 
             #Centre of each ROI
@@ -102,7 +104,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
             M5= [ int(round(cent_x-widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
             ROIs = [M1,M2,M3,M4,M5]
             SNRList=[]
-            for roi in ROIs:
+            for roi in ROIs:                 
                 Signal = np.mean(Image[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])
                 Noise = np.std(Difference[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])
                 SNR = Signal/Noise
