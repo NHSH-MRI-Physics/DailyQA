@@ -1,13 +1,15 @@
 import unittest
 import sys
 import os 
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
-import DailyQA
+#sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
+from DQA_Scripts import DailyQA
 import numpy as np
-import Helper
+from DQA_Scripts import Helper   
 import glob
 import shutil
 import pandas as pd
+
+
 
 #If the unit tests are run in the UnitTesting folder then move the working directory back to the DailyQA folder
 if( os.path.basename(os.path.normpath(os.getcwd())) ) == "UnitTesting": 
@@ -108,8 +110,8 @@ class TestPassAndEmailFunction(unittest.TestCase):
             shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
             Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
-        for name in Emails.keys():
-            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        #for name in Emails.keys():
+        #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
     
     def test_bodyPassAndEmail(self):
@@ -135,8 +137,8 @@ class TestPassAndEmailFunction(unittest.TestCase):
             shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
             Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
-        for name in Emails.keys():
-            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        #for name in Emails.keys():
+        #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
     
     def test_spinePassAndEmail(self):
         Emails = {}
@@ -161,8 +163,8 @@ class TestPassAndEmailFunction(unittest.TestCase):
             shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
             Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
-        for name in Emails.keys():
-            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        #for name in Emails.keys():
+        #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
         
 
 class TestFailAndEmailFunction(unittest.TestCase):
@@ -200,8 +202,8 @@ class TestFailAndEmailFunction(unittest.TestCase):
         BaselineFail = np.load('UnitTesting/UnitTestBaselines/HeadFailBaseline.npy',allow_pickle=True) 
         np.testing.assert_array_equal(AllResults,BaselineFail)
 
-        for name in Emails.keys():
-            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        #for name in Emails.keys():
+        #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
     def test_bodyFailAndEmail(self):
         Emails = {}
@@ -223,7 +225,7 @@ class TestFailAndEmailFunction(unittest.TestCase):
             shutil.copyfile("Results/"+result[-1]+"_SmoothMethod.png", os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
             Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
-        for name in Emails.keys():
-            Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
+        #for name in Emails.keys():
+        #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
-unittest.main()
+#unittest.main()

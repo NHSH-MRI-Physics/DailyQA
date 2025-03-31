@@ -5,10 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 import cv2 as cv
-import SmoothingMethod
-import Helper 
-import NessAiverMethod
 import os
+from DQA_Scripts import SmoothingMethod
+from DQA_Scripts import Helper
 
 def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=None,RunSeq=None,ThreshRejectionOveride=None):
     DICOMFiles = glob.glob( os.path.join( Files+"/*.dcm"))

@@ -1,18 +1,18 @@
 import sys
 import os 
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DQA_Scripts'))
-import DailyQA
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+sys.path.append(parent_dir)
+
+from DQA_Scripts import DailyQA
 import numpy as np
-import Helper
+from DQA_Scripts import Helper  
 #os.chdir('..')
 
-
-#Files = "/Users/john/Documents/DailyQA/baselineData/Head/DQA_Head_1"
-Files = "BaselineData\Body\DQA_Body_1"
+Files = "BaselineData\Head\DQA_Head_1"
+#Files = "C:\\Users\John\Desktop\DailyQA_DQA_Body_2024-12-09 09-49-10"
 Results = DailyQA.RunDailyQA(Files)
-print(DailyQA.GetManHoursSaved())
-sys.exit()
-
 
 for result in Results:
 	print (result)

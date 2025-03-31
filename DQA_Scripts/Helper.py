@@ -14,7 +14,7 @@ import random
 from email.message import EmailMessage
 import scipy.stats as st
 import sys
-import DailyQA
+from DQA_Scripts import DailyQA
 
 def AddNoise(Image,sigma):
     NoiseImage = np.copy(Image)

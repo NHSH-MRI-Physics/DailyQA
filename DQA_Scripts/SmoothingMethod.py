@@ -9,7 +9,7 @@ from scipy.signal import find_peaks
 import cv2 as cv
 import matplotlib.patches as patches
 import math
-import Helper
+from DQA_Scripts import Helper
 
 def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices):
     axs[row,col].set_axis_on()
