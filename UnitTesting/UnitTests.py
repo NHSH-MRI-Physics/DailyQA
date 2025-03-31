@@ -76,7 +76,7 @@ class TestSNRNormal(unittest.TestCase):
         PredictedFiles.append(os.path.join('Results','Ax T2 SSFSE TE 90 Bot_SmoothMethod.png'))
         unittest.TestCase().assertCountEqual(files, PredictedFiles)
         
-class TestPassAndEmailFunction(unittest.TestCase):
+class TestPass(unittest.TestCase):
     def setUp(self):
         files = glob.glob("Results/*.png")
         for file in files:
@@ -114,7 +114,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
         #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
     
-    def test_bodyPassAndEmail(self):
+    def test_bodyPass(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
         EmailResultLines = []
@@ -167,7 +167,7 @@ class TestPassAndEmailFunction(unittest.TestCase):
         #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
         
 
-class TestFailAndEmailFunction(unittest.TestCase):
+class TestFail(unittest.TestCase):
     def setUp(self):
         files = glob.glob("Results/*.png")
         for file in files:
@@ -205,7 +205,7 @@ class TestFailAndEmailFunction(unittest.TestCase):
         #for name in Emails.keys():
         #    Helper.SendEmailV2(name,Emails[name],EmailResultLines,Results[0][2]+" (UNIT TEST RUN)",QAResultTracker,Archive=DataFolder,images=Images)
 
-    def test_bodyFailAndEmail(self):
+    def test_bodyFail(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
         EmailResultLines = []
