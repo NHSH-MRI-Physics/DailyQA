@@ -6,4 +6,4 @@ pandas==2.0.3
 pydicom==3.0.1
 randfacts==0.21.0
 Requests==2.32.3
-scipy==1.6.2
+scipy
