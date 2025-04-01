@@ -10,6 +10,7 @@ import cv2 as cv
 import matplotlib.patches as patches
 import math
 from DQA_Scripts import Helper
+from scipy import ndimage
 
 def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices):
     axs[row,col].set_axis_on()
@@ -42,21 +43,26 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
 
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
+        Image = Image.astype(int)
         ROIs = []
         RoiSizeHalf=None
         BinaryMapSignal=None
         if i not in RejectedSlices:
-            MatrixSize = (KernalSize*2+1)**2
-            kernel = np.ones((MatrixSize,MatrixSize),np.float32)/(MatrixSize*MatrixSize)
-            Smoothed = cv.filter2D(Image,-1,kernel)
+            #The paper says 9x9 is the best so lets go with that
+            Smoothed = ndimage.uniform_filter(Image, 9, mode="constant")
             Difference = Image - Smoothed
 
-            #plt.clf()
-            #plt.imshow(Image)
-            #plt.show()
+            if i == 6:
+                import matplotlib
+                matplotlib.use('TkAgg')
+                fig, (ax1, ax2,ax3) = plt.subplots(1, 3)
+                fig.suptitle('Horizontally stacked subplots')
+                ax1.imshow(Image)
+                ax2.imshow(Smoothed)
+                ax3.imshow(Difference)
+                plt.show()
             
             ThreshRel = np.max(Image)*Thresh
-
             BinaryMapSignal = np.copy(Image)
             High = np.where(BinaryMapSignal>=ThreshRel)
             Low = np.where(BinaryMapSignal<ThreshRel)
