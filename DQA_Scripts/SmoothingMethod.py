@@ -102,6 +102,9 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
                 ROISize = 15
             RoiSizeHalf = int(round(ROISize/2.0,0))
 
+            if i == 6:
+                print(RoiSizeHalf)
+
             #Centre of each ROI
             M1 = [cent_x,cent_y]
             M2= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
