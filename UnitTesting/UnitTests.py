@@ -1,9 +1,9 @@
 import unittest
 import sys
 import os 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-sys.path.append(parent_dir)
+#current_dir = os.path.dirname(os.path.abspath(__file__))
+#parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+#sys.path.append(parent_dir)
 from DQA_Scripts import DailyQA
 import numpy as np
 from DQA_Scripts import Helper   
@@ -327,4 +327,4 @@ class TestFundementalFunctions(unittest.TestCase):
         np.testing.assert_array_less(abs(M5SNR-M5ManualSNR)/M5ManualSNR*100.0,3)
         
 
-unittest.main()
+#unittest.main()
