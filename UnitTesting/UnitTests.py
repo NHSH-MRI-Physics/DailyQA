@@ -314,14 +314,15 @@ class TestFundementalFunctions(unittest.TestCase):
         M4ManualSNR = 2305.347/30.258
         M5ManualSNR = 3048.659/35.187
     
-
-        print(M1SNR,M1ManualSNR)
+        i=0
+        if (Results[i][-1]) != "Ax T2 FSE head":
+            i=1
         
         print( abs(M1SNR-M1ManualSNR)/M1ManualSNR*100.0) 
-        #print( abs(M2SNR-M2ManualSNR)/M2ManualSNR*100.0) 
-        #print( abs(M3SNR-M3ManualSNR)/M3ManualSNR*100.0) 
-        #print( abs(M4SNR-M4ManualSNR)/M4ManualSNR*100.0) 
-        #print( abs(M5SNR-M5ManualSNR)/M5ManualSNR*100.0) 
+        print( abs(M2SNR-M2ManualSNR)/M2ManualSNR*100.0) 
+        print( abs(M3SNR-M3ManualSNR)/M3ManualSNR*100.0) 
+        print( abs(M4SNR-M4ManualSNR)/M4ManualSNR*100.0) 
+        print( abs(M5SNR-M5ManualSNR)/M5ManualSNR*100.0) 
 
         np.testing.assert_array_less(abs(M1SNR-M1ManualSNR)/M1ManualSNR*100.0,3)
         np.testing.assert_array_less(abs(M2SNR-M2ManualSNR)/M2ManualSNR*100.0,3)
