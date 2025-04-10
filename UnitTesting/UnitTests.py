@@ -300,14 +300,7 @@ class TestFundementalFunctions(unittest.TestCase):
 
     def testSNR(self):
         Results = DailyQA.RunDailyQA("UnitTesting/UnitTestData/PassData/DQA_Head_1",TestingSettings=self.UnitTestSettings)
-
-        M1SNR = Results[0][1]['M1'][2]
-        M2SNR = Results[0][1]['M2'][2]
-        M3SNR = Results[0][1]['M3'][2]
-        M4SNR = Results[0][1]['M4'][2]
-        M5SNR = Results[0][1]['M5'][2]
-
-
+        
         M1ManualSNR = 2314.719/33.896
         M2ManualSNR = 2923.297/34.765
         M3ManualSNR = 2322.649/29.302
@@ -315,11 +308,15 @@ class TestFundementalFunctions(unittest.TestCase):
         M5ManualSNR = 3048.659/35.187
     
         i=0
-        print(Results[i][-1])
         if Results[i][-1] != "Ax T2 FSE head":
             i=1
-        print(Results[i][-1])
-        
+
+        M1SNR = Results[0][1]['M1'][2]
+        M2SNR = Results[0][1]['M2'][2]
+        M3SNR = Results[0][1]['M3'][2]
+        M4SNR = Results[0][1]['M4'][2]
+        M5SNR = Results[0][1]['M5'][2]
+
         print( abs(M1SNR-M1ManualSNR)/M1ManualSNR*100.0) 
         print( abs(M2SNR-M2ManualSNR)/M2ManualSNR*100.0) 
         print( abs(M3SNR-M3ManualSNR)/M3ManualSNR*100.0) 
