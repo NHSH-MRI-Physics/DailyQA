@@ -12,6 +12,16 @@ import math
 from DQA_Scripts import Helper
 from scipy import ndimage
 
+
+#TestingSettings
+class TestingSettings:
+  def __init__(self):
+    self.imageindex = None
+    self.SeqToTest= None
+    self.ReturnImage = None
+    self.ReturnSmoothedImage = None
+    self.ReturnDifferenceImage = None
+
 def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices):
     axs[row,col].set_axis_on()
     axs[row,col].axis('off')
@@ -26,9 +36,10 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,Rejec
             axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
             count+=1
 
-def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None,type=None):
+def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None,type=None, TestingSettings = None):
 
     fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
+    
 
     if ImageData.shape[2] == len(RejectedSlices):
         raise ValueError ("all sices rejected, reduce rejecton threshold!")
@@ -43,24 +54,23 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
 
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
-        Image = Image.astype(int)
+        #Image = Image.astype(int)
         ROIs = []
         RoiSizeHalf=None
         BinaryMapSignal=None
+
         if i not in RejectedSlices:
             #The paper says 9x9 is the best so lets go with that
             Smoothed = ndimage.uniform_filter(Image, 9, mode="constant")
             Difference = Image - Smoothed
 
-            if i == 6:
-                import matplotlib
-                matplotlib.use('TkAgg')
-                fig, (ax1, ax2,ax3) = plt.subplots(1, 3)
-                fig.suptitle('Horizontally stacked subplots')
-                ax1.imshow(Image)
-                ax2.imshow(Smoothed)
-                ax3.imshow(Difference)
-                plt.show()
+            if TestingSettings != None:
+                if i == TestingSettings.imageindex and seq== TestingSettings.SeqToTest:
+                    TestingSettings.ReturnImage = Image
+                    TestingSettings.ReturnSmoothedImage = Smoothed
+                    TestingSettings.ReturnDifferenceImage = Difference
+
+            
             
             ThreshRel = np.max(Image)*Thresh
             BinaryMapSignal = np.copy(Image)
@@ -102,9 +112,6 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
                 ROISize = 15
             RoiSizeHalf = int(round(ROISize/2.0,0))
 
-            if i == 6:
-                print(RoiSizeHalf)
-
             #Centre of each ROI
             M1 = [cent_x,cent_y]
             M2= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
@@ -112,6 +119,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
             M4= [ int(round(cent_x+widthX*0.4,0)), int(round(cent_y-widthY*0.4,0)) ]
             M5= [ int(round(cent_x-widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
             ROIs = [M1,M2,M3,M4,M5]
+
             SNRList=[]
             for roi in ROIs:                 
                 Signal = np.mean(Image[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])

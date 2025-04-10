@@ -9,7 +9,7 @@ import os
 from DQA_Scripts import SmoothingMethod
 from DQA_Scripts import Helper
 
-def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=None,RunSeq=None,ThreshRejectionOveride=None):
+def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=None,RunSeq=None,ThreshRejectionOveride=None,TestingSettings = None):
     DICOMFiles = glob.glob( os.path.join( Files+"/*.dcm"))
     DICOMS={}
     PixelData={}
@@ -116,7 +116,9 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
         img_shape.append(len(DICOMS[Seq]))
         PixelData[Seq] = np.zeros(img_shape)
         for i, s in enumerate(DICOMS[Seq]):
-            img2d = s.pixel_array
+            #img2d = s.pixel_array
+            from pydicom.pixel_data_handlers.util import apply_modality_lut
+            img2d = apply_modality_lut(s.pixel_array,s).astype('int') 
             PixelData[Seq][:, :, i] = img2d
     
         if OverrideThreshBinaryMap!=None:
@@ -128,7 +130,7 @@ def RunDailyQA(Files,NoiseAmount=None,OverrideThreshBinaryMap=None,AddInSlices=N
 
         if NoiseAmount != None:
             PixelData[Seq] = Helper.AddNoise(PixelData[Seq],NoiseAmount)
-        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName,type=QAType)
+        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName,type=QAType,TestingSettings = TestingSettings)
         #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
         #Results.append( [SNRSmooth,SNRNessAiver,Seq])
         Results.append( [SNRSmooth,ROIResults,QAType,Seq])

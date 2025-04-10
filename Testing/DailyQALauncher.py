@@ -10,12 +10,17 @@ import numpy as np
 from DQA_Scripts import Helper  
 #os.chdir('..')
 
-Files = "BaselineData\Head\DQA_Head_1"
+Files = "BaselineData/Head/DQA_Head_1"
 #Files = "C:\\Users\John\Desktop\DailyQA_DQA_Body_2024-12-09 09-49-10"
 Results = DailyQA.RunDailyQA(Files)
 
-for result in Results:
-	print (result)
-	QAResult = Helper.DidQAPassV2(result)
-	print(QAResult)
-	
+print(Results[1][1]['M1'][5]) #slice 6
+print(Results[1][1]['M2'][5]) #slice 6
+print(Results[1][1]['M3'][5]) #slice 6
+print(Results[1][1]['M4'][5]) #slice 6
+print(Results[1][1]['M5'][5]) #slice 6
+
+#for result in Results:
+#	print (result)
+#	QAResult = Helper.DidQAPassV2(result)
+#	print(QAResult)
