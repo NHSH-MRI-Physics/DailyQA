@@ -316,8 +316,9 @@ class TestFundementalFunctions(unittest.TestCase):
     
         i=0
         print(Results[i][-1])
-        if (Results[i][-1]) != "Ax T2 FSE head":
+        if Results[i][-1] != "Ax T2 FSE head":
             i=1
+        print(Results[i][-1])
         
         print( abs(M1SNR-M1ManualSNR)/M1ManualSNR*100.0) 
         print( abs(M2SNR-M2ManualSNR)/M2ManualSNR*100.0) 
