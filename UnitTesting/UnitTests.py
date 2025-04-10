@@ -315,6 +315,7 @@ class TestFundementalFunctions(unittest.TestCase):
         M5ManualSNR = 3048.659/35.187
     
         i=0
+        print(Results[i][-1])
         if (Results[i][-1]) != "Ax T2 FSE head":
             i=1
         
