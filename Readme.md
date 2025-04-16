@@ -26,6 +26,7 @@ The returned results has one entry per sequence. In each entry you get the follo
 - index 4: the sequence being run.
 
 The ROIs are numbered as following:
+
 ![image](https://github.com/user-attachments/assets/0ff4f5c0-21a8-403d-a797-232922f681dd)
 
 You can pass the results into the DidQAPass functuion to determine if it is within thresholds.
