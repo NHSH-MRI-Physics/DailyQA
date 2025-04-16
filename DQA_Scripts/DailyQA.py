@@ -9,7 +9,7 @@ import os
 from DQA_Scripts import SmoothingMethod
 from DQA_Scripts import Helper
 
-def RunDailyQA(Files):
+def RunDailyQA(Files,TestingSettings = None):
 
     #legacy settings tthat are really used for testings
     NoiseAmount=None
@@ -17,7 +17,7 @@ def RunDailyQA(Files):
     AddInSlices=None
     RunSeq=None
     ThreshRejectionOveride=None
-    TestingSettings = None
+    
 
 
 
