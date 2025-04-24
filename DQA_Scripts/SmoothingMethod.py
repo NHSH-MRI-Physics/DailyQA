@@ -9,7 +9,7 @@ from scipy.signal import find_peaks
 import cv2 as cv
 import matplotlib.patches as patches
 import math
-from DQA_Scripts import Helper
+import Helper
 from scipy import ndimage
 
 

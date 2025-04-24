@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 import cv2 as cv
 import os
-from DQA_Scripts import SmoothingMethod
-from DQA_Scripts import Helper
+import SmoothingMethod
+import Helper
 
 def RunDailyQA(Files,TestingSettings = None):
 

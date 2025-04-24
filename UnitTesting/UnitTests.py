@@ -1,12 +1,17 @@
 import unittest
 import sys
 import os 
-#current_dir = os.path.dirname(os.path.abspath(__file__))
-#parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-#sys.path.append(parent_dir)
-from DQA_Scripts import DailyQA
+
+#This makes sure the right module is loaded...
+current_module_dir = os.path.dirname(os.path.abspath(__file__))
+DQAScriptsFolder = os.path.join(current_module_dir,"..","DQA_Scripts")
+DQAScriptsFolder = os.path.abspath(DQAScriptsFolder)
+if DQAScriptsFolder not in sys.path:
+    sys.path.append(DQAScriptsFolder)
+
+import DailyQA
 import numpy as np
-from DQA_Scripts import Helper   
+import Helper   
 import glob
 import shutil
 import pandas as pd
@@ -15,7 +20,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 #import matplotlib
 #matplotlib.use('TkAgg')  # Use a GUI backend
-from DQA_Scripts.SmoothingMethod import TestingSettings as testingsettings
+from SmoothingMethod import TestingSettings as testingsettings
 
 #If the unit tests are run in the UnitTesting folder then move the working directory back to the DailyQA folder
 if( os.path.basename(os.path.normpath(os.getcwd())) ) == "UnitTesting": 
