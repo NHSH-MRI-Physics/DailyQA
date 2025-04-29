@@ -1,0 +1,108 @@
+
+
+
+
+Sequence : Ax EPI-GRE head
+####  Per ROI Failures ####
+File     Metric     Slice     ROI
+BaselineData/Head/DQA_Head_1     0.1823784474052997     1     M2
+BaselineData/Head/DQA_Head_11     0.1823784474052997     1     M2
+BaselineData/Head/DQA_Head_13     0.1823784474052997     1     M2
+Archive\DQA_Head_2023-10-26 21-14-54     0.1823784474052997     1     M2
+Archive\DQA_Head_2023-10-30 09-13-52     0.1823784474052997     1     M2
+BaselineData/Head/DQA_Head_5     0.33224973402627983     12     M2
+BaselineData/Head/DQA_Head_10     0.33341713888682445     14     M2
+BaselineData/Head/DQA_Head_6     0.22293032095645313     14     M2
+BaselineData/Head/DQA_Head_9     0.357389704290737     14     M2
+Archive\DQA_Head_2023-11-10 08-35-14     0.2745764656697696     14     M2
+Archive\DQA_Head_2023-11-13 08-26-24     0.2795946698879533     14     M2
+BaselineData/Head/DQA_Head_1     0.18411705452468743     1     M3
+BaselineData/Head/DQA_Head_11     0.18411705452468743     1     M3
+BaselineData/Head/DQA_Head_13     0.18411705452468743     1     M3
+Archive\DQA_Head_2023-10-26 21-14-54     0.18411705452468743     1     M3
+Archive\DQA_Head_2023-10-30 09-13-52     0.18411705452468743     1     M3
+BaselineData/Head/DQA_Head_14     0.2299591866220426     2     M3
+Archive\DQA_Head_2023-10-30 15-28-39     0.2299591866220426     2     M3
+BaselineData/Head/DQA_Head_19     0.37734888514791914     13     M3
+BaselineData/Head/DQA_Head_3     0.37734888514791914     13     M3
+Archive\DQA_Head_2023-11-09 09-53-45     0.37734888514791914     13     M3
+Archive\DQA_Head_2023-11-13 08-26-24     0.37469681441652336     13     M3
+BaselineData/Head/DQA_Head_10     0.31365335402243993     14     M3
+BaselineData/Head/DQA_Head_15     0.3082969614788641     14     M3
+BaselineData/Head/DQA_Head_6     0.23212217150216585     14     M3
+BaselineData/Head/DQA_Head_7     0.32530266183831313     14     M3
+BaselineData/Head/DQA_Head_9     0.30778935077285746     14     M3
+Archive\DQA_Head_2023-10-30 15-31-17     0.3082969614788641     14     M3
+Archive\DQA_Head_2023-11-13 08-26-24     0.22216642023372082     14     M3
+BaselineData/Head/DQA_Head_1     0.25262101107813284     1     M4
+BaselineData/Head/DQA_Head_11     0.25262101107813284     1     M4
+BaselineData/Head/DQA_Head_13     0.25262101107813284     1     M4
+Archive\DQA_Head_2023-10-26 21-14-54     0.25262101107813284     1     M4
+Archive\DQA_Head_2023-10-30 09-13-52     0.25262101107813284     1     M4
+Archive\DQA_Head_2023-11-20 11-33-55     0.1994221224103187     13     M4
+BaselineData/Head/DQA_Head_10     0.2475567442835563     14     M4
+BaselineData/Head/DQA_Head_15     0.3892079338172155     14     M4
+BaselineData/Head/DQA_Head_4     0.17564901969962807     14     M4
+BaselineData/Head/DQA_Head_6     0.20199461109099331     14     M4
+BaselineData/Head/DQA_Head_9     0.26225345777214903     14     M4
+Archive\DQA_Head_2023-10-30 15-31-17     0.3892079338172155     14     M4
+Archive\DQA_Head_2023-11-10 08-35-14     0.28665607096191975     14     M4
+Archive\DQA_Head_2023-11-13 08-26-24     0.22622463970255757     14     M4
+BaselineData/Head/DQA_Head_1     0.17452367456386259     1     M5
+BaselineData/Head/DQA_Head_11     0.17452367456386259     1     M5
+BaselineData/Head/DQA_Head_13     0.17452367456386259     1     M5
+Archive\DQA_Head_2023-10-26 21-14-54     0.17452367456386259     1     M5
+Archive\DQA_Head_2023-10-30 09-13-52     0.17452367456386259     1     M5
+BaselineData/Head/DQA_Head_10     0.2970572578595525     14     M5
+BaselineData/Head/DQA_Head_6     0.2017510544681695     14     M5
+BaselineData/Head/DQA_Head_9     0.32110064939197164     14     M5
+Archive\DQA_Head_2023-11-10 08-35-14     0.2686170193669135     14     M5
+Archive\DQA_Head_2023-11-13 08-26-24     0.2185426272913271     14     M5
+
+Unique Fails
+BaselineData/Head/DQA_Head_9
+Archive\DQA_Head_2023-10-26 21-14-54
+BaselineData/Head/DQA_Head_19
+BaselineData/Head/DQA_Head_5
+Archive\DQA_Head_2023-10-30 15-31-17
+Archive\DQA_Head_2023-11-09 09-53-45
+BaselineData/Head/DQA_Head_10
+BaselineData/Head/DQA_Head_6
+Archive\DQA_Head_2023-11-13 08-26-24
+BaselineData/Head/DQA_Head_7
+BaselineData/Head/DQA_Head_3
+BaselineData/Head/DQA_Head_14
+BaselineData/Head/DQA_Head_4
+BaselineData/Head/DQA_Head_13
+Archive\DQA_Head_2023-10-30 09-13-52
+BaselineData/Head/DQA_Head_11
+Archive\DQA_Head_2023-10-30 15-28-39
+BaselineData/Head/DQA_Head_15
+BaselineData/Head/DQA_Head_1
+Archive\DQA_Head_2023-11-10 08-35-14
+Archive\DQA_Head_2023-11-20 11-33-55
+21/38   55.3%
+
+
+####  Per Slice Failures ####
+File     Metric     Slice
+BaselineData/Head/DQA_Head_1     0.35643053322202856     1
+BaselineData/Head/DQA_Head_11     0.35643053322202856     1
+BaselineData/Head/DQA_Head_13     0.35643053322202856     1
+Archive\DQA_Head_2023-10-26 21-14-54     0.35643053322202856     1
+Archive\DQA_Head_2023-10-30 09-13-52     0.35643053322202856     1
+
+Unique Fails
+BaselineData/Head/DQA_Head_11
+Archive\DQA_Head_2023-10-26 21-14-54
+BaselineData/Head/DQA_Head_1
+BaselineData/Head/DQA_Head_13
+Archive\DQA_Head_2023-10-30 09-13-52
+5/38   13.2%
+
+
+####  Average over all slices Failures ####
+File     Metric     Slice
+
+Unique Fails
+0/38   0.0%

@@ -2,23 +2,23 @@
 
 
 
-Sequence : Ax EPI-GRE body Bot
+Sequence : Ax T2 FSE head
 ####  Per ROI Failures ####
 File     Metric     Slice     ROI
 
 Unique Fails
-0/14   0.0%
+0/38   0.0%
 
 
 ####  Per Slice Failures ####
 File     Metric     Slice
 
 Unique Fails
-0/14   0.0%
+0/38   0.0%
 
 
 ####  Average over all slices Failures ####
 File     Metric     Slice
 
 Unique Fails
-0/14   0.0%
+0/38   0.0%
