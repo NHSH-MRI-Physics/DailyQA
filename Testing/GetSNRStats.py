@@ -75,8 +75,9 @@ def AnalyseData(Data,FileTracker,type,Normalise=False,ExcludeSlicesOption=True):
             NumberOfSlices = len(DataToPlot[sequence][roi])
             for slice in range(NumberOfSlices):
                 if ExcludeSlicesOption:
-                    if slice in ExcludedSlices[sequence]:
-                        continue
+                    if sequence in ExcludedSlices.keys():
+                        if slice in ExcludedSlices[sequence]:
+                            continue
 
                 Base,STD = Helper.GetBaselineROI(type,slice,roi,sequence)
                 Lower = SNRThreshold[sequence]
@@ -120,8 +121,9 @@ def AnalyseData(Data,FileTracker,type,Normalise=False,ExcludeSlicesOption=True):
         count+=1
         for slice in range(NumberOfSlices):
             if ExcludeSlicesOption:
-                if slice in ExcludedSlices[sequence]:
-                    continue
+                if sequence in ExcludedSlices.keys():
+                    if slice in ExcludedSlices[sequence]:
+                        continue
 
             Base,STD = Helper.GetBaselineSlice(type,slice,sequence)
             Lower = SNRThreshold[sequence]
@@ -201,25 +203,26 @@ def AnalyseData(Data,FileTracker,type,Normalise=False,ExcludeSlicesOption=True):
         Failures=[]
     f.close()
 
+'''
 HeadSNRFilesSources=[]
 HeadSNRFilesSources = [x[0] for x in os.walk("BaselineData/Head/")][1:]
-HeadArchives = [x[0] for x in os.walk("Archive")][1:]
+HeadArchives = [x[0] for x in os.walk("/Users/john/Desktop/AcceptedHeadData")][1:]
 for folder in HeadArchives:
     if "Head" in folder:
         HeadSNRFilesSources.append(folder)
 Data,FileTracker = SortData(HeadSNRFilesSources)
 np.save("Testing/SNRStats/HeadDataFile.npy", Data)
 np.save("Testing/SNRStats/HeadFileTracker.npy", FileTracker)
-
+'''
 Data = np.load("Testing/SNRStats/HeadDataFile.npy",allow_pickle=True)
 FileTracker = np.load("Testing/SNRStats/HeadFileTracker.npy",allow_pickle=True)
-AnalyseData(Data,FileTracker,"head",Normalise=True,ExcludeSlicesOption=False)
+AnalyseData(Data,FileTracker,"head",Normalise=True,ExcludeSlicesOption=True)
 
 
 '''
 BodySNRFilesSources=[]
 BodySNRFilesSources = [x[0] for x in os.walk("BaselineData/Body/")][1:]
-BodyArchives = [x[0] for x in os.walk("Archive")][1:]
+BodyArchives = [x[0] for x in os.walk("/Users/john/Desktop/AcceptedBodyData")][1:]
 for folder in BodyArchives:
     if "Body" in folder:
         BodySNRFilesSources.append(folder)

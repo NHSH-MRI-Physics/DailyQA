@@ -87,21 +87,21 @@ def GetBaselineSmooth(files,SaveName,path):
 
 
 files = [x[0] for x in os.walk("BaselineData/Head/")][1:]
-Archives = [x[0] for x in os.walk("Archive")][1:]
+Archives = [x[0] for x in os.walk("/Users/john/Desktop/AcceptedHeadData")][1:]
 for folder in Archives:
     if "Head" in folder:
         files.append(folder)
 #GetBaselineSmooth(files,"Head_Baseline.npy","BaselineData/Head/")
 
 files = [x[0] for x in os.walk("BaselineData/Body/")][1:]
-Archives = [x[0] for x in os.walk("Archive")][1:]
+Archives = [x[0] for x in os.walk("/Users/john/Desktop/AcceptedBodyData")][1:]
 for folder in Archives:
     if "Body" in folder:
         files.append(folder)
-GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
+#GetBaselineSmooth(files,"Body_Baseline.npy","BaselineData/Body/")
 
 files = [x[0] for x in os.walk("BaselineData/Spine/")][1:]
-Archives = [x[0] for x in os.walk("Archive")][1:]
+Archives = [x[0] for x in os.walk("/Users/john/Desktop/DQASpine")][1:]
 for folder in Archives:
     if "Spine" in folder:
         files.append(folder)
