@@ -37,3 +37,7 @@ QAResult = Helper.DidQAPassV2(Result)
 The QAResult will give out a true or false based on if it passsed and a message explaining why it is outwith the threshold. 
 
 Please note although this softwrare can be used on its own it was intended to be used with the QA bot, hence any source code downloaded may be in a unready state.
+
+# Updating Thresholds
+- Run Utilities/GetBaselineStats.py, this will update the baseline data based on what files you put in.
+- Run the Testing/GetSNRStats.py file to get the false postive rates, adjust the thresholds in DQA_Scripts/Thresholds.txt as required. 
