@@ -144,6 +144,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
         if seq in Helper.GetExcludedSlices(type).keys():
             SlicesToBeRejected=Helper.GetExcludedSlices(type)[seq]
         PlotROIS(ROIs,ROISize,RoiSizeHalf,BinaryMapSignal,Image,CurrentCol,CurrentRow,axs,i+1,SlicesToBeRejected)
+        
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 
