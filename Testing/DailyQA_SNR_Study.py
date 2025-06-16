@@ -15,62 +15,65 @@ import pydicom
 import matplotlib.pyplot as plt
 import math
 from matplotlib.offsetbox import (AnnotationBbox, DrawingArea, OffsetImage,TextArea)
+#import matplotlib
+#matplotlib.use("TkAgg")
+ 
+def GetData(path):
+    Files = glob.glob(os.path.join(path, "*"))
+    Files.sort(key=os.path.getmtime, reverse=False)
+    Results = {}
+    BaseFreq = None
+    for file in Files:
+        if "Analysis_Results" in file:
+            continue
 
-Files = glob.glob("C:\\Users\\Johnt\\Desktop\\DQATesting\\*")
-Results = {}
-BaseFreq = None
-for file in Files:
-    if "Analysis_Results" in file:
-        continue
+        QAresults = DailyQA.RunDailyQA(file)
+        for result in QAresults:
+            result.append( Helper.DidQAPassV2(result))
 
-    QAresults = DailyQA.RunDailyQA(file)
-    for result in QAresults:
-        result.append( Helper.DidQAPassV2(result))
+        DcmFiles = glob.glob(os.path.join(file, "*.dcm"))
+        LoadedDICOM = pydicom.read_file( DcmFiles[0] )
+        ImagingFreq = LoadedDICOM[0x18,0x84].value  
 
-    DcmFiles = glob.glob(os.path.join(file, "*.dcm"))
-    LoadedDICOM = pydicom.read_file( DcmFiles[0] )
-    ImagingFreq = LoadedDICOM[0x18,0x84].value  
+        Images = {}
+        for Dicom in DcmFiles:
+            Dcm = pydicom.read_file( Dicom )
+            if Dcm.SeriesDescription not in Images:
+                Images[Dcm.SeriesDescription] = []
+            Images[Dcm.SeriesDescription].append(Dcm)
 
-    Images = {}
-    for Dicom in DcmFiles:
-        Dcm = pydicom.read_file( Dicom )
-        if Dcm.SeriesDescription not in Images:
-            Images[Dcm.SeriesDescription] = []
-        Images[Dcm.SeriesDescription].append(Dcm)
+        seqs = list(Images.keys())
+        for seq in seqs:
+            Images[seq].sort(key=lambda x: x.SliceLocation)
 
-    seqs = list(Images.keys())
-    for seq in seqs:
-        Images[seq].sort(key=lambda x: x.SliceLocation)
-
-    if "base" in file.lower():
-        Results[0] = [QAresults,Images]
-        BaseFreq = ImagingFreq
-    else:
-        
-        ImagineFreqDiff = int(round((ImagingFreq - BaseFreq)*1e6,0))
-        Results[ImagineFreqDiff] = [QAresults, Images]
+        if "base" in file.lower():
+            Results[0] = [QAresults,Images]
+            BaseFreq = ImagingFreq
+        else:
+            
+            ImagineFreqDiff = abs(int(round((ImagingFreq - BaseFreq)*1e6,0)))
+            Results[ImagineFreqDiff] = [QAresults, Images]
 
 
-Keys = list(Results.keys())
-Keys.sort()
+    Keys = list(Results.keys())
+    Keys.sort()
 
-AvgSNR = {}
-for key in Keys:
-    for i in range(2):
-        SingleResult = Results[key][0][i]
-        Images = Results[key][1]
-        seq = SingleResult[3]
-        if seq not in AvgSNR:
-            AvgSNR[seq] = [[],[],[],[]]
-        
-        MidImage = math.ceil(len(Images[seq])/2.0)
-        AvgSNR[seq][0].append(key)
-        AvgSNR[seq][1].append(SingleResult[0])
-        AvgSNR[seq][2].append(SingleResult[4][0])
-        AvgSNR[seq][3].append(Images[seq][MidImage].pixel_array)
-
-import matplotlib
-matplotlib.use("TkAgg")
+    AvgSNR = {}
+    for key in Keys:
+        for i in range(2):
+            SingleResult = Results[key][0][i]
+            Images = Results[key][1]
+            seq = SingleResult[3]
+            if seq not in AvgSNR:
+                AvgSNR[seq] = [[],[],[],[]]
+            
+            MidImage = math.ceil(len(Images[seq])/2.0)
+            AvgSNR[seq][0].append(key)
+            AvgSNR[seq][1].append(SingleResult[0])
+            AvgSNR[seq][2].append(SingleResult[4][0])
+            AvgSNR[seq][3].append(Images[seq][MidImage].pixel_array)
+    
+    return AvgSNR
 
 def MakePlot(x,y,passed,Title, XLabel, YLabel,Path,Images):
     # Create figure and axes objects explicitly
@@ -144,14 +147,39 @@ def MakePlot(x,y,passed,Title, XLabel, YLabel,Path,Images):
         dpi=300 )
     plt.close(fig)  # Clean up
 
+'''
+AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/FSE Testing")
+OutputPath = "Testing/DQA_DeltaFreq_Testing"
+seq = "Ax T2 FSE head"
 
-OutputPath = "C:\\Users\\Johnt\\Desktop\\DQATesting\\Analysis_Results"
-for seq in AvgSNR.keys():
-    passed = np.array(AvgSNR[seq][2])
-    x = np.array(AvgSNR[seq][0])
-    y = np.array(AvgSNR[seq][1])
-    Images = np.array(AvgSNR[seq][3])
-    title = "Avg SNR " + seq
-    xlabel = "Imaging Frequency Difference (Hz)"
-    ylabel = "Avg SNR"    
-    MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
+passed = np.array(AvgSNR[seq][2])
+x = np.array(AvgSNR[seq][0])
+y = np.array(AvgSNR[seq][1])
+Images = np.array(AvgSNR[seq][3])
+title = "Avg SNR " + seq
+xlabel = "Imaging Frequency Difference (Hz)"
+ylabel = "Avg SNR"    
+MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
+'''
+
+'''
+AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/EPI Testing")
+OutputPath = "Testing/DQA_DeltaFreq_Testing"
+seq = "Ax EPI-GRE head"
+
+passed = np.array(AvgSNR[seq][2])
+x = np.array(AvgSNR[seq][0])
+y = np.array(AvgSNR[seq][1])
+Images = np.array(AvgSNR[seq][3])
+title = "Avg SNR " + seq
+xlabel = "Imaging Frequency Difference (Hz)"
+ylabel = "Avg SNR"    
+MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
+'''
+
+def RFArtefactTest(path):
+    QAresults = DailyQA.RunDailyQA(path)
+    for result in QAresults:
+        result.append( Helper.DidQAPassV2(result))
+
+RFArtefactTest("Testing/DQA_DeltaFreq_Testing/RF Testing/Test2")

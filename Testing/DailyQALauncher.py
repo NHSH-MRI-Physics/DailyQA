@@ -14,7 +14,7 @@ import shutil
 import pandas as pd
 
 
-Files = "C:\\Users\\Johnt\\Desktop\\DQA_body_20250306_082926361"
+Files = "Testing/DQA_DeltaFreq_Testing/EPI Testing/Delta50"
 Results = DailyQA.RunDailyQA(Files)
-Helper.DidQAPassV2(Results)
-print(Results)
+for result in Results:
+    print(Helper.DidQAPassV2(result))

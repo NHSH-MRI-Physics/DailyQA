@@ -11,7 +11,7 @@ import matplotlib.patches as patches
 import math
 import Helper
 from scipy import ndimage
-
+from dataclasses import dataclass
 
 #TestingSettings
 class TestingSettings:
@@ -22,7 +22,15 @@ class TestingSettings:
     self.ReturnSmoothedImage = None
     self.ReturnDifferenceImage = None
 
-def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices):
+@dataclass
+class ROI_Data_Point:
+    Rect: patches
+    SNR: float
+    sliceNumber: int
+    ROIID: int
+
+
+def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,RejectedSlices,SNRList):
     axs[row,col].set_axis_on()
     axs[row,col].axis('off')
     axs[row,col].imshow(Image,cmap='Greys_r')
@@ -31,16 +39,16 @@ def PlotROIS(ROIS,ROISize,RoiSizeHalf,BinaryMap,Image,col,row,axs,sliceNum,Rejec
     if sliceNum-1 not in RejectedSlices:
         count=1
         for roi in ROIS:
-            rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor='r', facecolor='none')
+            color = 'g'
+            rect = patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, edgecolor=color, facecolor='none')
             axs[row,col].add_patch(rect)
-            axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color='red')
+            axs[row,col].text(roi[0], roi[1], str(count), style='italic', ha='center', va='center',fontsize=9,color=color)
             count+=1
 
 def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, width = None, Cent = None,seq=None, RejectedSlices = [],ScannerName = None,type=None, TestingSettings = None):
 
-    fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
+    #fig,axs,Cols = Helper.Setupplots(ImageData,seq,ScannerName)
     
-
     if ImageData.shape[2] == len(RejectedSlices):
         raise ValueError ("all sices rejected, reduce rejecton threshold!")
 
@@ -52,13 +60,18 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
     SNRROIResults["M4"] = []
     SNRROIResults["M5"] = []
 
+    Images = []
+    ROI_Data = []
+
     for i in range(ImageData.shape[2]):
         Image = ImageData[:,:,i]
+        Images.append(Image)
+        ROI_Data.append([])
         #Image = Image.astype(int)
         ROIs = []
         RoiSizeHalf=None
         BinaryMapSignal=None
-
+        SNRList=[]
         if i not in RejectedSlices:
             #The paper says 9x9 is the best so lets go with that
             Smoothed = ndimage.uniform_filter(Image, 9, mode="constant")
@@ -120,12 +133,17 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
             M5= [ int(round(cent_x-widthX*0.4,0)), int(round(cent_y+widthY*0.4,0)) ]
             ROIs = [M1,M2,M3,M4,M5]
 
-            SNRList=[]
+            #SNRList=[]
+            count = 0
             for roi in ROIs:                 
                 Signal = np.mean(Image[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])
                 Noise = np.std(Difference[roi[1]-RoiSizeHalf:roi[1]+RoiSizeHalf,roi[0]-RoiSizeHalf:roi[0]+RoiSizeHalf])
                 SNR = Signal/Noise
                 SNRList.append(SNR)
+
+                ROIPOint = ROI_Data_Point(patches.Rectangle((roi[0]-RoiSizeHalf, roi[1]-RoiSizeHalf), ROISize, ROISize, linewidth=1, facecolor='none'), SNR,i, count+1)
+                ROI_Data[-1].append(ROIPOint)
+                count+=1
             SNRAvg.append(sum(SNRList)/len(SNRList))
 
             #ROIResults = Helper.ROIResults(SNRList[0],SNRList[1],SNRList[2],SNRList[3],SNRList[4])
@@ -136,16 +154,17 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
             SNRROIResults["M4"].append(SNRList[3])
             SNRROIResults["M5"].append(SNRList[4])
         
-        CurrentRow = math.floor(i/Cols)
-        CurrentCol = i%Cols
+        #CurrentRow = math.floor(i/Cols)
+        #CurrentCol = i%Cols
 
 
-        SlicesToBeRejected=[]
-        if seq in Helper.GetExcludedSlices(type).keys():
-            SlicesToBeRejected=Helper.GetExcludedSlices(type)[seq]
-        PlotROIS(ROIs,ROISize,RoiSizeHalf,BinaryMapSignal,Image,CurrentCol,CurrentRow,axs,i+1,SlicesToBeRejected)
+        #SlicesToBeRejected=[]
+        #if seq in Helper.GetExcludedSlices(type).keys():
+        #    SlicesToBeRejected=Helper.GetExcludedSlices(type)[seq]
+        #PlotROIS(ROIs,ROISize,RoiSizeHalf,BinaryMapSignal,Image,CurrentCol,CurrentRow,axs,i+1,SlicesToBeRejected,SNRList)
         
-
+    
+    '''
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 
     import os 
@@ -155,7 +174,7 @@ def SmoothedImageSubtraction(ImageData,KernalSize,ROISizeArg=None,Thresh=None, w
     #plt.savefig("Results/"+seq+"_SmoothMethod.png")
     plt.savefig(path)
     plt.close()
+    '''
 
 
-
-    return [sum(SNRAvg)/len(SNRAvg), SNRROIResults]
+    return [sum(SNRAvg)/len(SNRAvg), SNRROIResults,Images,ROI_Data]

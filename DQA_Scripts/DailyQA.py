@@ -8,6 +8,7 @@ import cv2 as cv
 import os
 import SmoothingMethod
 import Helper
+from dataclasses import dataclass
 
 def RunDailyQA(Files,TestingSettings = None):
 
@@ -18,8 +19,6 @@ def RunDailyQA(Files,TestingSettings = None):
     RunSeq=None
     ThreshRejectionOveride=None
     
-
-
 
     DICOMFiles = glob.glob( os.path.join( Files+"/*.dcm"))
     DICOMS={}
@@ -69,6 +68,17 @@ def RunDailyQA(Files,TestingSettings = None):
     SeqToRun = DICOMS.keys()
     if RunSeq != None:
         SeqToRun = [RunSeq]
+
+    #Helper.MakePlot(PixelData[Seq],Seq,ScannerName,Images,ROI_Data,QAType,Results)
+    @dataclass
+    class PlottingData:
+        Images: list
+        seq: str
+        ScannerName: str
+        ROI_Data: list
+        QAType: str
+
+    PlotData = []
     for Seq in SeqToRun:
         CoilUsed = DICOMS[Seq][0]["ReceiveCoilName"].value
         Cent= None
@@ -141,11 +151,12 @@ def RunDailyQA(Files,TestingSettings = None):
 
         if NoiseAmount != None:
             PixelData[Seq] = Helper.AddNoise(PixelData[Seq],NoiseAmount)
-        SNRSmooth,ROIResults = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName,type=QAType,TestingSettings = TestingSettings)
-        #SNRNessAiver = NessAiverMethod.NessAiver(PixelData[Seq],ErorsionSteps=ErorsionSteps,Thresh=Thresh, Seq=Seq,RejectedSlices=RejectedSlices)
-        #Results.append( [SNRSmooth,SNRNessAiver,Seq])
+        SNRSmooth,ROIResults, Images, ROI_Data = SmoothingMethod.SmoothedImageSubtraction(PixelData[Seq],KernalSize,Thresh=Thresh,ROISizeArg=ROIarg,Cent=Cent,width=width,seq=Seq,RejectedSlices=RejectedSlices,ScannerName=ScannerName,type=QAType,TestingSettings = TestingSettings)
         Results.append( [SNRSmooth,ROIResults,QAType,Seq])
         count+=1
+
+        Helper.MakePlot(PixelData[Seq],Seq,ScannerName,Images,ROI_Data,QAType,Results[-1])      
+        #PlotData.append(PlottingData(Images, Seq, ScannerName, ROI_Data, QAType))  
 
         SlicesToBeRejected=[]
         if Seq in Helper.GetExcludedSlices(QAType).keys():

@@ -336,8 +336,6 @@ def DidQAPass(Result,thresh=None):
     ROIResults = Result[1]
     Sequence = Result[3]
     
-
-
     #ROIBaseline[Seq][ROI][Slice] = [Mean,STD]
     if QAType=="Head":
         GlobalBaseline = np.load(os.path.join("BaselineData","Head","Global_Head_Baseline.npy"),allow_pickle=True).item()[Sequence]
@@ -427,19 +425,24 @@ def DidQAPassV2(Result,thresh=None):
     if QAType=="Spine":
         ROIBaseline = np.load(os.path.join(dir_path,"..","BaselineData","Spine","ROI_Spine_Baseline.npy"),allow_pickle=True).item()[Sequence]
     
+    
+
     FailMessage=""
     NumberOfSlicesInSeq = len(ROIResults["M1"])
+    SNR_Rel_Results = [{"M1":None,"M2":None,"M3":None,"M4":None,"M5":None}]*NumberOfSlicesInSeq
     ROIS = list(ROIBaseline.keys())
     for ROI in ROIS:
         for Slice in range(NumberOfSlicesInSeq):
             if Slice not in SlicesToBeRejected:
                 RelSNR = ROIResults[ROI][Slice]/ROIBaseline[ROI][Slice][0]
+                SNR_Rel_Results[Slice][ROI] = [RelSNR,True]
                 if (RelSNR <= Threshold[Sequence]):
                     FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result (%):" + str(round(RelSNR,4)) + "   Threshold:" + str(round(Threshold[Sequence],4)) +"\n"
+                    SNR_Rel_Results[Slice][ROI][1] = False
     if FailMessage=="":
-        return True,FailMessage
+        return True,FailMessage,SNR_Rel_Results
     else:
-        return False,FailMessage
+        return False,FailMessage,SNR_Rel_Results
 
 
 def GetStatsBasedThresh(data):
@@ -458,3 +461,42 @@ def GetExcludedSlices(type):
                 Slices[line.split(",")[1]].append(int(slice)-1)
     f.close()
     return Slices
+
+def MakePlot(ImageData,seq,ScannerName,Images,ROI_Data,QAType,Results):
+        fig,axs,Cols = Setupplots(ImageData,seq,ScannerName)
+
+        SlicesToBeRejected=[]
+        if seq in GetExcludedSlices(QAType).keys():
+            SlicesToBeRejected=GetExcludedSlices(QAType)[seq]
+
+        _,_,ROIResults = DidQAPassV2(Results)
+
+
+        for i in range(len(Images)):
+            CurrentRow = math.floor(i/Cols)
+            CurrentCol = i%Cols
+            axs[CurrentRow,CurrentCol].set_axis_on()
+            axs[CurrentRow,CurrentCol].axis('off')
+            axs[CurrentRow,CurrentCol].imshow(Images[i],cmap='Greys_r')
+            axs[CurrentRow,CurrentCol].set_title("Slice Num: " + str(i+1), fontsize=20)
+
+            ROI_Data_On_Slce = ROI_Data[i]
+            color = 'red'
+            if i not in SlicesToBeRejected:
+                for roi in ROI_Data_On_Slce:
+                    ROI_Stats = ROIResults[i]["M"+str(roi.ROIID)]
+                    if ROI_Stats[1]:
+                        color = 'green'
+                    rect = roi.Rect
+                    rect.set_edgecolor(color)
+                    axs[CurrentRow,CurrentCol].add_patch(roi.Rect)
+                    center_x = roi.Rect.get_x() + roi.Rect.get_width() / 2
+                    center_y = roi.Rect.get_y() + roi.Rect.get_height() / 2
+
+                    axs[CurrentRow,CurrentCol].text(center_x, center_y, str(roi.ROIID) +"\n" +str(round(ROI_Stats[0]*100.0,2)) +"%", style='italic', ha='center', va='center',fontsize=9,color=color)
+
+        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        path = os.path.join(dir_path,"..","Results",seq+"_SmoothMethod.png")
+        plt.savefig(path)
+        plt.close()
