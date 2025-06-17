@@ -189,6 +189,13 @@ class TestFail(unittest.TestCase):
         for file in files:
             os.remove(file)
 
+
+    def FixResultsOrder(self,Results):
+        #This is a hack to fix the order of the results, since the order of the results is not guaranteed
+        #This is only needed for the unit tests, since the order of the results is not important in production
+        Results.sort(key=lambda x: x[-1],reverse=False)
+        return Results
+
     def test_headFailAndEmail(self):
         Emails = {}
         Emails["John"] = "Johnt717@gmail.com"
@@ -200,6 +207,9 @@ class TestFail(unittest.TestCase):
         Results = DailyQA.RunDailyQA(Files)
         QAResultTracker=[]
         AllResults = []
+
+        Results = self.FixResultsOrder(Results)
+
         for result in Results:
             QAResult = Helper.DidQAPassV2(result)
             AllResults.append(QAResult)
@@ -211,6 +221,7 @@ class TestFail(unittest.TestCase):
             Images.append(os.path.join(DataFolder,result[-1]+"_SmoothMethod.png"))
 
         BaselineFail = np.load('UnitTesting/UnitTestBaselines/HeadFailBaseline.npy',allow_pickle=True) 
+        
         np.testing.assert_array_equal(AllResults,BaselineFail)
 
         #for name in Emails.keys():
@@ -225,6 +236,7 @@ class TestFail(unittest.TestCase):
         Files = "UnitTesting/UnitTestData/FailData/DQA_Body_Fail"
         DataFolder = "UnitTesting/UnitTestData/FailData/DQA_Body_Fail"
         Results = DailyQA.RunDailyQA(Files)
+        Results = self.FixResultsOrder(Results)
         QAResultTracker=[]
         for result in Results:
             QAResult = Helper.DidQAPassV2(result)
