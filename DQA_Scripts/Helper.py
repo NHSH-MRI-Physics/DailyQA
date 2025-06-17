@@ -519,5 +519,10 @@ def MakePlot(ImageData,seq,ScannerName,Images,ROI_Data,QAType,Results):
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
         dir_path = os.path.dirname(os.path.realpath(__file__))
         path = os.path.join(dir_path,"..","Results",seq+"_SmoothMethod.png")
+
+
+        if not os.path.exists(os.path.dirname(path)):
+            os.makedirs(os.path.dirname(path))
+
         plt.savefig(path)
         plt.close()
