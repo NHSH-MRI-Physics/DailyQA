@@ -18,7 +18,7 @@ from matplotlib.offsetbox import (AnnotationBbox, DrawingArea, OffsetImage,TextA
 #import matplotlib
 #matplotlib.use("TkAgg")
  
-def GetData(path):
+def GetData(path,SelectedSeq):
     Files = glob.glob(os.path.join(path, "*"))
     Files.sort(key=os.path.getmtime, reverse=False)
     Results = {}
@@ -32,9 +32,18 @@ def GetData(path):
             result.append( Helper.DidQAPassV2(result))
 
         DcmFiles = glob.glob(os.path.join(file, "*.dcm"))
-        LoadedDICOM = pydicom.read_file( DcmFiles[0] )
-        ImagingFreq = LoadedDICOM[0x18,0x84].value  
 
+        CorrectIndex = None
+        for i in range(len(DcmFiles)):
+            LoadedDICOM = pydicom.read_file( DcmFiles[i] )
+            if LoadedDICOM.SeriesDescription == SelectedSeq:
+                CorrectIndex = i
+                break
+        print(CorrectIndex)
+        LoadedDICOM = pydicom.read_file( DcmFiles[CorrectIndex] )
+        ImagingFreq = LoadedDICOM[0x18,0x84].value  
+        print(LoadedDICOM.SeriesDescription,file)
+        
         Images = {}
         for Dicom in DcmFiles:
             Dcm = pydicom.read_file( Dicom )
@@ -50,7 +59,6 @@ def GetData(path):
             Results[0] = [QAresults,Images]
             BaseFreq = ImagingFreq
         else:
-            
             ImagineFreqDiff = abs(int(round((ImagingFreq - BaseFreq)*1e6,0)))
             Results[ImagineFreqDiff] = [QAresults, Images]
 
@@ -147,25 +155,11 @@ def MakePlot(x,y,passed,Title, XLabel, YLabel,Path,Images):
         dpi=300 )
     plt.close(fig)  # Clean up
 
+
 '''
-AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/FSE Testing")
-OutputPath = "Testing/DQA_DeltaFreq_Testing"
 seq = "Ax T2 FSE head"
-
-passed = np.array(AvgSNR[seq][2])
-x = np.array(AvgSNR[seq][0])
-y = np.array(AvgSNR[seq][1])
-Images = np.array(AvgSNR[seq][3])
-title = "Avg SNR " + seq
-xlabel = "Imaging Frequency Difference (Hz)"
-ylabel = "Avg SNR"    
-MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
-'''
-
-'''
-AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/EPI Testing")
+AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/FSE Testing",seq)
 OutputPath = "Testing/DQA_DeltaFreq_Testing"
-seq = "Ax EPI-GRE head"
 
 passed = np.array(AvgSNR[seq][2])
 x = np.array(AvgSNR[seq][0])
@@ -177,6 +171,21 @@ ylabel = "Avg SNR"
 MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
 '''
 
+
+seq = "Ax EPI-GRE head"
+AvgSNR = GetData("Testing/DQA_DeltaFreq_Testing/EPI Testing",seq)
+OutputPath = "Testing/DQA_DeltaFreq_Testing"
+
+passed = np.array(AvgSNR[seq][2])
+x = np.array(AvgSNR[seq][0])
+y = np.array(AvgSNR[seq][1])
+Images = np.array(AvgSNR[seq][3])
+title = "Avg SNR " + seq
+xlabel = "Imaging Frequency Difference (Hz)"
+ylabel = "Avg SNR"    
+MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
+
+'''
 def RFArtefactTest(path):
     QAresults = DailyQA.RunDailyQA(path)
     for result in QAresults:
@@ -184,3 +193,4 @@ def RFArtefactTest(path):
 
     print(Message)
 RFArtefactTest("Testing/DQA_DeltaFreq_Testing/RF Testing/Test2")
+'''
