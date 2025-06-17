@@ -180,6 +180,7 @@ MakePlot(x, y, passed, title, xlabel, ylabel, OutputPath, Images)
 def RFArtefactTest(path):
     QAresults = DailyQA.RunDailyQA(path)
     for result in QAresults:
-        result.append( Helper.DidQAPassV2(result))
+        PassFail,Message= Helper.DidQAPassV2(result)
 
+    print(Message)
 RFArtefactTest("Testing/DQA_DeltaFreq_Testing/RF Testing/Test2")

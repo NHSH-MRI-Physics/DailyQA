@@ -402,7 +402,7 @@ def GetThresholds(type):
     f.close()
     return Threshes
 
-def DidQAPassV2(Result,thresh=None):
+def DidQAPassV2(Result,thresh=None, GetStats=False):
     QAType = Result[2]
     SNR = Result[0]
     ROIResults = Result[1]
@@ -429,7 +429,9 @@ def DidQAPassV2(Result,thresh=None):
 
     FailMessage=""
     NumberOfSlicesInSeq = len(ROIResults["M1"])
-    SNR_Rel_Results = [{"M1":None,"M2":None,"M3":None,"M4":None,"M5":None}]*NumberOfSlicesInSeq
+    SNR_Rel_Results = []
+    for i in range(NumberOfSlicesInSeq):
+        SNR_Rel_Results.append({"M1":None,"M2":None,"M3":None,"M4":None,"M5":None})
     ROIS = list(ROIBaseline.keys())
     for ROI in ROIS:
         for Slice in range(NumberOfSlicesInSeq):
@@ -439,10 +441,17 @@ def DidQAPassV2(Result,thresh=None):
                 if (RelSNR <= Threshold[Sequence]):
                     FailMessage+="ROI " + ROI + " on slice " + str(Slice+1) + " SNR Failed on "+ QAType +" QA Seq: " + Sequence + "  Result (%):" + str(round(RelSNR,4)) + "   Threshold:" + str(round(Threshold[Sequence],4)) +"\n"
                     SNR_Rel_Results[Slice][ROI][1] = False
-    if FailMessage=="":
-        return True,FailMessage,SNR_Rel_Results
+                    
+    if GetStats == True:
+        if FailMessage=="":
+            return True,FailMessage,SNR_Rel_Results
+        else:
+            return False,FailMessage,SNR_Rel_Results
     else:
-        return False,FailMessage,SNR_Rel_Results
+        if FailMessage=="":
+            return True,FailMessage
+        else:
+            return False,FailMessage
 
 
 def GetStatsBasedThresh(data):
@@ -469,7 +478,7 @@ def MakePlot(ImageData,seq,ScannerName,Images,ROI_Data,QAType,Results):
         if seq in GetExcludedSlices(QAType).keys():
             SlicesToBeRejected=GetExcludedSlices(QAType)[seq]
 
-        _,_,ROIResults = DidQAPassV2(Results)
+        _,_,ROIResults = DidQAPassV2(Results,GetStats=True)
 
 
         for i in range(len(Images)):
@@ -481,19 +490,31 @@ def MakePlot(ImageData,seq,ScannerName,Images,ROI_Data,QAType,Results):
             axs[CurrentRow,CurrentCol].set_title("Slice Num: " + str(i+1), fontsize=20)
 
             ROI_Data_On_Slce = ROI_Data[i]
-            color = 'red'
+            
             if i not in SlicesToBeRejected:
                 for roi in ROI_Data_On_Slce:
                     ROI_Stats = ROIResults[i]["M"+str(roi.ROIID)]
-                    if ROI_Stats[1]:
+                    if ROI_Stats[1] == True:
                         color = 'green'
+                    else:
+                        color = 'red'
                     rect = roi.Rect
                     rect.set_edgecolor(color)
                     axs[CurrentRow,CurrentCol].add_patch(roi.Rect)
                     center_x = roi.Rect.get_x() + roi.Rect.get_width() / 2
                     center_y = roi.Rect.get_y() + roi.Rect.get_height() / 2
 
-                    axs[CurrentRow,CurrentCol].text(center_x, center_y, str(roi.ROIID) +"\n" +str(round(ROI_Stats[0]*100.0,2)) +"%", style='italic', ha='center', va='center',fontsize=9,color=color)
+                    axs[CurrentRow,CurrentCol].text(center_x, center_y, str(roi.ROIID), style='italic', ha='center', va='center',fontsize=9,color=color)
+
+                    below_y = roi.Rect.get_y() - roi.Rect.get_height() * 0.5
+                    snr_text = f"{ROI_Stats[0]:.4f}"
+                    axs[CurrentRow,CurrentCol].text(center_x, below_y,
+                                                  snr_text,
+                                                  ha='center',
+                                                  va='top',
+                                                  fontsize=6,
+                                                  color=color)
+
 
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
         dir_path = os.path.dirname(os.path.realpath(__file__))
